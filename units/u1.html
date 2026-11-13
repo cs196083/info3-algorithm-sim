@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1. 알고리즘과 문제 해결 – 정보 3단원</title><link rel="stylesheet" href="../css/style.css"></head>
+<body data-unit="1"><div id="app">
+
+<section id="learn" data-tab="📖 교과서 정리">
+ <div class="card"><h2>학습 목표</h2>
+  <ul><li>알고리즘이 무엇인지 알고 문제를 해결하기 위한 절차를 설명할 수 있다.</li><li>추상화, 알고리즘 설계, 자동화를 통해 문제를 해결할 수 있다.</li></ul>
+  <p class="small">학습 요소: 문제, 문제 해결 절차, 추상화, 알고리즘, 자동화</p></div>
+
+ <div class="card"><h2>1. 알고리즘이란? <span class="pg">77쪽</span></h2>
+  <div class="def"><b>알고리즘</b> = 문제를 해결하기 위한 <b>구체적인 방법과 절차</b></div>
+  <p>양치질 순서, 길 찾기, 게시글 정렬, 영상·상품 추천처럼 우리 일상에는 이미 많은 알고리즘이 쓰이고 있어요.
+  (알고리즘이라는 말은 9세기 페르시아 수학자 알콰리즈미의 이름에서 유래했어요.)</p></div>
+
+ <div class="card"><h2>2. 문제와 문제 해결 절차 <span class="pg">78쪽</span></h2>
+  <div class="def"><b>문제</b> = 목표로 하는 상태와 현재의 상태가 <b>일치하지 않는 상황</b><br>
+  <b>문제 해결</b> = 초기 상태에서 시작해 목표 상태에 도달하는 과정 (둘의 차이를 줄여 나가는 것)</div>
+  <p>컴퓨터로 계산 문제를 해결하려면 <b>3단계</b>를 거쳐요.</p>
+  <table>
+   <tr><th>단계</th><th class="l">하는 일</th><th class="l">예시(왕의 열쇠 문제)</th></tr>
+   <tr><td><b>① 추상화</b></td><td class="l">문제를 이해·분석해 <b>핵심 요소</b>를 뽑고, 풀기 쉬운 형태로 재표현<br>(초기/목표 상태, 핵심 요소, 수행 작업 정의 · 분해와 모델링)</td><td class="l">총 관람객 수, 입장 순서, 범인만 거짓말한다는 사실 → “절반씩 나누는 횟수 세기”</td></tr>
+   <tr><td><b>② 알고리즘 설계</b></td><td class="l">순차·선택·반복 구조로 절차를 나열 (자연어·의사 코드·순서도)</td><td class="l">visitors ← visitors // 2, count ← count + 1 을 반복</td></tr>
+   <tr><td><b>③ 자동화</b></td><td class="l">프로그래밍 언어로 구현하고, 실행 결과를 분석하여 <b>성능 평가</b></td><td class="l">파이썬 while문으로 구현 → 답 16명</td></tr>
+  </table></div>
+
+ <div class="card"><h2>3. 알고리즘의 5가지 조건 <span class="pg">79쪽</span></h2>
+  <table><tr><th>입력</th><th>출력</th><th>명확성</th><th>유한성</th><th>수행 가능성</th></tr>
+  <tr><td class="l">필요한 데이터를 입력받을 수 있어야 함</td><td class="l">적어도 1개 이상의 결과가 출력</td><td class="l">모호함 없이 의미가 분명</td><td class="l">반드시 종료되어야 함</td><td class="l">모든 명령이 수행 가능</td></tr></table>
+  <h3>알고리즘의 표현 방법</h3>
+  <ul><li><b>자연어</b> : 우리가 쓰는 말로 설명</li><li><b>의사 코드(Pseudo code)</b> : 프로그래밍 언어와 비슷하지만 컴퓨터에서 실행되지 않는 가상의 코드</li><li><b>순서도</b> : 약속한 도형과 흐름선으로 표현</li><li><b>프로그래밍 언어</b> : 파이썬, C, C++ 등 (컴퓨터가 실행)</li></ul>
+  <div class="note">하나의 문제를 해결하는 알고리즘은 여러 개일 수 있어요. 비교·분석해서 <b>더 좋은(효율적인) 알고리즘</b>을 설계해야 해요.</div></div>
+
+ <div class="card"><h2>4. 성능 평가 <span class="pg">80쪽</span></h2>
+  <ul><li>필요한 경찰의 최소 인원수가 <b>올바르게</b> 구해지는가?</li><li>더 <b>효율적으로</b> 해결할 수 있는 방법이 있는가?</li></ul>
+  <h3>핵심 정리</h3>
+  <ol><li>문제 해결에는 알고리즘(방법과 절차) 설계가 중요하다.</li><li>문제 = 목표 상태와 현재 상태가 다른 상황, 해결 = 초기 → 목표 상태 도달.</li><li>컴퓨터로 문제를 해결하려면 추상화 → 알고리즘 설계 → 자동화.</li></ol></div>
+</section>
+
+<section id="sim" data-tab="🧪 시뮬레이션">
+ <div class="card"><div class="sim-title"><span class="n">1</span><h2 style="margin:0">왕의 열쇠 문제 – 알고리즘 한 단계씩 실행하기 <span class="pg">78~80쪽</span></h2></div>
+  <p class="goal">🎯 설계한 알고리즘이 어떻게 <b>변수 값을 바꾸며</b> 실행되는지 눈으로 확인해요. (자동화 단계)</p>
+  <div class="note" style="margin-top:0">범인만 거짓말을 해요. 관람객을 <b>절반씩 나누어</b> 질문하면, 경찰이 몇 명 필요할까요? 관람객 수를 바꿔 보세요.</div>
+  <div class="row"><label class="f">관람객 수 <input type="number" id="s1n" value="40000" min="1" max="1000000000"></label>
+   <button class="btn" id="s1step">▶ 한 단계 실행</button><button class="btn ghost" id="s1auto">⏩ 자동 실행</button><button class="btn ghost" id="s1reset">↺ 처음부터</button></div>
+  <div class="grid2"><div id="s1code"></div>
+   <div><div class="vars" id="s1vars"></div><div class="msg" id="s1msg" style="margin-top:10px"></div>
+    <div class="out" id="s1out" style="min-height:34px">(출력)</div></div></div>
+  <div class="small" style="margin-top:8px">절반으로 나눈 기록 (반복 한 바퀴 = 경찰이 질문 범위를 반으로 줄임)</div>
+  <div style="max-height:150px;overflow:auto"><table id="s1log"><tr><th>회차</th><th>visitors</th><th>count</th></tr></table></div>
+  <div class="tip" id="s1cmp"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">2</span><h2 style="margin:0">문제 해결 3단계 분류하기 <span class="pg">78~80쪽</span></h2></div>
+  <p class="goal">🎯 각 활동이 추상화 / 알고리즘 설계 / 자동화 중 어디에 속하는지 골라 보세요.</p>
+  <div id="s2"></div><div class="row"><button class="btn" id="s2chk">채점하기</button><span class="msg" id="s2msg"></span></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">3</span><h2 style="margin:0">알고리즘의 조건 진단 <span class="pg">79쪽</span></h2></div>
+  <p class="goal">🎯 아래 “나쁜 알고리즘”은 5가지 조건 중 무엇을 만족하지 못하나요?</p>
+  <div id="s3"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">4</span><h2 style="margin:0">8퍼즐 – 초기 상태에서 목표 상태로 <span class="pg">81쪽</span></h2></div>
+  <p class="goal">🎯 칸을 눌러 빈칸으로 옮기며 <b>초기 상태와 목표 상태의 차이</b>를 줄여 보세요. (문제 해결 = 차이 줄이기)</p>
+  <div class="grid2"><div>
+   <div id="pz" style="display:inline-grid;grid-template-columns:repeat(3,64px);gap:5px"></div>
+   <div class="row"><button class="btn ghost sm" id="pzinit">초기 상태(교과서)</button><button class="btn ghost sm" id="pzshuf">섞기</button></div></div>
+   <div><table><tr><th class="l">초기 상태</th><td class="l">주어진 숫자판</td></tr><tr><th class="l">목표 상태</th><td class="l">1~8이 순서대로, 빈칸이 오른쪽 아래</td></tr>
+    <tr><th class="l">핵심 요소</th><td class="l">숫자 칸의 위치, 빈칸의 위치</td></tr><tr><th class="l">수행 작업</th><td class="l">빈칸과 이웃한 숫자를 빈칸으로 옮기기</td></tr></table>
+    <div class="vars"><div class="var"><div class="nm">이동 횟수</div><div class="vl" id="pzm">0</div></div><div class="var"><div class="nm">제자리가 아닌 숫자</div><div class="vl" id="pzd">0</div></div></div>
+    <div class="msg" id="pzmsg"></div></div></div>
+  <div class="tip">이 규칙을 알고리즘으로 만들어 프로그램으로 자동화하면, 사람이 놓치기 쉬운 경우까지 빠르고 정확하게 확인할 수 있다는 장점이 있어요. (교과서 81쪽 활동 3)</div></div>
+</section>
+</div>
+<script src="../js/common.js"></script>
+<script>
+window.GOAL='알고리즘이 무엇인지 알고, 추상화 → 알고리즘 설계 → 자동화 절차로 문제를 해결해 봅니다.';
+window.CHECKS=['알고리즘이 무엇인지 설명할 수 있다. [지식·이해]','문제 해결 절차(추상화→알고리즘 설계→자동화)를 순서대로 설명하고 문제에 적용할 수 있다. [과정·기능]','알고리즘의 5가지 조건(입력·출력·명확성·유한성·수행 가능성)을 말할 수 있다.','자연어·의사 코드·순서도 중 하나로 알고리즘을 표현할 수 있다.','알고리즘 효율의 가치를 알고, 더 효율적인 방법을 찾아보려 한다. [가치·태도]'];
+window.LEVELS=['문제 해결 절차를 정확히 설명하고, 추상화·알고리즘 설계·자동화를 거쳐 문제를 오류 없이 해결하며 프로그램의 성능을 평가·공유할 수 있다.','문제 해결 절차를 설명하고, 알고리즘을 설계해 프로그램으로 구현한 뒤 성능을 평가할 수 있다.','알고리즘과 절차를 설명하고 주어진 문제를 3단계에 따라 해결할 수 있다.','알고리즘과 절차를 대략 설명하고 일부 단계를 수행할 수 있다.','알고리즘과 문제 해결 절차의 개념을 인지한다.'];
+window.QUIZ=[
+ {q:'알고리즘의 뜻으로 가장 알맞은 것은?',c:['컴퓨터가 실행하는 프로그램 파일','문제를 해결하기 위한 구체적인 방법과 절차','파이썬으로만 작성할 수 있는 명령어 묶음','데이터를 저장하는 기억 장소'],a:1,e:'알고리즘은 문제 해결을 위한 구체적인 방법과 절차예요. 언어에 상관없이 자연어·순서도로도 표현할 수 있어요.',pg:'77'},
+ {q:'컴퓨터로 문제를 해결하는 절차를 순서대로 나열한 것은?',c:['자동화 → 추상화 → 알고리즘 설계','알고리즘 설계 → 추상화 → 자동화','추상화 → 알고리즘 설계 → 자동화','추상화 → 자동화 → 알고리즘 설계'],a:2,e:'핵심 요소를 뽑아 재표현(추상화) → 절차 설계 → 프로그램 구현과 성능 평가(자동화) 순서예요.',pg:'78'},
+ {q:'“문제”의 정의로 교과서와 가장 가까운 것은?',c:['컴퓨터가 풀 수 없는 어려운 질문','목표 상태와 현재 상태가 일치하지 않는 상황','프로그램 실행 중 발생한 오류','정답이 하나뿐인 질문'],a:1,e:'문제 해결은 초기 상태에서 시작해 목표 상태에 도달하는 과정이에요.',pg:'78'},
+ {q:'다음 중 “자동화” 단계에 해당하는 활동은?',c:['초기 상태와 목표 상태 정하기','핵심 요소 추출하기','순서도로 절차 그리기','프로그램을 실행해 결과를 분석하고 성능을 평가하기'],a:3,e:'자동화 = 알고리즘을 프로그래밍 언어로 구현 + 실행 결과 분석·성능 평가예요.',pg:'80'},
+ {q:'알고리즘이 반드시 종료되어야 한다는 조건은?',c:['입력','명확성','유한성','수행 가능성'],a:2,e:'유한성: 알고리즘은 끝이 있어야 해요. 종료되지 않는 반복은 알고리즘이 아니에요.',pg:'79'},
+ {q:'실제 프로그래밍 언어가 아니어서 컴퓨터에서 실행할 수 없지만, 프로그래밍 언어와 비슷한 형태로 알고리즘을 쓰는 방법은?',c:['순서도','자연어','의사 코드','파이썬'],a:2,e:'의사 코드(Pseudo code)는 “가상의 코드”라는 뜻이에요.',pg:'79'},
+ {q:'왕의 열쇠 문제에서 관람객이 40,000명일 때 필요한 경찰의 최소 인원은? (절반씩 나누기)',type:'fill',a:['16'],e:'40000을 1이 될 때까지 절반(몫)으로 나누면 15번이므로 count=15, police=count+1=16명이에요.',pg:'79–80'}
+];
+
+/* ---------- 시뮬레이션 1 ---------- */
+(function(){
+ const code=['visitors = 40000   # 입장객 수','count = 0','while visitors > 1:','    visitors = visitors // 2','    count = count + 1','police = count + 1','print(police)'];
+ $('#s1code').innerHTML=codeBlock(code);
+ let S;
+ const vars=()=>{ $('#s1vars').innerHTML=[['visitors',S.v],['count',S.c],['police',S.p]].map(([k,v])=>`<div class="var" id="v_${k}"><div class="nm">${k}</div><div class="vl">${v===null?'?':v}</div><div class="ty">${v===null?'미정':'int'}</div></div>`).join('')};
+ function reset(){stopAuto();S={pc:0,v:null,c:null,p:null,log:[],done:false};vars();hlLine($('#s1code'),-1);$('#s1msg').textContent='“한 단계 실행”을 눌러 시작하세요.';$('#s1msg').className='msg';$('#s1out').textContent='(출력)';$('#s1log').innerHTML='<tr><th>회차</th><th>visitors</th><th>count</th></tr>';$('#s1cmp').innerHTML='';$('#s1step').disabled=false;}
+ function flash(k){const e=$('#v_'+k);e&&e.classList.add('flash')}
+ function step(){
+  if(S.done)return;
+  const N=Math.max(1,Math.min(1e9,Math.floor(+$('#s1n').value||1)));
+  const i=S.pc;hlLine($('#s1code'),i);let m='';
+  if(i===0){S.v=N;S.pc=1;m=`① visitors에 전체 관람객 수 ${N}을 저장해요.`}
+  else if(i===1){S.c=0;S.pc=2;m='② 절반으로 나눈 횟수를 세는 count를 0으로 시작해요.'}
+  else if(i===2){const t=S.v>1;S.pc=t?3:5;m=`③ visitors(${S.v}) > 1 은 ${t?'참 → 반복문 안으로 들어가요.':'거짓 → 반복을 끝내고 아래로 내려가요.'}`}
+  else if(i===3){const old=S.v;S.v=Math.floor(S.v/2);S.pc=4;m=`④ 범위를 절반으로: ${old} // 2 = ${S.v}`}
+  else if(i===4){S.c++;S.log.push([S.c,S.v,S.c]);S.pc=2;m=`⑤ 절반으로 나눈 횟수 count = ${S.c}`}
+  else if(i===5){S.p=S.c+1;S.pc=6;m=`⑥ 마지막 1명까지 조사하려면 count + 1 = ${S.p}명`}
+  else if(i===6){S.done=true;$('#s1out').textContent=S.p;m=`⑦ 출력: ${S.p}  → 알고리즘이 끝났어요(유한성).`;$('#s1step').disabled=true;stopAuto();
+    $('#s1cmp').innerHTML=`💡 한 명씩 모두 확인하면 최대 <b>${N.toLocaleString()}</b>명이 필요하지만, 절반씩 나누는 이 알고리즘은 <b>${S.p}</b>명이면 돼요. 이것이 <b>알고리즘 효율</b>의 힘이에요! (성능 평가: 더 효율적인 방법이 있는가?)`;}
+  vars();
+  if(i===0)flash('visitors');if(i===1||i===4)flash('count');if(i===3)flash('visitors');if(i===5)flash('police');
+  $('#s1msg').textContent=m;
+  $('#s1log').innerHTML='<tr><th>회차</th><th>visitors</th><th>count</th></tr>'+S.log.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+ }
+ let timer=null;function stopAuto(){if(timer){clearInterval(timer);timer=null;$('#s1auto').textContent='⏩ 자동 실행'}}
+ $('#s1step').onclick=step;
+ $('#s1auto').onclick=()=>{if(timer){stopAuto();return}if(S.done)reset();$('#s1auto').textContent='⏸ 멈춤';timer=setInterval(step,420)};
+ $('#s1reset').onclick=reset;$('#s1n').onchange=reset;reset();
+})();
+
+/* ---------- 시뮬레이션 2 ---------- */
+(function(){
+ const items=[['초기 상태와 목표 상태를 설정한다',0],['문제 해결에 꼭 필요한 핵심 요소를 추출한다',0],['순서도로 문제 해결 절차를 그린다',1],['의사 코드로 작업을 순서에 맞게 나열한다',1],['알고리즘을 파이썬 프로그램으로 작성한다',2],['실행 결과를 분석해 더 효율적인 방법이 있는지 평가한다',2]];
+ const names=['추상화','알고리즘 설계','자동화'];
+ const h=$('#s2');
+ h.innerHTML=items.map((it,i)=>`<div class="row" style="border-bottom:1px solid var(--line);padding-bottom:6px"><div style="flex:1;min-width:240px">${i+1}. ${it[0]}</div>${names.map((n,j)=>`<label class="f"><input type="radio" name="q2_${i}" value="${j}">${n}</label>`).join('')}<span class="pill" id="s2r${i}"></span></div>`).join('');
+ $('#s2chk').onclick=()=>{let ok=0;items.forEach((it,i)=>{const s=$(`input[name=q2_${i}]:checked`);const r=$('#s2r'+i);if(!s){r.className='pill info';r.textContent='선택';return}
+  const good=+s.value===it[1];if(good)ok++;r.className='pill '+(good?'ok':'bad');r.textContent=good?'정답':'→ '+names[it[1]]});
+  const m=$('#s2msg');m.className='msg '+(ok===6?'ok':'bad');m.textContent=ok===6?'🎉 모두 맞았어요!':`${ok} / 6 정답`}
+})();
+
+/* ---------- 시뮬레이션 3 ---------- */
+(function(){
+ const cs=['입력','출력','명확성','유한성','수행 가능성'];
+ const items=[['“라면을 적당히 끓인다.”',2,'‘적당히’는 사람마다 다르게 해석돼요 → 의미가 분명하지 않음(명확성).'],['1. 숫자를 1 증가시킨다  2. 1번으로 돌아간다 (끝나는 조건 없음)',3,'끝나지 않고 계속 반복해요 → 반드시 종료되어야 함(유한성).'],['“입장객 수를 0으로 나누어 평균을 구한다.”',4,'0으로 나누는 명령은 수행할 수 없어요(수행 가능성).'],['점수를 모두 계산하지만 화면에 아무것도 출력하지 않는다',1,'알고리즘이 수행되면 적어도 1개 이상의 결과가 출력되어야 해요(출력).'],['평균을 구하는 알고리즘인데 점수를 받을 방법이 전혀 없다',0,'필요한 데이터를 입력받을 수 있어야 해요(입력).']];
+ $('#s3').innerHTML=items.map((it,i)=>`<div style="border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0"><div>${i+1}. ${it[0]}</div><div class="row">${cs.map((c,j)=>`<button class="btn ghost sm" data-i="${i}" data-j="${j}">${c}</button>`).join('')}</div><div class="msg" id="s3m${i}"></div></div>`).join('');
+ $$('#s3 button').forEach(b=>b.onclick=()=>{const i=+b.dataset.i,j=+b.dataset.j,m=$('#s3m'+i);const ok=items[i][1]===j;m.className='msg '+(ok?'ok':'bad');m.textContent=ok?'정답! '+items[i][2]:'다시 생각해 보세요.'});
+})();
+
+/* ---------- 시뮬레이션 4 : 8퍼즐 ---------- */
+(function(){
+ const INIT=[1,2,3,7,4,5,8,6,0],GOAL=[1,2,3,4,5,6,7,8,0];
+ let b=INIT.slice(),mv=0;
+ function render(){
+  $('#pz').innerHTML=b.map((v,i)=>`<button class="btn ${v?'':'ghost'}" style="height:64px;font-size:24px;${v&&v!==GOAL[i]?'background:#e8590c':''}${v?'':';visibility:hidden'}" data-i="${i}">${v||''}</button>`).join('');
+  $$('#pz button').forEach(x=>x.onclick=()=>move(+x.dataset.i));
+  const d=b.filter((v,i)=>v&&v!==GOAL[i]).length;
+  $('#pzm').textContent=mv;$('#pzd').textContent=d;
+  const m=$('#pzmsg');if(d===0){m.className='msg ok';m.textContent=`🎉 목표 상태 도달! ${mv}번 만에 해결했어요. (차이가 0)`}else{m.className='msg';m.textContent='주황색 칸은 목표 위치와 다른 칸이에요.'}
+ }
+ function move(i){const z=b.indexOf(0);const r=Math.floor(i/3),c=i%3,zr=Math.floor(z/3),zc=z%3;if(Math.abs(r-zr)+Math.abs(c-zc)!==1)return;[b[i],b[z]]=[b[z],b[i]];mv++;render()}
+ $('#pzinit').onclick=()=>{b=INIT.slice();mv=0;render()};
+ $('#pzshuf').onclick=()=>{b=GOAL.slice();let last=-1;for(let k=0;k<40;k++){const z=b.indexOf(0),r=Math.floor(z/3),c=z%3;const nb=[];if(r>0)nb.push(z-3);if(r<2)nb.push(z+3);if(c>0)nb.push(z-1);if(c<2)nb.push(z+1);const cand=nb.filter(x=>x!==last);const t=cand[Math.floor(Math.random()*cand.length)];[b[t],b[z]]=[b[z],b[t]];last=z}mv=0;render()};
+ render();
+})();
+</script></body></html>

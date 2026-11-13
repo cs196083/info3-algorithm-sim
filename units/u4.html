@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4. 표준 입출력과 파일 입출력 – 정보 3단원</title><link rel="stylesheet" href="../css/style.css"></head>
+<body data-unit="4"><div id="app">
+
+<section id="learn" data-tab="📖 교과서 정리">
+ <div class="card"><h2>학습 목표</h2>
+  <ul><li>표준 입출력을 활용한 프로그램을 작성할 수 있다.</li><li>파일 입출력을 활용한 프로그램을 작성할 수 있다.</li></ul>
+  <p class="small">학습 요소: 표준 입출력, 파일 입출력</p></div>
+
+ <div class="card"><h2>1. 표준 입출력 <span class="pg">100~104쪽</span></h2>
+  <div class="def"><b>표준 입출력</b> = 장치를 따로 지정하지 않으면 <b>키보드로 입력</b>하고 <b>모니터로 출력</b>하는 것</div>
+  <h3>표준 출력 print()</h3>
+  <ul><li>쉼표(,)로 여러 값을 출력하면 값 사이에 <b>공백</b>이 들어가요.</li><li>다른 자료형을 함께 이어 출력하려면 <code>str()</code> 로 문자열 변환 후 <code>+</code> 로 연결.</li>
+  <li><b>f-문자열 포매팅</b> : <code>print(f'{school}고등학교 {grade}학년')</code> — 문자열 앞에 f, 값은 {변수명}</li>
+  <li>여러 줄 출력: <code>'''...'''</code>(따옴표 3개) 또는 이스케이프 문자 <code>\n</code>(줄바꿈), <code>\t</code>(탭)</li></ul>
+  <h3>표준 입력 input()</h3>
+  <pre class="code">변수 = input('입력을 위한 안내 문구')</pre>
+  <div class="note"><b>input() 으로 받은 값은 항상 문자열(str)!</b> 숫자로 계산하려면 <code>int()</code> 또는 <code>float()</code> 로 변환해야 해요.<br>
+  예) '10' + '3.14' → '103.14' (문자열 연결) / int('10') + float('3.14') → 13.14 (정수+실수 → 실수)</div></div>
+
+ <div class="card"><h2>2. 파일 입출력 <span class="pg">105~108쪽</span></h2>
+  <p>방대한 자료는 input() 으로 하나씩 입력하기 어렵고, 표준 입출력으로 처리한 결과는 <b>프로그램이 끝나면 사라져요.</b> → 표준화된 형태의 <b>파일</b>로 저장하고 필요할 때 불러와요.</p>
+  <div class="row" style="justify-content:center"><span class="pill info">① 파일 열기 open()</span>→<span class="pill info">② 파일 처리(읽기/쓰기)</span>→<span class="pill info">③ 파일 닫기 close()</span></div>
+  <table><tr><th>함수</th><th class="l">기능</th><th class="l">사용 방법</th></tr>
+   <tr><td class="mono">open()</td><td class="l">파일 열기</td><td class="l mono">파일객체 = open('파일이름','모드')</td></tr>
+   <tr><td class="mono">close()</td><td class="l">파일 닫기</td><td class="l mono">파일객체.close()</td></tr>
+   <tr><td class="mono">write()</td><td class="l">파일에 내용 쓰기 (문자열 1개)</td><td class="l mono">파일객체.write("내용")</td></tr>
+   <tr><td class="mono">read()</td><td class="l">내용 전체 읽기</td><td class="l mono">변수 = 파일객체.read()</td></tr>
+   <tr><td class="mono">readline()</td><td class="l">내용 한 줄 읽기</td><td class="l mono">변수 = 파일객체.readline()</td></tr></table>
+  <table><tr><th>모드</th><th class="l">의미</th></tr><tr><td class="mono">'r'</td><td class="l">읽기(read)</td></tr><tr><td class="mono">'w'</td><td class="l">쓰기(write) — 파일이 없으면 새로 만들고, <b>있으면 기존 내용을 모두 삭제</b></td></tr><tr><td class="mono">'a'</td><td class="l">기존 내용 <b>뒤에 추가</b>(append)</td></tr></table>
+  <div class="tip"><b>csv 파일</b> : Comma Separated Value, 데이터를 쉼표(,)로 구분해 저장한 형식(엑셀로 열 수 있어요). 새 줄에 이어 쓰려면 쓰는 내용 끝에 <code>\n</code>.<br><b>with 키워드</b> : <code>with open('hello.txt','a') as f:</code> 블록을 벗어나면 close() 없이도 자동으로 닫혀요. (107~108쪽 알고 가기)</div>
+  <h3>핵심 정리</h3><ol><li>표준 입출력 = 키보드 입력 + 모니터 출력</li><li>파일 입출력은 방대한 자료를 공유·분석하기 좋게 저장하고 불러오는 방법</li><li>절차: 파일 열기 → 파일 처리 → 파일 닫기</li></ol></div>
+</section>
+
+<section id="sim" data-tab="🧪 시뮬레이션">
+ <div class="card"><div class="sim-title"><span class="n">1</span><h2 style="margin:0">input() 의 함정 – 문자열 vs 숫자 <span class="pg">103~104쪽</span></h2></div>
+  <p class="goal">🎯 키보드로 <b>10</b> 과 <b>3.14</b> 를 입력했다고 가정해요. 변환 방식을 바꿔 a + b 의 결과를 확인해 보세요.</p>
+  <div class="row"><label class="f">사용자가 입력한 첫째 값 <input type="text" id="ia" value="10"></label><label class="f">둘째 값 <input type="text" id="ib" value="3.14"></label></div>
+  <div class="grid2"><div><b>a = </b><select id="ma"><option value="s">input(…) 그대로</option><option value="i">int(input(…))</option><option value="f">float(input(…))</option></select></div>
+   <div><b>b = </b><select id="mb"><option value="s">input(…) 그대로</option><option value="i">int(input(…))</option><option value="f">float(input(…))</option></select></div></div>
+  <div class="grid2"><div class="vars" id="ivars"></div><div class="out" id="iout"></div></div>
+  <div class="msg" id="imsg"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">2</span><h2 style="margin:0">출력 방법 비교 – 쉼표 / + 연결 / f-문자열 <span class="pg">101~102쪽</span></h2></div>
+  <p class="goal">🎯 같은 내용을 세 가지 방법으로 출력해 보고 차이를 확인해요.</p>
+  <div class="row"><label class="f">school <input type="text" id="fs" value="한국"></label><label class="f">grade <input type="number" id="fg" value="1" style="width:70px"></label><label class="f">ban <input type="number" id="fb" value="3" style="width:70px"></label><label class="f">name <input type="text" id="fn" value="홍길동"></label></div>
+  <table><tr><th style="width:130px">방법</th><th class="l">코드</th><th class="l">출력 결과</th></tr><tbody id="fout"></tbody></table>
+  <h3>이스케이프 문자 미리보기</h3>
+  <div class="row"><input type="text" id="esc" value="문자열\n여러 줄\t탭" style="width:340px"><span class="small">\n 줄바꿈 · \t 탭 · \' \" 따옴표</span></div>
+  <div class="out" id="escout"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">3</span><h2 style="margin:0">파일 입출력 시뮬레이터 – 열기 → 처리 → 닫기 <span class="pg">105~108쪽</span></h2></div>
+  <p class="goal">🎯 <code>book.csv</code> 파일을 열고, 쓰고, 읽고, 닫아 보세요. 모드(r/w/a)에 따라 결과가 어떻게 다른지, <b>close()를 해야 파일에 저장</b>되는지 직접 확인해요.</p>
+  <div class="row" id="fsteps"></div>
+  <div class="grid2"><div>
+   <div class="row"><b>① open</b><select id="fmode"><option value="w">'w' 쓰기</option><option value="a">'a' 추가</option><option value="r">'r' 읽기</option></select><button class="btn sm" id="fopen">f = open('book.csv', 모드)</button></div>
+   <div class="row"><b>② 처리</b><input type="text" id="ftext" value="소나기, 황순원" style="width:170px"><label class="f"><input type="checkbox" id="fnl" checked>끝에 \n</label><button class="btn sm" id="fwrite">f.write(…)</button></div>
+   <div class="row"><b>　 </b><button class="btn sm ghost" id="fread">data = f.read()</button><button class="btn sm ghost" id="freadl">data = f.readline()</button></div>
+   <div class="row"><b>③ close</b><button class="btn sm" id="fclose">f.close()</button><button class="btn sm ghost" id="fdel">🗑 book.csv 삭제(초기화)</button></div>
+   <div class="small">실행한 코드</div><pre class="code" id="flog" style="min-height:90px;max-height:200px"></pre></div>
+   <div><div class="small">📄 book.csv 파일 내용 (디스크)</div><div class="out" id="fdisk" style="min-height:70px"></div>
+    <div class="small" style="margin-top:8px">🧺 쓰기 버퍼 (아직 close 전)</div><div class="out" id="fbuf" style="min-height:40px;color:#ffd43b"></div>
+    <div class="small" style="margin-top:8px">🖥 print(data) 출력</div><div class="out" id="fprint" style="min-height:40px"></div>
+    <div class="msg" id="fmsg"></div></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">4</span><h2 style="margin:0">직접 실행해 보기 <span class="pg">104·106~108쪽</span></h2></div>
+  <p class="goal">🎯 input() 은 실행하면 입력창이 떠요. 파일 입출력은 실행기 안의 가상 폴더에서 동작해요.</p>
+  <div id="py1"></div><div id="py2" style="margin-top:14px"></div><div id="py3" style="margin-top:14px"></div></div>
+</section>
+</div>
+<script src="../js/common.js"></script>
+<script>
+window.GOAL='표준 입출력(print·input)과 파일 입출력(open·read·write·close)을 시뮬레이션으로 익힙니다.';
+window.CHECKS=['표준 입출력과 파일 입출력의 개념과 차이를 설명할 수 있다. [지식·이해]','input() 으로 받은 값이 문자열임을 알고 int()/float() 로 변환할 수 있다.','print() 와 f-문자열로 원하는 형태로 출력할 수 있다.','파일 열기→처리→닫기 절차와 r/w/a 모드를 설명할 수 있다.','문제 해결에 적합한 입출력 구조를 활용하여 프로그램을 작성할 수 있다. [과정·기능]'];
+window.LEVELS=['표준입출력과 파일입출력의 적용 방법을 설명하고, 입력 데이터를 처리해 출력하는 프로그램을 오류 없이 작성한다.','적용 방법을 설명하고 입력 데이터를 처리하여 출력하는 프로그램을 작성한다.','표준·파일 입출력을 설명하고 프로그램을 작성한다.','표준·파일 입출력을 인지하고 프로그램을 부분적으로 작성한다.','표준·파일 입출력을 인지한다.'];
+window.QUIZ=[
+ {q:"age = input('나이를 입력하세요:') 에서 17을 입력했을 때 age의 자료형은?",c:['int','float','str','bool'],a:2,e:'input() 은 무엇을 입력하든 문자열(str)로 저장해요.',pg:'103'},
+ {q:"a = input('정수:') 에 10, b = input('실수:') 에 3.14 를 입력하고 print(a + b) 를 실행하면?",c:['13.14','103.14','오류 발생','10 3.14'],a:1,e:"둘 다 문자열이므로 덧셈이 아니라 문자열 연결: '10' + '3.14' = '103.14'",pg:'104'},
+ {q:'입력받은 값을 정수로 바꿔 변수 n에 저장하려면 빈칸에 들어갈 함수 이름은?   n = (   )(input())',type:'fill',a:['int'],e:'int() 는 정수로, float() 는 실수로 변환해요.',pg:'104'},
+ {q:'기존 파일 내용을 지우지 않고 뒤에 이어서 쓰려면 어떤 모드로 열어야 할까?',c:["'r'","'w'","'a'","'c'"],a:2,e:"'a'(append)는 추가, 'w'는 기존 내용을 모두 삭제하고 새로 써요.",pg:'106'},
+ {q:'파일 입출력의 절차를 순서대로 나열한 것은?',c:['처리 → 열기 → 닫기','열기 → 닫기 → 처리','열기 → 처리 → 닫기','닫기 → 열기 → 처리'],a:2,e:'open() → read()/write() → close() 순서예요. with 를 쓰면 닫기가 자동!',pg:'105'},
+ {q:"school='한국', grade=1 일 때 print(f'{school}고등학교 {grade}학년') 의 결과는?",c:['{school}고등학교 {grade}학년','한국고등학교 1학년','school고등학교 grade학년','한국 고등학교 1 학년'],a:1,e:'f-문자열에서는 {변수명} 자리에 변수의 값이 들어가요.',pg:'102'},
+ {q:"print('문자열\\n여러 줄') 에서 \\n 의 역할은?",c:['탭 간격','줄바꿈','따옴표 출력','프로그램 종료'],a:1,e:'\\n 은 줄바꿈, \\t 는 탭이에요.',pg:'102'},
+ {q:'csv 파일에서 각각의 데이터를 구분하는 기호는?',c:['쉼표(,)','마침표(.)','세미콜론(;)','콜론(:)'],a:0,e:'csv = Comma Separated Value. 쉼표로 구분한 파일이에요.',pg:'106'}
+];
+
+/* ---------- 1. input 함정 ---------- */
+(function(){
+ const isInt=s=>/^\s*[+-]?\d+\s*$/.test(s),isFl=s=>/^\s*[+-]?(\d+\.?\d*|\.\d+)\s*$/.test(s);
+ function conv(s,m){
+  if(m==='s')return{t:'str',v:s};
+  if(m==='i'){if(!isInt(s))return{err:`ValueError: invalid literal for int() with base 10: '${s}'`};return{t:'int',v:parseInt(s,10)}}
+  if(!isFl(s))return{err:`ValueError: could not convert string to float: '${s}'`};return{t:'float',v:parseFloat(s)}
+ }
+ const show=r=>r.t==='str'?`'${r.v}'`:(r.t==='float'&&Number.isInteger(r.v)?r.v.toFixed(1):String(r.v));
+ function draw(){
+  const sa=$('#ia').value,sb=$('#ib').value;
+  const A=conv(sa,$('#ma').value),B=conv(sb,$('#mb').value);
+  const code=`a = ${$('#ma').value==='s'?'':$('#ma').value==='i'?'int(':'float('}input('정수:')${$('#ma').value==='s'?'':')'}\nb = ${$('#mb').value==='s'?'':$('#mb').value==='i'?'int(':'float('}input('실수:')${$('#mb').value==='s'?'':')'}\nprint(a + b)`;
+  const m=$('#imsg'),o=$('#iout');
+  const err=A.err||B.err;
+  $('#ivars').innerHTML=[['a',A],['b',B]].map(([k,r])=>`<div class="var"><div class="nm">${k}</div><div class="vl">${r.err?'오류':esc(show(r))}</div><div class="ty">${r.err?'':r.t}</div></div>`).join('');
+  if(err){o.className='out err';o.textContent=code+'\n\n'+err;m.className='msg bad';m.textContent='입력한 값이 변환 방식과 맞지 않아요. (예: 3.14 를 int() 로 바꿀 수 없어요)';return}
+  let res,t;
+  if(A.t==='str'&&B.t==='str'){res=A.v+B.v;t='str'}
+  else if(A.t!=='str'&&B.t!=='str'){res=A.v+B.v;t=(A.t==='float'||B.t==='float')?'float':'int'}
+  else{o.className='out err';o.textContent=code+`\n\nTypeError: unsupported operand type(s) for +: '${A.t}' and '${B.t}'`;m.className='msg bad';m.textContent='문자열과 숫자는 + 로 더할 수 없어요. 둘 다 같은 방식으로 변환해야 해요.';return}
+  o.className='out';o.textContent=code+'\n\n'+(t==='str'?res:(t==='float'&&Number.isInteger(res)?res.toFixed(1):res));
+  m.className='msg '+(t==='str'?'bad':'ok');
+  m.textContent=t==='str'?`결과 자료형: str — 숫자 덧셈이 아니라 문자열 연결이에요.`:`결과 자료형: ${t} — 수치 자료형끼리의 산술 연산이에요${t==='float'?' (정수+실수=실수)':''}.`;
+ }
+ ['ia','ib'].forEach(i=>$('#'+i).oninput=draw);['ma','mb'].forEach(i=>$('#'+i).onchange=draw);draw();
+})();
+
+/* ---------- 2. 출력 비교 ---------- */
+(function(){
+ function draw(){
+  const s=$('#fs').value,g=$('#fg').value,b=$('#fb').value,n=$('#fn').value;
+  $('#fout').innerHTML=`<tr><td><b>쉼표(,)</b></td><td class="l mono">print(school, grade, ban, name)</td><td class="l mono">${esc(s)} ${esc(g)} ${esc(b)} ${esc(n)}</td></tr>
+  <tr><td><b>+ 연결</b></td><td class="l mono" style="font-size:12px">print(school+'고등학교 '+str(grade)+'학년 '+str(ban)+'반 '+name+'학생, 만나서 반갑습니다.')</td><td class="l">${esc(s)}고등학교 ${esc(g)}학년 ${esc(b)}반 ${esc(n)}학생, 만나서 반갑습니다.</td></tr>
+  <tr><td><b>f-문자열</b></td><td class="l mono" style="font-size:12px">print(f'{school}고등학교 {grade}학년 {ban}반 {name}학생, 만나서 반갑습니다.')</td><td class="l">${esc(s)}고등학교 ${esc(g)}학년 ${esc(b)}반 ${esc(n)}학생, 만나서 반갑습니다.</td></tr>`;
+ }
+ ['fs','fg','fb','fn'].forEach(i=>$('#'+i).oninput=draw);draw();
+ function e(){const v=$('#esc').value.replace(/\\n/g,'\n').replace(/\\t/g,'\t').replace(/\\'/g,"'").replace(/\\"/g,'"');$('#escout').textContent=v}
+ $('#esc').oninput=e;e();
+})();
+
+/* ---------- 3. 파일 입출력 ---------- */
+(function(){
+ let disk=null,h=null,buf='',pos=0,logs=[];
+ const log=(c,err)=>{logs.push(c+(err?'   # ❌ '+err:''));$('#flog').textContent=logs.slice(-12).join('\n')};
+ function msg(t,ok){const m=$('#fmsg');m.className='msg '+(ok?'ok':'bad');m.textContent=t}
+ function draw(){
+  $('#fdisk').textContent=disk===null?'(파일 없음)':(disk===''?'(빈 파일)':disk);
+  $('#fbuf').textContent=h&&h.mode!=='r'?(buf||'(비어 있음)'):'';
+  const st=!h?0:1;
+  $('#fsteps').innerHTML=['① 파일 열기','② 파일 처리','③ 파일 닫기'].map((x,i)=>`<span class="pill ${(i===0&&!h)||(i===1&&h)||(i===2&&h)?'info':''}" style="${(i===0&&!h)||(i>0&&h)?'':'opacity:.4;background:#eee'}">${x}</span>`).join('<span class="arrow">→</span>')+`<span class="small">${h?` 현재: '${h.mode}' 모드로 열려 있음`:' 현재: 닫혀 있음'}</span>`;
+ }
+ $('#fopen').onclick=()=>{
+  const m=$('#fmode').value;
+  if(h){msg('이미 열려 있어요. 먼저 f.close() 하세요. (교과서: 입출력이 끝나면 반드시 닫기)',false);return}
+  if(m==='r'&&disk===null){log(`f = open('book.csv', 'r')`,'FileNotFoundError');msg("FileNotFoundError: 'book.csv' 파일이 없어요. 먼저 'w' 모드로 파일을 만들어 보세요.",false);return}
+  if(m==='w')disk='';if(m==='a'&&disk===null)disk='';
+  h={mode:m};buf='';pos=0;log(`f = open('book.csv', '${m}')`);
+  msg(m==='w'?"'w' 모드: 파일을 새로 만들었고, 원래 내용은 모두 삭제돼요.":m==='a'?"'a' 모드: 기존 내용은 그대로 두고 뒤에 이어 쓸 수 있어요.":"'r' 모드: 읽기만 할 수 있어요.",true);draw();
+ };
+ $('#fwrite').onclick=()=>{
+  const t=$('#ftext').value+($('#fnl').checked?'\n':''),code=`f.write('${$('#ftext').value}${$('#fnl').checked?'\\n':''}')`;
+  if(!h){log(code,'ValueError');msg('ValueError: I/O operation on closed file — 파일이 열려 있지 않아요.',false);return}
+  if(h.mode==='r'){log(code,'UnsupportedOperation');msg("io.UnsupportedOperation: not writable — 'r' 모드는 읽기 전용이에요.",false);return}
+  buf+=t;log(code);msg('쓰기 버퍼에 담겼어요. close() 하면 파일에 저장돼요.',true);draw();
+ };
+ function rd(all){
+  const code=all?'data = f.read()':'data = f.readline()';
+  if(!h){log(code,'ValueError');msg('ValueError: I/O operation on closed file',false);return}
+  if(h.mode!=='r'){log(code,'UnsupportedOperation');msg(`io.UnsupportedOperation: not readable — '${h.mode}' 모드로는 읽을 수 없어요. 'r' 모드로 다시 여세요.`,false);return}
+  let d;if(all){d=disk.slice(pos);pos=disk.length}else{const i=disk.indexOf('\n',pos);if(pos>=disk.length)d='';else if(i<0){d=disk.slice(pos);pos=disk.length}else{d=disk.slice(pos,i+1);pos=i+1}}
+  log(code+'\nprint(data)');$('#fprint').textContent=d===''?'(빈 문자열 — 더 읽을 내용이 없어요)':d;msg('읽기 성공! 읽은 위치는 파일 끝 쪽으로 이동해요.',true);
+ }
+ $('#fread').onclick=()=>rd(true);$('#freadl').onclick=()=>rd(false);
+ $('#fclose').onclick=()=>{
+  if(!h){log('f.close()','이미 닫힘');msg('이미 닫혀 있어요.',false);return}
+  if(h.mode!=='r'){disk+=buf}
+  const had=h.mode!=='r'&&buf;h=null;buf='';log('f.close()');msg(had?'close() 로 버퍼의 내용이 파일에 저장됐어요!':'파일을 닫았어요.',true);draw();
+ };
+ $('#fdel').onclick=()=>{disk=null;h=null;buf='';pos=0;logs=[];$('#flog').textContent='';$('#fprint').textContent='';msg('초기화했어요.',true);draw()};
+ draw();
+})();
+
+/* ---------- 4. 파이썬 ---------- */
+PyRunner.mount($('#py1'),{title:'반지름을 입력받아 원의 넓이 출력하기 (해 보기 2)',page:'104',code:`r = float(input('원의 반지름:'))
+pi = 3.14
+area = r * r * pi
+print('원의 넓이:', area)`});
+PyRunner.mount($('#py2'),{title:'book.csv 만들고 읽기',page:'106~107',code:`title = '책 제목'
+writer = '저자'
+f = open('book.csv', 'w')
+f.write(title + ', ' + writer + '\\n')
+f.close()
+
+f = open('book.csv', 'r')
+data = f.read()
+print(data)
+f.close()`});
+PyRunner.mount($('#py3'),{title:'추가 모드(a)로 데이터 이어 쓰기 + with 사용',page:'107~108',code:`with open('book.csv', 'w') as f:
+    f.write('책 제목, 저자\\n')
+
+with open('book.csv', 'a') as f:
+    f.write('소나기, 황순원\\n')
+
+with open('book.csv', 'r') as f:
+    data = f.read()
+print(data)`});
+</script></body></html>

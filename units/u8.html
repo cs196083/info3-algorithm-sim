@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>8. 협력적 문제 해결 프로젝트 – 정보 3단원</title><link rel="stylesheet" href="../css/style.css"></head>
+<body data-unit="8"><div id="app">
+
+<section id="learn" data-tab="📖 교과서 정리">
+ <div class="card"><h2>학습 목표</h2>
+  <ul><li>문제 해결을 위한 프로그램을 협력적으로 설계하고 구현할 수 있다.</li><li>문제 해결을 위한 프로그램의 성능을 평가하고 공유할 수 있다.</li></ul>
+  <p class="small">학습 요소: 프로그래밍 프로젝트, 성능 평가</p></div>
+
+ <div class="card"><h2>1. 프로그래밍 프로젝트란? <span class="pg">145쪽</span></h2>
+  <p>일정 관리, 가계부, 메신저, 영상 시청 프로그램처럼 프로그램은 우리 삶과 밀접해요. 배운 내용으로 실생활·여러 학문 분야의 문제를 해결하되, 여러 사람의 의견을 듣고 <b>협력</b>하면 더 효율적이에요. 프로젝트는 <b>계획 → 구현 → 개선</b> 과정을 포함해요.</p>
+  <table><tr><th>단계</th><th class="l">하는 일</th></tr>
+   <tr><td><b>1. 주제 선정 및 문제 정의</b></td><td class="l">실생활·학문 분야 주제를 생각하고 <b>브레인스토밍</b>으로 탐색해 주제를 정한 뒤 해결할 문제를 구체적으로 정의. (우리와 관련 있는가? 많은 사람이 필요로 하는가? 프로그램으로 해결할 수 있는가?)</td></tr>
+   <tr><td><b>2. 추상화</b></td><td class="l"><b>문제 분석</b>(초기·목표 상태, 수행 작업) → <b>문제 분해</b>(작은 문제) → <b>모델링</b>(글·그림·그래프·표로 구조화)</td></tr>
+   <tr><td><b>3. 알고리즘 설계</b></td><td class="l">작은 문제별로 알고리즘을 설계 (자연어·순서도·의사 코드 중 편리한 방법)</td></tr>
+   <tr><td><b>4. 프로그램 작성</b></td><td class="l">설계한 알고리즘에 따라 프로그램 작성</td></tr>
+   <tr><td><b>5. 성능 평가 및 공유</b></td><td class="l">입력에 대해 의도대로 처리·출력하는지, 작은 문제를 모두 해결해 큰 문제를 효율적으로 해결했는지 확인 → 공유하고 <b>피드백 반영</b>해 최종 완성</td></tr></table>
+  <div class="tip">모둠을 구성할 때 모둠장, 프로그래머, 발표자, 기획자 등 <b>역할을 나누어</b> 보세요.</div></div>
+
+ <div class="card"><h2>2. 프로젝트 1 – 안전한 자율주행 자동차: 제동 거리 계산 <span class="pg">146~148쪽</span></h2>
+  <ul><li>초기 상태: 제동 거리 계산이 되지 않은 상태 → 목표 상태: 제동 거리를 계산한 상태</li>
+  <li>작은 문제: ① 현재 속도(km/h)와 제동 가속도(m/s²) 입력받기 ② 제동 거리 계산하기 ③ 결과 출력하기</li>
+  <li>단위 통일: <code>v2 = v1 * 1000 / 3600</code> (km/h → m/s)</li>
+  <li><b>제동 거리 = (현재 속도)² ÷ (2 × 제동 가속도의 크기)</b> → 100 km/h, 15 m/s² 이면 약 <b>25.7 m</b></li>
+  <li>개선: <b>정지 거리 = 제동 거리 + 공주 거리</b> (공주 거리 = 현재 속도 × 공주 시간, 공주 시간 = 위험을 발견하고 제동이 걸리기 시작할 때까지의 시간)</li></ul></div>
+
+ <div class="card"><h2>3. 프로젝트 2 – 반려동물 등록 프로그램 <span class="pg">149~152쪽</span></h2>
+  <ul><li>작은 문제: 등록하기(명령 1) · 삭제하기(명령 2) · 목록 조회(명령 3) · 종료(명령 4)</li>
+  <li>클래스 <code>Register</code> : 속성 등록 번호·동물 이름·동물 종류·등록자, 메서드 <code>print_object()</code></li>
+  <li>빈 리스트를 만들고, <b>무한 반복(while 1)</b>으로 명령을 입력받아 선택 구조로 처리, 4번이면 break</li>
+  <li><code>enumerate()</code> : 리스트의 인덱스와 원소에 동시에 접근하는 내장 함수</li></ul>
+  <div class="def"><b>디버깅(Debugging)</b> : 결과가 원하는 대로 나오지 않거나 오류가 날 때 코드를 처음부터 한 줄씩 확인하며 오류를 찾아 고치는 과정. (그레이스 호퍼가 컴퓨터 회로에 낀 나방(Bug)을 제거한 데서 유래) <span class="pg">145쪽</span></div></div>
+
+ <div class="card"><h2>4. 온라인 저지 <span class="pg">153쪽</span></h2>
+  <p>프로그래밍 문제의 코드를 온라인으로 제출하면 서버에서 컴파일하고 제한 시간 안에 정확한 답을 내는지 <b>실시간으로 채점</b>해 주는 웹 기반 플랫폼. 컴퓨팅 사고력을 점검할 수 있어요. 대표적으로 <b>코드업, 프로그래머스, 백준</b>이 있어요.</p>
+  <h3>핵심 정리</h3><ol><li>문제 해결 프로젝트는 계획·구현·개선 과정을 포함한다.</li><li>주제 선정 및 문제 정의 → 추상화 → 알고리즘 설계 → 프로그램 작성 → 성능 평가 및 공유</li></ol></div>
+</section>
+
+<section id="sim" data-tab="🧪 시뮬레이션">
+ <div class="card"><div class="sim-title"><span class="n">1</span><h2 style="margin:0">프로젝트 5단계 따라가기 – 제동 거리 계산 프로그램 <span class="pg">145~148쪽</span></h2></div>
+  <p class="goal">🎯 단계 버튼을 눌러 교과서 프로젝트 1의 흐름을 따라가요. 각 단계의 결과가 다음 단계의 재료가 돼요.</p>
+  <div class="row" id="pst"></div><div id="pbody" class="card" style="background:#fafbff;margin-top:6px"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">2</span><h2 style="margin:0">제동 거리 · 정지 거리 계산기 <span class="pg">147~148쪽</span></h2></div>
+  <p class="goal">🎯 속도, 제동 가속도, 공주 시간을 바꾸면 자동차가 멈추기까지 필요한 거리가 어떻게 달라지는지 확인해요. 앞에 있는 장애물과 충돌할까요?</p>
+  <div class="grid2"><div>
+   <label class="f">현재 속도 v1 <b id="bv1">100</b> km/h <input type="range" id="v1" min="10" max="200" value="100" style="flex:1"></label>
+   <label class="f">제동 가속도 a <b id="ba">15</b> m/s² <input type="range" id="a" min="1" max="15" step="0.5" value="15" style="flex:1"></label>
+   <label class="f">공주 시간 <b id="bt">1.0</b> 초 <input type="range" id="t" min="0" max="3" step="0.1" value="1" style="flex:1"></label>
+   <label class="f">장애물 거리 <b id="bd">70</b> m <input type="range" id="d" min="5" max="200" value="70" style="flex:1"></label></div>
+  <div><div id="bcode"></div></div></div>
+  <svg id="bsvg" viewBox="0 0 900 120" style="width:100%;background:#fafbff;border:1px solid var(--line);border-radius:10px;margin-top:8px"></svg>
+  <div class="legend"><span><i style="background:#f59f00"></i>공주 거리</span><span><i style="background:#e03131"></i>제동 거리</span><span>🚧 장애물</span></div>
+  <div class="msg" id="bmsg"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">3</span><h2 style="margin:0">성능 평가 – 테스트 케이스로 프로그램 점검하기 <span class="pg">148·152쪽</span></h2></div>
+  <p class="goal">🎯 프로그램이 올바른지 <b>여러 입력</b>으로 확인해요. 예상 결과와 프로그램 결과가 같은지 비교하고, 오류가 나는 경우는 어떻게 개선할지 생각해 보세요.</p>
+  <table><tr><th>속도(km/h)</th><th>제동 가속도(m/s²)</th><th>예상 제동 거리(m)<br><span class="small">(손 계산, 소수 둘째 자리)</span></th><th>프로그램 결과</th><th>판정</th></tr><tbody id="ptc"></tbody></table>
+  <div class="row"><button class="btn ghost sm" id="padd">+ 테스트 추가</button></div>
+  <div class="tip" id="pnote"></div>
+  <h3>성능 평가 항목 체크 <span class="pg">148쪽</span></h3>
+  <div id="pchk"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">4</span><h2 style="margin:0">반려동물 등록 프로그램 실행하기 <span class="pg">149~152쪽</span></h2></div>
+  <p class="goal">🎯 명령 1~4를 눌러 보며 클래스·리스트·반복·선택 구조가 함께 동작하는 모습을 확인하고, <b>프로그램 개선점</b>을 찾아보세요. (교과서 152쪽 성능 평가: 3마리 이상 등록 → 조회 → 첫 번째 삭제 → 조회 → 종료)</p>
+  <div class="grid2"><div>
+   <div class="row" id="pmenu"></div>
+   <div id="pform" class="row" style="min-height:44px"></div>
+   <div class="out" id="pcon" style="min-height:150px;max-height:260px;overflow:auto"></div></div>
+  <div><div class="small">register_list (Register 클래스의 인스턴스 목록)</div><div id="plist"></div></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">5</span><h2 style="margin:0">프로젝트 보고서 작성하기 <span class="pg">154~155쪽</span></h2></div>
+  <p class="goal">🎯 우리 모둠의 프로젝트를 교과서 보고서 양식에 맞춰 정리해요. 내용은 이 브라우저에 자동 저장되고, 텍스트 파일로 내려받거나 인쇄할 수 있어요.</p>
+  <div id="rep"></div>
+  <div class="row"><button class="btn" id="rdl">⬇ 텍스트(.txt)로 저장</button><button class="btn ghost" id="rpr">🖨 인쇄</button><button class="btn ghost" id="rcl">🗑 모두 지우기</button><span class="small" id="rst"></span></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">6</span><h2 style="margin:0">직접 실행해 보기 <span class="pg">147·150~151쪽</span></h2></div>
+  <div id="py1"></div><div id="py2" style="margin-top:14px"></div></div>
+</section>
+</div>
+<script src="../js/common.js"></script>
+<script>
+window.GOAL='주제 선정부터 추상화·알고리즘 설계·구현·성능 평가·공유까지 문제 해결 프로젝트의 전 과정을 체험합니다.';
+window.CHECKS=['문제 해결 프로젝트의 5단계를 순서대로 설명할 수 있다.','실생활·학문 분야의 문제를 추상화(분석·분해·모델링)하고 알고리즘을 설계할 수 있다. [과정·기능]','설계한 알고리즘을 프로그램으로 구현할 수 있다. [과정·기능]','성능 평가 항목을 만들어 프로그램을 점검하고 개선점을 찾을 수 있다.','프로그램을 공유하고 피드백을 반영하며 협력적으로 문제를 해결하려는 자세를 가진다. [가치·태도]'];
+window.LEVELS=['효율적인 알고리즘을 협력적으로 설계하고 오류 없이 구현하여 프로그램의 성능을 평가·공유하며 협력적 문제 해결력의 중요성을 내면화한다.','알고리즘을 협력적으로 설계하고 오류 없이 구현·평가·공유하며 그 중요성을 인식한다.','알고리즘을 협력적으로 설계하고 프로그램을 구현하여 성능을 평가·공유한다.','알고리즘을 부분적으로 설계하고 일부 프로그램을 구현하여 공유한다.','알고리즘을 부분적으로 설계하고 일부 프로그램을 구현하며, 협력적 문제 해결력의 중요성을 인식한다.'];
+window.QUIZ=[
+ {q:'문제 해결 프로젝트의 절차를 순서대로 나열한 것은?',c:['추상화 → 주제 선정 → 알고리즘 설계 → 프로그램 작성 → 성능 평가','주제 선정 및 문제 정의 → 추상화 → 알고리즘 설계 → 프로그램 작성 → 성능 평가 및 공유','주제 선정 → 프로그램 작성 → 알고리즘 설계 → 추상화 → 공유','알고리즘 설계 → 추상화 → 주제 선정 → 성능 평가 → 프로그램 작성'],a:1,e:'주제 선정 및 문제 정의 → 추상화 → 알고리즘 설계 → 프로그램 작성 → 성능 평가 및 공유 순서예요.',pg:'145'},
+ {q:'추상화 단계를 구성하는 세 가지로 알맞은 것은?',c:['문제 분석, 문제 분해, 모델링','입력, 처리, 출력','선택, 반복, 순차','정렬, 탐색, 공유'],a:0,e:'추상화 = 문제 분석(초기·목표 상태, 수행 작업) + 문제 분해 + 모델링.',pg:'145'},
+ {q:'프로그램의 실행 결과가 원하는 대로 나오지 않을 때 코드를 한 줄씩 확인하며 오류를 찾아 고치는 과정은?',type:'fill',a:['디버깅','debugging','Debugging'],e:'디버깅(Debugging): 버그(Bug)를 제거한다는 뜻으로 그레이스 호퍼의 일화에서 유래했어요.',pg:'145'},
+ {q:'km/h 단위의 속도 v1 을 m/s 로 바꾸는 식은?',c:['v1 * 3600 / 1000','v1 * 1000 / 3600','v1 / 1000 * 3600','v1 * 60'],a:1,e:'1 km = 1000 m, 1 시간 = 3600 초 → v1 × 1000 ÷ 3600.',pg:'147'},
+ {q:'자동차가 100 km/h, 제동 가속도 크기 15 m/s² 일 때 제동 거리는 약 얼마일까?',c:['약 2.6 m','약 25.7 m','약 257 m','약 100 m'],a:1,e:'v2 = 100×1000/3600 ≈ 27.78 m/s, 제동 거리 = v2² ÷ (2×15) ≈ 25.7 m.',pg:'147'},
+ {q:'정지 거리를 구하는 식으로 알맞은 것은?',c:['제동 거리 − 공주 거리','제동 거리 + 공주 거리','제동 거리 × 공주 거리','공주 거리 ÷ 제동 거리'],a:1,e:'정지 거리 = 제동 거리 + 공주 거리 (공주 거리 = 현재 속도 × 공주 시간).',pg:'148'},
+ {q:'자유로운 분위기 속에서 다양한 아이디어를 제안하며 가장 좋은 아이디어를 선정하거나 조합하는 방법은?',c:['디버깅','브레인스토밍','모델링','컴파일'],a:1,e:'주제 선정 단계에서 브레인스토밍으로 다양한 주제를 탐색할 수 있어요.',pg:'145'},
+ {q:'프로젝트의 “성능 평가 및 공유” 단계에서 하는 일로 알맞은 것은?',c:['주제를 새로 정한다','주어진 입력에 의도한 대로 처리·출력하는지 확인하고, 공유하여 피드백을 반영한다','작은 문제로 분해한다','순서도를 그린다'],a:1,e:'작은 문제를 모두 해결해 처음의 큰 문제를 효율적으로 해결했는지 확인하고 공유·개선해요.',pg:'145'},
+ {q:'온라인 저지(OJ)에 대한 설명으로 알맞은 것은?',c:['코드를 제출하면 서버에서 실시간으로 채점해 결과를 알려 주는 웹 기반 플랫폼','프로그램을 자동으로 작성해 주는 도구','인터넷 속도를 측정하는 사이트','파이썬만 사용할 수 있는 게임'],a:0,e:'대표적으로 코드업, 프로그래머스, 백준이 있어요.',pg:'153'}
+];
+
+/* ================= 1. 5단계 ================= */
+(function(){
+ const steps=[
+  ['1 주제 선정·문제 정의',()=>`<h3>과학 문제 해결 · 주제: 제동 거리 계산 프로그램 만들기</h3><ul><li>달리는 차가 정지한 차를 발견했을 때 사고가 나지 않도록 도울 수 있을까?</li><li>제동 거리를 미리 알면 사고 예방에 도움이 될 거야!</li></ul><div class="tip">문제를 정의할 때 ① 우리와 관련 있는 문제인가 ② 많은 사람이 필요로 하는가 ③ 프로그램으로 해결할 수 있는가를 생각해요. (146쪽)</div>`],
+  ['2 추상화',()=>`<h3>문제 분석 · 분해 · 모델링</h3><table><tr><th style="width:110px">문제 분석</th><td class="l">초기 상태: 제동 거리 계산이 되지 않은 상태 → 목표 상태: 제동 거리를 계산한 상태</td></tr><tr><th>문제 분해</th><td class="l">① 현재 속도(km/h)·제동 가속도(m/s²) 입력받기 ② 제동 거리(m) 계산하기 ③ 결과 출력하기</td></tr><tr><th>모델링</th><td class="l"><div class="row" style="margin:0"><span class="pill info">입력 기다림</span>→<span class="pill info">속도·가속도 입력받기</span>→<span class="pill info">제동 거리 계산·출력</span></div></td></tr></table>`],
+  ['3 알고리즘 설계',()=>`<h3>작은 문제별 알고리즘</h3><table><tr><th>작은 문제</th><th class="l">알고리즘</th></tr><tr><td>입력받기</td><td class="l">❶ ‘현재 속도를 입력하세요.’ 출력 ❷ 입력을 실수로 v1에 저장 ❸ ‘제동 가속도의 크기를 입력하세요.’ 출력 ❹ 입력을 실수로 a에 저장</td></tr><tr><td>제동 거리 계산</td><td class="l">❶ v1 단위를 바꿔 v2에 저장 ❷ result 에 제동 거리 계산 결과 저장</td></tr><tr><td>결과 출력</td><td class="l">❶ ‘제동 거리는 다음과 같습니다.’ 출력 ❷ 제동 거리 출력</td></tr></table>`],
+  ['4 프로그램 작성',()=>`<h3>알고리즘 → 파이썬 프로그램</h3>${codeBlock(['# 현재 속도(v1)와 제동 가속도의 크기(a) 입력받기','v1 = float(input("자동차의 현재 속도를 입력하세요:"))','a = float(input("자동차의 제동 가속도의 크기를 입력하세요:"))','# 현재 속도의 단위 변경하기','v2 = v1 * 1000 / 3600','# 제동 거리 계산하기','result = v2 * v2 / (2 * a)','# 결과 출력하기','print("제동 거리는 다음과 같습니다:", result, "m")'])}<div class="small">아래 “제동 거리 계산기”에서 값을 바꿔 보고, “직접 실행해 보기”에서 코드를 돌려 보세요.</div>`],
+  ['5 성능 평가·공유',()=>`<h3>성능 평가 항목 (148쪽)</h3><ul><li>현재 속도와 제동 가속도의 크기를 잘 입력받았는가?</li><li>현재 속도의 단위가 잘 변경되는가?</li><li>제동 거리가 정확히 계산되는가?</li><li>제동 거리가 잘 출력되는가?</li></ul><div class="tip"><b>개선하기</b> : 공주 시간을 입력받아 공주 거리·정지 거리를 계산하도록 프로그램을 개선하고, 결과를 공유해 피드백을 받아 최종 완성해요. (아래 시뮬레이션 2·3)</div>`]
+ ];
+ let cur=0;
+ function draw(){
+  $('#pst').innerHTML=steps.map((s,i)=>`<button class="btn ${i===cur?'':'ghost'} sm" data-i="${i}">${s[0]}</button>`).join('');
+  $$('#pst button').forEach(b=>b.onclick=()=>{cur=+b.dataset.i;draw()});
+  $('#pbody').innerHTML=steps[cur][1]()+`<div class="row"><button class="btn sm ghost" id="pp" ${cur===0?'disabled':''}>← 이전</button><button class="btn sm" id="pn" ${cur===4?'disabled':''}>다음 →</button></div>`;
+  $('#pp').onclick=()=>{cur--;draw()};$('#pn').onclick=()=>{cur++;draw()};
+ }
+ draw();
+})();
+
+/* ================= 2. 제동 거리 ================= */
+(function(){
+ function calc(v1,a,t){const v2=v1*1000/3600,brake=v2*v2/(2*a),react=v2*t;return{v2,brake,react,stop:brake+react}}
+ function draw(){
+  const v1=+$('#v1').value,a=+$('#a').value,t=+$('#t').value,d=+$('#d').value;
+  $('#bv1').textContent=v1;$('#ba').textContent=a;$('#bt').textContent=t.toFixed(1);$('#bd').textContent=d;
+  const r=calc(v1,a,t);
+  $('#bcode').innerHTML=codeBlock([`v1 = ${v1}      # km/h`,`a = ${a}       # m/s²`,`v2 = v1 * 1000 / 3600     # = ${r.v2.toFixed(2)} m/s`,`result  = v2 * v2 / (2 * a)  # 제동 거리 = ${r.brake.toFixed(2)} m`,`result2 = v2 * ${t.toFixed(1)}         # 공주 거리 = ${r.react.toFixed(2)} m`,`result3 = result + result2   # 정지 거리 = ${r.stop.toFixed(2)} m`]);
+  const sc=800/Math.max(220,r.stop*1.1,d*1.1),x=m=>50+m*sc;
+  let s=`<rect x="0" y="62" width="900" height="30" fill="#ced4da"/><line x1="0" y1="77" x2="900" y2="77" stroke="#fff" stroke-dasharray="14 10" stroke-width="3"/>`;
+  s+=`<rect x="${x(0)}" y="40" width="${r.react*sc}" height="10" fill="#f59f00"/><rect x="${x(r.react)}" y="40" width="${r.brake*sc}" height="10" fill="#e03131"/>`;
+  s+=`<text x="${x(r.stop)+6}" y="49" font-size="13" font-weight="800">정지 거리 ${r.stop.toFixed(1)} m</text>`;
+  const hit=r.stop>d;
+  s+=`<text x="${x(d)-12}" y="84" font-size="26">🚧</text><text x="${x(0)-26}" y="86" font-size="30">🚗</text>`;
+  if(hit)s+=`<text x="${x(d)-4}" y="30" font-size="24">💥</text>`;
+  $('#bsvg').innerHTML=s;
+  const m=$('#bmsg');m.className='msg '+(hit?'bad':'ok');
+  m.textContent=hit?`❌ 정지 거리(${r.stop.toFixed(1)} m)가 장애물까지의 거리(${d} m)보다 길어서 충돌해요! 속도를 줄이거나 공주 시간을 줄여야 해요.`:`✅ 정지 거리(${r.stop.toFixed(1)} m)가 장애물 거리(${d} m)보다 짧아 안전해요. (여유 ${(d-r.stop).toFixed(1)} m)`;
+ }
+ ['v1','a','t','d'].forEach(i=>$('#'+i).oninput=draw);draw();
+})();
+
+/* ================= 3. 성능 평가 ================= */
+(function(){
+ let T=[[100,15,'25.72'],[50,8,'12.06'],[0,5,'0'],[80,0,'']];
+ function prog(v1,a){if(a===0)return{err:'ZeroDivisionError: float division by zero'};const v2=v1*1000/3600;return{v:v2*v2/(2*a)}}
+ function draw(){
+  $('#ptc').innerHTML=T.map((t,i)=>{const r=prog(+t[0],+t[1]);let res,ok;
+   if(r.err){res=`<span style="color:#c92a2a">${r.err}</span>`;ok='<span class="pill bad">오류 ✘</span>'}
+   else{res=r.v.toFixed(2);const e=t[2]===''?null:(+t[2]);ok=e===null?'<span class="pill info">예상값 입력</span>':Math.abs(r.v-e)<0.01?'<span class="pill ok">일치 ✔</span>':'<span class="pill bad">불일치 ✘</span>'}
+   return `<tr><td><input type="number" data-i="${i}" data-k="0" value="${t[0]}" style="width:80px"></td><td><input type="number" data-i="${i}" data-k="1" value="${t[1]}" style="width:80px" step="0.5"></td><td><input type="text" data-i="${i}" data-k="2" value="${t[2]}" style="width:90px"></td><td class="mono">${res}</td><td>${ok}</td></tr>`}).join('');
+  $$('#ptc input').forEach(x=>x.oninput=()=>{T[+x.dataset.i][+x.dataset.k]=x.value;const r=prog(+T[+x.dataset.i][0],+T[+x.dataset.i][1]);redraw()});
+  const bad=T.some(t=>+t[1]===0);
+  $('#pnote').innerHTML=bad?'💡 제동 가속도가 <b>0</b>이면 0으로 나누게 돼 프로그램이 멈춰요. → <b>개선 아이디어</b>: 가속도가 0보다 큰지 <code>if a &gt; 0:</code> 로 검사하고, 아니면 “다시 입력하세요”를 출력하게 고쳐요. (성능 평가 → 개선)':'💡 입력값을 바꿔 가며 다양한 경우를 점검하는 것이 성능 평가예요.';
+ }
+ function redraw(){const act=document.activeElement;const key=act&&act.dataset?[act.dataset.i,act.dataset.k]:null;draw();if(key){const n=$(`#ptc input[data-i="${key[0]}"][data-k="${key[1]}"]`);if(n){n.focus();const v=n.value;n.setSelectionRange&&n.type==='text'&&n.setSelectionRange(v.length,v.length)}}}
+ $('#padd').onclick=()=>{T.push(['','','']);draw()};
+ draw();
+ const items=['자동차의 현재 속도와 제동 가속도의 크기를 잘 입력받았는가?','현재 속도의 단위가 잘 변경되는가?','제동 거리가 정확히 계산되는가?','제동 거리가 잘 출력되는가?'];
+ $('#pchk').innerHTML=items.map((t,i)=>`<div class="row" style="border-bottom:1px solid var(--line);padding:4px 0"><div style="flex:1;min-width:220px">${i+1}. ${t}</div><label class="f"><input type="radio" name="pc${i}">O</label><label class="f"><input type="radio" name="pc${i}">X</label></div>`).join('');
+})();
+
+/* ================= 4. 반려동물 ================= */
+(function(){
+ let L=[],ended=false,form=null,nextNo=1;
+ const con=[];
+ const say=s=>{con.push(s);$('#pcon').textContent=con.join('\n');$('#pcon').scrollTop=1e9};
+ function menu(){
+  $('#pmenu').innerHTML=['1. 등록','2. 삭제','3. 조회','4. 종료'].map((x,i)=>`<button class="btn sm ${ended?'ghost':''}" data-o="${i+1}" ${ended?'disabled':''}>${x}</button>`).join('')+(ended?'<button class="btn sm" id="prs">↺ 프로그램 다시 시작</button>':'');
+  $$('#pmenu [data-o]').forEach(b=>b.onclick=()=>order(+b.dataset.o));
+  const r=$('#prs');if(r)r.onclick=()=>{L=[];ended=false;form=null;con.length=0;$('#pcon').textContent='';nextNo=1;draw()};
+ }
+ function order(o){
+  say(`1. 등록  2. 삭제  3. 조회  4. 종료\n숫자를 입력해 주세요. ${o}`);
+  if(o===1){form='reg';draw();return}
+  if(o===2){form='del';draw();return}
+  if(o===3){if(!L.length)say('(등록된 동물이 없어요)');L.forEach(r=>say(`등록 번호:  ${r.N}\n동물 이름:  ${r.A}\n동물 종류:  ${r.S}\n등록자:  ${r.R}\n`));draw();return}
+  if(o===4){say('프로그램을 종료합니다.');ended=true;form=null;draw()}
+ }
+ function draw(){
+  menu();
+  const f=$('#pform');
+  if(form==='reg')f.innerHTML=`<input type="text" id="fN" placeholder="등록 번호" value="${nextNo}" style="width:80px"><input type="text" id="fA" placeholder="동물 이름" style="width:90px"><input type="text" id="fS" placeholder="동물 종류" style="width:90px"><input type="text" id="fR" placeholder="등록자" style="width:80px"><button class="btn sm" id="fok">입력 완료</button>`;
+  else if(form==='del')f.innerHTML=`<input type="text" id="fA" placeholder="삭제할 동물 이름" style="width:130px"><input type="text" id="fR" placeholder="등록자" style="width:90px"><button class="btn sm" id="fok">삭제 실행</button>`;
+  else f.innerHTML=ended?'':'<span class="small">명령 버튼을 눌러 주세요.</span>';
+  const ok=$('#fok');
+  if(ok)ok.onclick=()=>{
+   if(form==='reg'){const N=$('#fN').value.trim(),A=$('#fA').value.trim(),S=$('#fS').value.trim(),R=$('#fR').value.trim();
+    say(`등록 번호를 입력해 주세요. ${N}\n동물 이름을 입력해 주세요. ${A}\n동물 종류를 입력해 주세요. ${S}\n등록자를 입력해 주세요. ${R}\n등록되었습니다.`);L.push({N,A,S,R});nextNo++;}
+   else{const A=$('#fA').value.trim(),R=$('#fR').value.trim();say(`삭제할 동물 이름을 입력해 주세요: ${A}\n등록자를 입력해 주세요: ${R}`);
+    let idx=0,del=0;while(idx<L.length){if(L[idx].A===A&&L[idx].R===R){L.splice(idx,1);del++;say('삭제되었습니다.')}idx++}
+    if(!del)say('(아무 메시지도 출력되지 않았어요 → 개선점: 없는 동물을 삭제하려 하면 안내 문구가 필요해요)');}
+   form=null;draw();
+  };
+  $('#plist').innerHTML=L.length?`<table><tr><th>인덱스</th><th>Number</th><th>A_name</th><th>Species</th><th>R_name</th></tr>${L.map((r,i)=>`<tr><td>${i}</td><td>${esc(r.N)}</td><td>${esc(r.A)}</td><td>${esc(r.S)}</td><td>${esc(r.R)}</td></tr>`).join('')}</table>`:'<div class="small">register_list = []  (비어 있음)</div>';
+  $('#plist').insertAdjacentHTML('beforeend',`<div class="note">🔎 <b>프로그램 개선점 찾기</b>: 같은 이름·등록자가 연달아 중복 등록되어 있으면 삭제할 때 어떻게 될까요? (리스트를 순회하면서 삭제하면 다음 원소를 건너뛸 수 있어요) / 등록 번호가 중복되면? / 숫자가 아닌 명령을 입력하면?</div>`);
+ }
+ draw();
+})();
+
+/* ================= 5. 보고서 ================= */
+(function(){
+ const KEYR='info3-u8-report-v1';
+ const F=[['team','모둠명',1],['members','모둠원과 역할 (모둠장·프로그래머·발표자·기획자 등)',3],['topic','1단계 주제 선정',2],['problem','1단계 문제 정의',3],['init','2단계 추상화 ❶ 문제 분석 – 초기 상태',2],['goal','2단계 추상화 ❶ 문제 분석 – 목표 상태',2],['split','2단계 추상화 ❷ 문제 분해 (문제 → 작은 문제)',4],['model','2단계 추상화 ❸ 모델링 (글·그림·그래프·표로 구조화)',3],['algo','3단계 알고리즘 설계 (작은 문제별 알고리즘)',4],['prog','4단계 프로그램 작성 과정 설명',4],['perf','5단계 성능 평가 항목과 결과 (자기 평가 / 동료 평가: O, X)',4],['fb','5단계 받은 피드백',3],['imp','5단계 개선한 점',3]];
+ let D={};try{D=JSON.parse(localStorage.getItem(KEYR))||{}}catch(e){}
+ $('#rep').innerHTML=F.map(f=>`<label class="f" style="display:block;margin:8px 0 2px">${f[1]}</label>${f[2]===1?`<input type="text" data-k="${f[0]}" style="width:100%" value="${esc(D[f[0]]||'')}">`:`<textarea data-k="${f[0]}" rows="${f[2]}" style="font-family:inherit;font-size:15px">${esc(D[f[0]]||'')}</textarea>`}`).join('');
+ $$('#rep [data-k]').forEach(x=>x.oninput=()=>{D[x.dataset.k]=x.value;try{localStorage.setItem(KEYR,JSON.stringify(D));$('#rst').textContent='자동 저장됨 ✔'}catch(e){}});
+ $('#rdl').onclick=()=>{const t='프로그래밍 프로젝트 보고서\n==============================\n\n'+F.map(f=>`■ ${f[1]}\n${D[f[0]]||'(미작성)'}\n`).join('\n');const b=new Blob([t],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='프로그래밍_프로젝트_보고서.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+ $('#rpr').onclick=()=>window.print();
+ $('#rcl').onclick=()=>{if(confirm('작성한 보고서 내용을 모두 지울까요?')){D={};localStorage.removeItem(KEYR);$$('#rep [data-k]').forEach(x=>x.value='')}};
+})();
+
+/* ================= 6. 파이썬 ================= */
+PyRunner.mount($('#py1'),{title:'제동 거리 → 정지 거리 프로그램 (개선하기)',page:'147~148',code:`v1 = float(input("자동차의 현재 속도(km/h)를 입력하세요:"))
+a = float(input("자동차의 제동 가속도의 크기(m/s²)를 입력하세요:"))
+t = float(input("공주 시간(초)을 입력하세요:"))
+
+v2 = v1 * 1000 / 3600          # km/h -> m/s
+result = v2 * v2 / (2 * a)     # 제동 거리
+result2 = v1 * (t / 3600) * 1000   # 공주 거리(m) = 속도(km/h) x 시간(h) x 1000
+result3 = result + result2     # 정지 거리
+
+print("제동 거리:", round(result, 2), "m")
+print("공주 거리:", round(result2, 2), "m")
+print("정지 거리:", round(result3, 2), "m")`});
+PyRunner.mount($('#py2'),{title:'반려동물 등록 프로그램 (교과서 코드) — 입력창이 여러 번 떠요. 4를 입력하면 종료!',page:'150~151',code:`class Register:
+  def __init__(self, Number, A_name, Species, R_name):
+    self.Number = Number
+    self.A_name = A_name
+    self.Species = Species
+    self.R_name = R_name
+  def print_object(self):
+    print('등록 번호: ', self.Number)
+    print('동물 이름: ', self.A_name)
+    print('동물 종류: ', self.Species)
+    print('등록자: ', self.R_name)
+    print('')
+
+def input_register():
+  Number = input('등록 번호를 입력해 주세요. ')
+  A_name = input('동물 이름을 입력해 주세요. ')
+  Species = input('동물 종류를 입력해 주세요. ')
+  R_name = input('등록자를 입력해 주세요. ')
+  register = Register(Number, A_name, Species, R_name)
+  print('등록되었습니다.')
+  return register
+
+def print_register(register_list):
+  for register in register_list:
+    register.print_object()
+
+def delete_register(register_list, A_name, R_name):
+  for i, register in enumerate(register_list):
+    if register.A_name == A_name and register.R_name == R_name:
+      del register_list[i]
+      print('삭제되었습니다.')
+
+def print_order():
+  print('1. 등록')
+  print('2. 삭제')
+  print('3. 조회')
+  print('4. 종료')
+  order = int(input('숫자를 입력해 주세요.'))
+  return order
+
+register_list = []
+while 1:
+  order = print_order()
+  if order == 1:
+    register = input_register()
+    register_list.append(register)
+  elif order == 2:
+    A_name = input('삭제할 동물 이름을 입력해 주세요: ')
+    R_name = input('등록자를 입력해 주세요: ')
+    delete_register(register_list, A_name, R_name)
+  elif order == 3:
+    print_register(register_list)
+  elif order == 4:
+    print('프로그램을 종료합니다.')
+    break`});
+</script></body></html>

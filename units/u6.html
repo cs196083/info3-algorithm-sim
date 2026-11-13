@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>6. 객체지향과 클래스 – 정보 3단원</title><link rel="stylesheet" href="../css/style.css"></head>
+<body data-unit="6"><div id="app">
+
+<section id="learn" data-tab="📖 교과서 정리">
+ <div class="card"><h2>학습 목표</h2>
+  <ul><li>객체의 개념과 구성 요소를 설명할 수 있다.</li><li>클래스와 인스턴스를 활용하여 프로그램을 작성할 수 있다.</li></ul>
+  <p class="small">학습 요소: 객체지향, 클래스, 인스턴스</p></div>
+
+ <div class="card"><h2>1. 객체지향의 이해 <span class="pg">125~126쪽</span></h2>
+  <p>프로그램이 길고 복잡해질수록 해석이 어려워요. 같은 목적의 <b>변수·함수를 묶어 객체</b>로 만들고, 객체들이 상호작용하며 실행되도록 구성하는 것이 <b>객체지향</b>이에요.</p>
+  <table><tr><th>용어</th><th class="l">뜻</th><th class="l">자동차 공장 비유</th></tr>
+   <tr><td><b>객체</b></td><td class="l">동일한 목적·기능을 가진 <b>속성</b>과 <b>메서드</b>를 하나로 묶은 것</td><td class="l">파란 승용차, 빨간 SUV …</td></tr>
+   <tr><td><b>속성</b></td><td class="l">객체가 가지고 있는 <b>자료</b></td><td class="l">종류, 색, 생산 일자</td></tr>
+   <tr><td><b>메서드</b></td><td class="l">객체가 수행하는 <b>기능</b> (클래스 안의 함수)</td><td class="l">반자율주행, 차선 유지, 자동 주차</td></tr>
+   <tr><td><b>클래스</b></td><td class="l">객체들이 갖는 속성과 메서드를 정의한 <b>틀(설계도)</b></td><td class="l">자동차를 만들기 위한 설계</td></tr>
+   <tr><td><b>인스턴스</b></td><td class="l">클래스를 바탕으로 소프트웨어(메모리)에 구현된 <b>구체적인 실체</b></td><td class="l">공장에서 실제로 만들어진 한 대</td></tr></table>
+  <div class="tip">객체는 속성과 메서드를 <b>반드시 둘 다</b> 가질 필요는 없어요. 클래스 하나로 여러 객체를 만들 수 있고, 클래스를 고치면 객체를 <b>한 번에 수정</b>할 수 있어 효율적이에요. 반복되는 코드도 줄어요.</div></div>
+
+ <div class="card"><h2>2. 클래스 만들기와 인스턴스 생성 <span class="pg">127~129쪽</span></h2>
+  <pre class="code">class Students:                       # 클래스 생성 (이름은 대문자로 시작하는 것이 일반적)
+  def __init__(self, name, informatics, math):
+    self.name = name                  # 속성
+    self.informatics = informatics
+    self.math = math
+  def sum(self):                      # 메서드
+    return self.informatics + self.math
+  def avg(self):
+    return self.sum() / 2
+  def string(self):
+    return '{}\t{}'.format(self.name, self.avg())
+
+students = [Students('김OO', 88, 90), Students('정OO', 73, 65)]   # 인스턴스 생성
+print(students[0].informatics)        # 속성 접근 → 88
+print(students[0].avg())              # 메서드 호출</pre>
+  <ul><li><code>class 클래스이름:</code> 으로 만들고, <code>인스턴스 = 클래스이름(값…)</code> (생성자 함수)로 인스턴스를 만들어요.</li>
+  <li><code>__init__(self, …)</code> : 인스턴스가 만들어질 때 속성 값을 저장하는 메서드. 클래스 함수의 첫 번째 매개변수는 관례적으로 <b>self</b></li>
+  <li><code>self.식별자</code> 로 자기 자신의 속성·기능에 접근. 처리 결과는 <code>return</code> 으로 반환</li>
+  <li><code>isinstance(인스턴스, 클래스)</code> : 그 클래스로 만들어졌으면 True (알고 가기)</li></ul></div>
+
+ <div class="card"><h2>3. 구조적 프로그래밍 vs 객체지향 프로그래밍 <span class="pg">131쪽</span></h2>
+  <div class="grid2"><div class="def"><b>구조적(절차 지향) 프로그래밍</b><br>위에서 아래로 순서대로 실행. 이해하기 쉽지만 변수·함수를 따로 작성해야 해서 길어질수록 복잡해져요.</div>
+  <div class="def"><b>객체지향 프로그래밍</b><br>객체들의 상호작용으로 실행. 클래스로 객체를 만들어 프로그래밍하며 C++, C#, Java, JavaScript, Swift, Go 등이 지원해요.</div></div>
+  <table><tr><th>추상화</th><th>상속</th><th>캡슐화</th><th>다형성</th></tr><tr><td class="l">핵심 개념·기능만 간추려 클래스를 구성</td><td class="l">이미 작성된 클래스를 활용해 새 클래스를 만들어 재활용</td><td class="l">데이터와 알고리즘을 하나의 클래스로 정리, 데이터는 숨기고 메서드로 소통</td><td class="l">하나의 이름으로 많은 상황에 대처 (같은 이름의 함수에 같은 작업)</td></tr></table>
+  <h3>핵심 정리</h3><ol><li>객체지향 = 객체 개념을 기반으로 한 프로그래밍 (클래스·객체·인스턴스)</li><li>객체 = 속성 + 메서드 / 클래스 = 설계도 / 인스턴스 = 클래스로 만든 실체</li></ol></div>
+</section>
+
+<section id="sim" data-tab="🧪 시뮬레이션">
+ <div class="card"><div class="sim-title"><span class="n">1</span><h2 style="margin:0">클래스 공장 – 틀 하나로 인스턴스 여러 개 <span class="pg">127~129쪽</span></h2></div>
+  <p class="goal">🎯 <b>Students 클래스(틀)</b>에서 학생 인스턴스를 만들어 보세요. 인스턴스마다 속성 값은 달라도 <b>같은 메서드</b>를 쓸 수 있어요.</p>
+  <div class="grid2"><div>
+   <div class="def" style="background:#fff0f6;border-color:var(--u6)"><b>🏭 클래스 Students (설계도)</b><div class="mono" style="font-size:14px;margin-top:4px">속성 : name, informatics, math<br>메서드 : sum(), avg(), string()<span id="cgr"></span></div></div>
+   <div class="row"><label class="f">name <input type="text" id="cn" value="최OO" style="width:90px"></label><label class="f">informatics <input type="number" id="ci" value="95" min="0" max="100" style="width:70px"></label><label class="f">math <input type="number" id="cm" value="80" min="0" max="100" style="width:70px"></label></div>
+   <div class="row"><button class="btn" id="cmake">⚙️ 인스턴스 만들기 Students(…)</button><button class="btn ghost sm" id="cadd"><span id="caddt">클래스에 grade() 메서드 추가</span></button><button class="btn ghost sm" id="creset">↺ 초기화</button></div>
+   <div class="small">작성된 코드</div><div id="ccode"></div></div>
+  <div><div class="small">students 리스트 (인스턴스 목록)</div><div id="ccards"></div></div></div>
+  <div class="row"><b>실행해 보기</b><button class="btn ghost sm" id="cloop">for i in students: print(i.string())</button><button class="btn ghost sm" id="cisi">isinstance(students[0], Students)</button><button class="btn ghost sm" id="cisd">isinstance({'name':'김OO'}, Students)</button></div>
+  <div class="out" id="cout" style="min-height:60px"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">2</span><h2 style="margin:0">클래스? 인스턴스? 속성? 메서드? <span class="pg">125~129쪽</span></h2></div>
+  <p class="goal">🎯 각 항목이 클래스·인스턴스·속성·메서드 중 무엇인지 골라 보세요.</p>
+  <div id="tm"></div><div class="row"><button class="btn" id="tmchk">채점</button><span class="msg" id="tmmsg"></span></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">3</span><h2 style="margin:0">직접 실행해 보기 <span class="pg">127~130쪽</span></h2></div>
+  <p class="goal">🎯 두 번째 프로그램의 빈칸 부분을 채워 <b>권장 칼로리</b> 클래스를 완성해 보세요. (권장 칼로리 = (키−100) × 0.9 × 활동 지수)</p>
+  <div id="py1"></div><div id="py2" style="margin-top:14px"></div></div>
+</section>
+</div>
+<script src="../js/common.js"></script>
+<script>
+window.GOAL='객체·클래스·인스턴스의 관계를 눈으로 확인하고, 클래스를 정의해 인스턴스를 만드는 프로그램을 작성해 봅니다.';
+window.CHECKS=['객체의 구성 요소(속성·메서드)를 설명할 수 있다. [과정·기능]','클래스와 인스턴스의 차이를 설명할 수 있다.','class, __init__, self 를 사용해 클래스를 정의할 수 있다. [과정·기능]','클래스에서 인스턴스를 생성하고 속성·메서드를 사용할 수 있다.','문제 해결에 적합한 객체를 활용한 프로그램을 작성할 수 있다. [과정·기능]'];
+window.LEVELS=['클래스와 인스턴스의 적용 방법을 설명하고, 클래스를 정의하고 인스턴스를 생성하여 문제 해결에 적합한 객체를 활용한 효율적인 프로그램을 작성한다.','적용 방법을 설명하고 클래스를 정의·인스턴스를 생성해 필요한 객체를 활용한 프로그램을 작성한다.','클래스와 인스턴스를 설명하고 클래스 정의, 인스턴스 생성으로 프로그램을 작성한다.','클래스와 인스턴스를 인지하고 인스턴스를 생성하여 프로그램을 부분적으로 작성한다.','클래스와 인스턴스를 인지한다.'];
+window.QUIZ=[
+ {q:'객체를 만들기 위한 틀(설계도)로, 속성과 메서드를 정의한 것은?',c:['인스턴스','클래스','변수','리스트'],a:1,e:'클래스 = 객체를 만들기 위한 설계도, 인스턴스 = 클래스로 만든 구체적인 실체예요.',pg:'125'},
+ {q:'객체가 수행하는 기능을 가리키는 용어는?',c:['속성','메서드','인스턴스','상속'],a:1,e:'속성은 객체가 가진 자료, 메서드는 객체가 수행하는 기능(클래스 안의 함수)이에요.',pg:'125'},
+ {q:'파이썬에서 클래스를 만들 때 사용하는 키워드는? (영문 소문자)',type:'fill',a:['class'],e:'class Students: 처럼 만들어요.',pg:'127'},
+ {q:'클래스의 __init__ 메서드의 역할은?',c:['클래스를 삭제한다','인스턴스가 생성될 때 속성의 초깃값을 저장한다','프로그램을 종료한다','메서드 결과를 화면에 출력한다'],a:1,e:'__init__ 에서 self.name = name 처럼 입력받은 값을 각 객체의 속성으로 저장해요.',pg:'127–128'},
+ {q:'students[0] = Students(\'김OO\', 88, 90) 일 때 students[0].informatics 의 값은?',c:['김OO','88','90','89.0'],a:1,e:'속성 informatics 에는 두 번째 인자인 88이 저장돼요.',pg:'128'},
+ {q:'Students(\'김OO\', 88, 90).avg() 의 결과는? (sum()/2, 숫자 형태로)',type:'fill',a:['89.0','89'],e:'(88 + 90) / 2 = 89.0  — 나눗셈 결과는 실수예요.',pg:'129'},
+ {q:'isinstance(students[0], Students) 가 True 를 반환하는 이유로 알맞은 것은?',c:['students 가 리스트이기 때문','students[0] 이 Students 클래스로 만들어진 인스턴스이기 때문','Students 가 함수이기 때문','항상 True 를 반환한다'],a:1,e:'isinstance(인스턴스, 클래스) 는 그 클래스에서 만들어졌는지 확인해요.',pg:'129'},
+ {q:'객체지향 프로그래밍의 장점으로 알맞은 것은?',c:['같은 코드를 객체마다 반복해서 작성해야 한다','클래스를 고치면 그 클래스로 만든 객체들을 한 번에 수정할 수 있다','순서대로만 실행되어 이해하기 쉽다','변수와 함수를 항상 따로 작성한다'],a:1,e:'반복 코드가 줄고, 클래스를 통해 객체를 한 번에 수정할 수 있어 효율적이에요.',pg:'126'}
+];
+
+/* ---------- 1. 클래스 공장 ---------- */
+(function(){
+ let S,hasGrade=false;
+ const init=()=>{S=[['김OO',88,90],['정OO',73,65],['한OO',63,77]];hasGrade=false};
+ const f=x=>Number.isInteger(x)?x.toFixed(1):String(x);
+ const avg=s=>(s[1]+s[2])/2;
+ function draw(){
+  $('#cgr').innerHTML=hasGrade?', <b style="color:#d6336c">grade()</b> ← 새로 추가!':'';
+  $('#caddt').textContent=hasGrade?'grade() 메서드 제거':'클래스에 grade() 메서드 추가';
+  $('#ccode').innerHTML=codeBlock([...(hasGrade?['class Students:   # (grade 메서드가 추가된 클래스)']:['class Students:']),'    ...  # __init__, sum, avg, string 정의','','students = [',...S.map((s,i)=>`  Students('${s[0]}', ${s[1]}, ${s[2]})${i<S.length-1?',':''}`),']']);
+  $('#ccards').innerHTML=S.map((s,i)=>`<div style="border:2px solid var(--u6);border-radius:12px;padding:8px 12px;margin:6px 0;background:#fff"><b>students[${i}]</b> <span class="pill info">인스턴스</span>
+   <div class="mono" style="font-size:13px">name=${s[0]} · informatics=${s[1]} · math=${s[2]}<br>sum()=${s[1]+s[2]} · avg()=${f(avg(s))}${hasGrade?` · <b style="color:#d6336c">grade()='${avg(s)>=80?'우수':'보통'}'</b>`:''}</div></div>`).join('');
+ }
+ $('#cmake').onclick=()=>{const n=$('#cn').value||'이름',a=Math.max(0,Math.min(100,+$('#ci').value||0)),b=Math.max(0,Math.min(100,+$('#cm').value||0));if(S.length>=8){$('#cout').textContent='인스턴스가 너무 많아요. 초기화해 주세요.';return}S.push([n,a,b]);draw();$('#cout').className='out';$('#cout').textContent=`>>> students.append(Students('${n}', ${a}, ${b}))\n# 클래스(틀)는 하나, 인스턴스(실체)는 ${S.length}개`};
+ $('#cadd').onclick=()=>{hasGrade=!hasGrade;draw();$('#cout').className='out';$('#cout').textContent=hasGrade?'클래스 Students 에 메서드를 한 번 추가했더니 모든 인스턴스가 grade() 를 쓸 수 있어요!':'메서드를 제거했어요.'};
+ $('#creset').onclick=()=>{init();draw();$('#cout').textContent=''};
+ $('#cloop').onclick=()=>{$('#cout').className='out';$('#cout').textContent=">>> print('이름', '평균', sep='\\t')\n>>> for i in students: print(i.string())\n이름\t평균\n"+S.map(s=>`${s[0]}\t${f(avg(s))}`).join('\n')};
+ $('#cisi').onclick=()=>{$('#cout').className='out';$('#cout').textContent=`>>> print('인스턴스 확인 결과: ', isinstance(students[0], Students))\n인스턴스 확인 결과:  True`};
+ $('#cisd').onclick=()=>{$('#cout').className='out';$('#cout').textContent=`>>> isinstance({'name':'김OO'}, Students)\nFalse   # 딕셔너리는 Students 클래스로 만든 것이 아니에요`};
+ init();draw();
+})();
+
+/* ---------- 2. 용어 분류 ---------- */
+(function(){
+ const N=['클래스','인스턴스','속성','메서드'];
+ const items=[['자동차를 만들기 위한 설계도(틀)',0],['공장에서 만들어진 파란색 승용차 한 대',1],['자동차의 색(color)',2],['차선 유지하기 기능',3],['class Students:  의 Students',0],['students[0]',1],['self.informatics',2],['def avg(self):  의 avg',3]];
+ $('#tm').innerHTML=items.map((it,i)=>`<div class="row" style="border-bottom:1px solid var(--line);padding-bottom:6px"><div style="flex:1;min-width:230px">${i+1}. ${esc(it[0])}</div>${N.map((n,j)=>`<label class="f"><input type="radio" name="t${i}" value="${j}">${n}</label>`).join('')}<span class="pill" id="tr${i}"></span></div>`).join('');
+ $('#tmchk').onclick=()=>{let ok=0;items.forEach((it,i)=>{const s=$(`input[name=t${i}]:checked`),r=$('#tr'+i);if(!s){r.className='pill info';r.textContent='선택';return}const g=+s.value===it[1];if(g)ok++;r.className='pill '+(g?'ok':'bad');r.textContent=g?'정답':'→ '+N[it[1]]});
+  const m=$('#tmmsg');m.className='msg '+(ok===items.length?'ok':'bad');m.textContent=ok===items.length?'🎉 모두 정답!':`${ok} / ${items.length}`};
+})();
+
+/* ---------- 3. 파이썬 ---------- */
+PyRunner.mount($('#py1'),{title:'Students 클래스와 인스턴스 (실습 1~4)',page:'127~129',code:`class Students:
+  def __init__(self, name, informatics, math):
+    self.name = name
+    self.informatics = informatics
+    self.math = math
+  def sum(self):
+    return self.informatics + self.math
+  def avg(self):
+    return self.sum() / 2
+  def string(self):
+    return '{}\\t{}'.format(self.name, self.avg())
+
+students = [
+  Students('김OO', 88, 90),
+  Students('정OO', 73, 65),
+  Students('한OO', 63, 77)
+]
+print('김OO의 정보 성적')
+print(students[0].informatics)
+print('이름', '평균', sep='\\t')
+for i in students:
+  print(i.string())
+print('인스턴스 확인 결과: ', isinstance(students[0], Students))`});
+PyRunner.mount($('#py2'),{title:'권장 칼로리 계산 프로그램 만들기 (해 보기) — 빈칸(____)을 채워 보세요',page:'130',code:`class Data:
+  def __init__(self, height, activity):
+    self.height = height
+    self.activity = activity
+  def cal(self):
+    return (self.height - 100) * 0.9 * self.activity
+  def string(self):
+    return '{}\\t{}\\t{}'.format(self.height, self.activity, self.cal())
+
+# 활동 지수: 적은 활동량 25, 보통 33, 많은 활동량 40
+friends = [Data(170, 33), Data(160, 25), ____]   # 세 번째 친구의 데이터를 직접 넣어 보세요: Data(키, 활동 지수)
+print('키', '활동 지수', '권장 칼로리', sep='\\t')
+for f in friends:
+  print(f.string())`});
+</script></body></html>

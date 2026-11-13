@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5. 제어 구조와 데이터 구조 – 정보 3단원</title><link rel="stylesheet" href="../css/style.css"></head>
+<body data-unit="5"><div id="app">
+
+<section id="learn" data-tab="📖 교과서 정리">
+ <div class="card"><h2>학습 목표</h2>
+  <ul><li>제어 구조를 복합적으로 활용한 프로그램을 작성할 수 있다.</li><li>다차원 데이터 구조를 활용하여 프로그램을 작성할 수 있다.</li></ul>
+  <p class="small">학습 요소: 제어 구조, 데이터 구조, 순차 구조, 선택 구조, 반복 구조, 리스트</p></div>
+
+ <div class="card"><h2>1. 제어 구조의 이해 <span class="pg">111쪽</span></h2>
+  <p><b>순차 구조</b>는 명령을 위에서 아래로 차례로 실행해요. 조건에 따라 다르게 실행하거나 반복해야 하면 <b>제어 구조</b>(프로그램의 처리 과정을 제어하는 구조)를 써요.</p>
+  <div class="grid3"><div class="def"><b>순차 구조</b><br>순서대로 실행</div><div class="def"><b>선택 구조</b><br>조건에 따라 다른 명령 실행</div><div class="def"><b>반복 구조</b><br>같은 명령을 여러 번 실행</div></div></div>
+
+ <div class="card"><h2>2. 선택 구조 <span class="pg">111~115쪽</span></h2>
+  <table><tr><th>구조</th><th class="l">형식</th><th class="l">설명</th></tr>
+   <tr><td>if</td><td class="l mono">if 조건식:<br>&nbsp;&nbsp;문장 1</td><td class="l">조건이 참이면 문장 1 실행</td></tr>
+   <tr><td>if ~ else</td><td class="l mono">if 조건식:<br>&nbsp;&nbsp;문장 1<br>else:<br>&nbsp;&nbsp;문장 2</td><td class="l">참이면 문장 1, 거짓이면 문장 2</td></tr>
+   <tr><td>if ~ elif ~ else</td><td class="l mono">if 조건식 1:<br>&nbsp;&nbsp;문장 1<br>elif 조건식 2:<br>&nbsp;&nbsp;문장 2<br>else:<br>&nbsp;&nbsp;문장 3</td><td class="l">위에서부터 차례로 검사, 모두 거짓이면 else. elif 는 필요한 만큼 추가</td></tr>
+   <tr><td>중첩 선택</td><td class="l">if 안에 또 다른 if</td><td class="l">여러 상황에 따라 실행 (양수·0·음수 구분)</td></tr></table>
+  <div class="note"><b>들여쓰기</b>가 실행 범위를 결정해요. 콜론(:) 다음 줄은 반드시 들여쓰기! else 는 없어도 돼요.</div>
+  <p class="small">비교 연산자 &gt; &lt; &gt;= &lt;= == != , 논리 연산자 and / or / not 은 조건식에서 유용하게 쓰여요. (114쪽 알고 가기)</p></div>
+
+ <div class="card"><h2>3. 반복 구조 <span class="pg">116~119쪽</span></h2>
+  <ul><li><b>for 변수 in 리스트(또는 문자열):</b> 첫 요소부터 마지막 요소까지 차례로 변수에 담아 반복</li>
+  <li><b>range(시작, 종료, 증감)</b> : 시작 값부터 <b>종료 값 직전까지</b> 증감 값만큼 변화. 시작·증감은 생략 가능<br><span class="mono">range(3)→0,1,2 · range(1,3)→1,2 · range(5,0,-2)→5,3,1</span></li>
+  <li><b>while 조건식:</b> 조건이 참인 동안 반복, 거짓이면 종료 (반복 변수 갱신을 잊으면 무한 반복!)</li>
+  <li><b>중첩 반복</b> : 반복 안의 반복. 이차원 리스트 탐색·출력에 유용. <code>print(j, end=' ')</code> 로 한 줄에 이어 출력</li></ul>
+  <div class="tip">1~100의 합 : <code>s = sum(range(1, 101, 1))</code></div></div>
+
+ <div class="card"><h2>4. 데이터 구조 – 리스트 <span class="pg">120~121쪽</span></h2>
+  <div class="def"><b>데이터 구조</b> = 많은 데이터를 효율적으로 처리·관리하기 위한 구조 (주로 <b>리스트</b>). 변수 5개가 필요할 때 리스트 1개로 해결!</div>
+  <ul><li><b>1차원 리스트</b> <code>s = ['김OO','남','1학년',85,90]</code> → 인덱스는 <b>0부터</b> 시작: <code>s[2]</code> = '1학년'</li>
+  <li><b>2차원 리스트</b> <code>s = [[값,값,…],[값,값,…]]</code> → <code>s[행][열]</code> / 값 출력은 <b>중첩 반복문</b></li>
+  <li>2차원 이상의 다차원 구조는 이미지·비디오 데이터, 기계학습 데이터, 여러 속성을 가진 데이터 저장에 활용돼요. (차원이 높아질수록 메모리·연산 속도에 유의)</li></ul>
+  <h3>핵심 정리</h3><ol><li>제어 구조: 순차·선택·반복</li><li>선택: if / if~else / if~elif~else, 반복: for / while</li><li>데이터 구조: 여러 데이터를 같은 이름으로 관리 (리스트)</li></ol></div>
+</section>
+
+<section id="sim" data-tab="🧪 시뮬레이션">
+ <div class="card"><div class="sim-title"><span class="n">1</span><h2 style="margin:0">선택 구조 추적기 – 어떤 줄이 실행될까? <span class="pg">111~114쪽</span></h2></div>
+  <p class="goal">🎯 점수(n)를 바꿔 가며 <b>조건을 위에서부터 차례로 검사</b>하고, 실행되는 줄이 어디인지 확인해요.</p>
+  <div class="row"><label class="f">구조 <select id="sk"><option value="elif">if ~ elif ~ else (합격/재시험/불합격)</option><option value="ie">if ~ else (합격/불합격)</option><option value="if">if (합격만)</option><option value="nest">중첩 선택 (양수/0/음수)</option></select></label>
+   <label class="f" style="flex:1">n = <b id="snv">75</b> <input type="range" id="sn" min="-10" max="100" value="75" style="flex:1;min-width:180px"></label></div>
+  <div class="grid2"><div id="scode"></div><div><div class="small">조건 검사 기록</div><div id="slogt"></div><div class="out" id="sout" style="margin-top:8px"></div></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">2</span><h2 style="margin:0">반복 구조 – range(), for, while <span class="pg">116~118쪽</span></h2></div>
+  <p class="goal">🎯 range 의 세 값을 바꿔 어떤 수가 만들어지는지 확인해요. <b>종료 값은 포함되지 않아요!</b></p>
+  <div class="row"><code>for i in range(</code><input type="number" id="r1" value="5" style="width:70px">,<input type="number" id="r2" value="0" style="width:70px">,<input type="number" id="r3" value="-2" style="width:70px"><code>):</code>
+   <button class="btn ghost sm" data-r="3">range(3)</button><button class="btn ghost sm" data-r="1,3">range(1,3)</button><button class="btn ghost sm" data-r="5,0,-2">range(5,0,-2)</button><button class="btn ghost sm" data-r="1,101">range(1,101)</button></div>
+  <div class="cells" id="rcells" style="margin-bottom:22px"></div><div class="msg" id="rmsg"></div>
+  <h3>누적 계산 추적 – for 와 while 비교 <span class="pg">118쪽</span></h3>
+  <div class="row"><label class="f">문제 <select id="am"><option value="sum">1부터 N까지의 합</option><option value="cnt">1부터 N 사이 7의 배수 개수</option></select></label><label class="f">N <input type="number" id="an" value="10" min="1" max="70" style="width:80px"></label>
+   <label class="f">방식 <select id="ak"><option value="for">for 문</option><option value="while">while 문</option></select></label></div>
+  <div class="grid2"><div id="acode"></div><div style="max-height:260px;overflow:auto"><table id="atab"></table></div></div><div class="msg" id="amsg"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">3</span><h2 style="margin:0">중첩 반복문 – 안쪽 반복이 먼저 끝나요 <span class="pg">119쪽</span></h2></div>
+  <p class="goal">🎯 바깥 반복 i 가 한 번 돌 때 안쪽 반복 j 가 몇 번 도는지 단계별로 확인해요.</p>
+  <div class="row"><label class="f">모양 <select id="pk"><option value="num">숫자 삼각형 (1 / 1 2 / 1 2 3)</option><option value="sq">별 네모</option><option value="tri">별 삼각형</option></select></label><label class="f">줄 수 n <input type="number" id="pn" value="3" min="1" max="6" style="width:70px"></label>
+   <button class="btn sm" id="pstep">▶ 한 단계</button><button class="btn ghost sm" id="pauto">⏩ 자동</button><button class="btn ghost sm" id="preset">↺</button></div>
+  <div class="grid2"><div id="pcode"></div><div><div class="vars" id="pvars"></div><div class="out" id="pout" style="margin-top:8px;min-height:90px"></div><div class="small" id="pcnt"></div></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">4</span><h2 style="margin:0">2차원 리스트 탐색기 – s[행][열] <span class="pg">120~121쪽</span></h2></div>
+  <p class="goal">🎯 칸을 눌러 인덱스를 확인하고, 행·열 번호를 입력해 값을 읽어요. 인덱스는 <b>0부터</b>!</p>
+  <div class="grid2"><div><div id="lgrid" class="grid"></div><div class="row"><b>s[</b><input type="number" id="li" value="3" style="width:60px"><b>][</b><input type="number" id="lj" value="4" style="width:60px"><b>]</b><button class="btn sm" id="lgo">값 읽기</button></div></div>
+   <div><div class="out" id="lout" style="min-height:70px"></div><div class="tip">1차원 리스트 한 줄은 한 학생, 2차원 리스트는 여러 학생의 표예요. <code>print(s[3][4])</code> → 정OO의 인공지능 점수</div></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">5</span><h2 style="margin:0">급식 메뉴 설문 처리 – 다차원 데이터 + 제어 구조 <span class="pg">122쪽</span></h2></div>
+  <p class="goal">🎯 표를 2차원 리스트로 저장하고, 반복문으로 합계를, 선택문으로 “투표 수 N 이상”인 메뉴를 구해요.</p>
+  <div class="row" id="mv"></div>
+  <div class="row"><label class="f" style="flex:1">기준 투표 수 <b id="mtv">50</b> <input type="range" id="mt" min="0" max="100" value="50" style="flex:1;min-width:180px"></label></div>
+  <div class="grid2"><div id="mcode"></div><div><div class="bars" id="mbars" style="height:150px"></div><div class="msg" id="mmsg"></div></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">6</span><h2 style="margin:0">직접 실행해 보기</h2></div>
+  <div id="py1"></div><div id="py2" style="margin-top:14px"></div><div id="py3" style="margin-top:14px"></div></div>
+</section>
+</div>
+<script src="../js/common.js"></script>
+<script>
+window.GOAL='선택·반복 구조와 1·2차원 리스트를 단계별로 추적하며, 복합적으로 활용하는 방법을 익힙니다.';
+window.CHECKS=['제어 구조(순차·선택·반복)를 설명할 수 있다. [지식·이해]','if / if~else / if~elif~else 와 중첩 선택 구조를 사용할 수 있다.','for 와 while, range() 로 반복 프로그램을 작성할 수 있다.','리스트 인덱스(0부터)를 이해하고 1차원·2차원 리스트를 만들고 출력할 수 있다. [지식·이해]','제어 구조와 다차원 데이터 구조를 복합적으로 활용해 문제를 해결할 수 있다. [과정·기능]'];
+window.LEVELS=['제어 구조·다차원 데이터 구조의 적용 방법을 설명하고, 복합적으로 활용한 효율적인 프로그램을 작성한다.','적용 방법을 설명하고 제어 구조와 다차원 데이터 구조를 활용한 프로그램을 작성한다.','제어 구조와 다차원 데이터 구조를 설명하고 프로그램을 작성한다.','제어 구조·다차원 데이터 구조를 인지하고 부분적으로 프로그램을 작성한다.','제어 구조·다차원 데이터 구조를 인지한다.'];
+window.QUIZ=[
+ {q:'for i in range(5, 0, -2): print(i) 의 출력은?',c:['5 3 1','5 4 3 2 1','5 3 1 -1','0 2 4'],a:0,e:'5부터 시작해 2씩 줄이며 종료 값 0 직전까지: 5, 3, 1',pg:'117'},
+ {q:'n = 75 일 때 아래 코드의 출력은?<br><code>if n &gt;= 80: print("합격")</code><br><code>elif n &lt; 80 and n &gt;= 60: print("재시험")</code><br><code>else: print("불합격")</code>',c:['합격','재시험','불합격','아무것도 출력되지 않는다'],a:1,e:'75는 80 이상이 아니므로 첫 조건은 거짓, 60 이상 80 미만이라 두 번째 조건이 참 → 재시험',pg:'113'},
+ {q:'range(1, 4) 로 만들어지는 수의 나열은?',c:['1, 2, 3, 4','0, 1, 2, 3','1, 2, 3','1, 3'],a:2,e:'종료 값(4)은 포함하지 않고 직전(3)까지예요.',pg:'117'},
+ {q:'s = [[\'김\',\'남\',\'1학년\',85,90],[\'이\',\'여\',\'2학년\',75,100],[\'박\',\'여\',\'1학년\',90,70],[\'정\',\'여\',\'1학년\',65,80]] 일 때 s[3][4] 의 값은?',c:['65','80','70','100'],a:1,e:'s[3] 은 네 번째 행(정), [4] 는 다섯 번째 열 → 80 (인덱스는 0부터)',pg:'121'},
+ {q:'while 조건식 반복문에서 조건이 계속 참이 되도록 반복 변수를 바꾸지 않으면 어떻게 될까?',c:['한 번만 실행된다','한 번도 실행되지 않는다','무한 반복된다','자동으로 for문으로 바뀐다'],a:2,e:'while 은 조건이 거짓이 될 때까지 반복해요. n = n + 1 같은 갱신이 필요해요.',pg:'117–118'},
+ {q:'1부터 70 사이의 수 중 7의 배수는 모두 몇 개일까? (숫자만)',type:'fill',a:['10'],e:'7, 14, …, 70 → 10개. if i % 7 == 0: cnt = cnt + 1 로 셀 수 있어요.',pg:'118'},
+ {q:'<code>for i in range(1, 4):</code><br><code>&nbsp;&nbsp;for j in range(1, i+1): print(j, end=" ")</code><br><code>&nbsp;&nbsp;print("")</code> &nbsp;에서 i가 3일 때 한 줄에 출력되는 것은?',c:['1','1 2','1 2 3','3'],a:2,e:'i=3 일 때 j는 1부터 3까지 → 1 2 3',pg:'119'},
+ {q:'리스트 s = [10, 20, 30] 에서 첫 번째 값을 가리키는 인덱스 번호는? (숫자만)',type:'fill',a:['0'],e:'파이썬 리스트의 인덱스는 0부터 시작해요. s[0] = 10',pg:'120'},
+ {q:'파이썬에서 if, while, for 문의 콜론(:) 다음 문장에 대한 설명으로 옳은 것은?',c:['들여쓰기를 하지 않아도 된다','반드시 들여쓰기를 해야 하며 들여쓰기가 실행 범위를 결정한다','대문자로 시작해야 한다','주석으로 처리된다'],a:1,e:'들여쓰기를 하지 않으면 오류가 발생해요.',pg:'113'}
+];
+
+/* ---------- 1. 선택 구조 ---------- */
+(function(){
+ const V={
+  elif:{code:['n = int(input("입력: "))','if n >= 80:','    print("합격")','elif n < 80 and n >= 60:','    print("재시험")','else:','    print("불합격")'],
+   run:n=>{const L=[[0],[1]];const lg=[`n >= 80 → ${n>=80?'참':'거짓'}`];if(n>=80){L.push([2]);return{L:[0,1,2],lg,o:'합격'}}
+    lg.push(`n < 80 and n >= 60 → ${n<80&&n>=60?'참':'거짓'}`);if(n<80&&n>=60)return{L:[0,1,3,4],lg,o:'재시험'};return{L:[0,1,3,5,6],lg,o:'불합격'}}},
+  ie:{code:['n = int(input("입력: "))','if n >= 80:','    print("합격")','else:','    print("불합격")'],
+   run:n=>n>=80?{L:[0,1,2],lg:['n >= 80 → 참'],o:'합격'}:{L:[0,1,3,4],lg:['n >= 80 → 거짓 → else'],o:'불합격'}},
+  if:{code:['n = int(input("입력: "))','if n >= 80:','    print("합격")'],
+   run:n=>n>=80?{L:[0,1,2],lg:['n >= 80 → 참'],o:'합격'}:{L:[0,1],lg:['n >= 80 → 거짓 → 아무것도 실행하지 않고 다음 문장으로'],o:'(출력 없음)'}},
+  nest:{code:['n = int(input("입력: "))','if n >= 0:','    if n > 0:','        print("양수")','    else:','        print("0")','else:','    print("음수")'],
+   run:n=>{if(n>=0){if(n>0)return{L:[0,1,2,3],lg:['n >= 0 → 참','n > 0 → 참'],o:'양수'};return{L:[0,1,2,4,5],lg:['n >= 0 → 참','n > 0 → 거짓 → 안쪽 else'],o:'0'}}return{L:[0,1,6,7],lg:['n >= 0 → 거짓 → 바깥 else'],o:'음수'}}}
+ };
+ function draw(){
+  const k=$('#sk').value,n=+$('#sn').value;$('#snv').textContent=n;
+  const v=V[k],r=v.run(n);$('#scode').innerHTML=codeBlock(v.code);
+  $$('#scode .ln').forEach(e=>e.classList.toggle('hl',r.L.includes(+e.dataset.i)));
+  $('#slogt').innerHTML=r.lg.map((x,i)=>`<div class="pill ${x.includes('참')&&!x.includes('거짓')?'ok':'bad'}" style="display:block;margin:3px 0;border-radius:8px">${i+1}. ${x}</div>`).join('');
+  $('#sout').textContent='>>> n = '+n+'\n'+r.o;
+ }
+ $('#sk').onchange=()=>{if($('#sk').value==='nest'&&+$('#sn').value>10){}draw()};$('#sn').oninput=draw;draw();
+})();
+
+/* ---------- 2. range & 누적 ---------- */
+(function(){
+ function rg(){
+  const a=[$('#r1').value,$('#r2').value,$('#r3').value].map(Number);
+  let start=a[0],stop=a[1],step=a[2];
+  const m=$('#rmsg'),c=$('#rcells');
+  if(step===0){c.innerHTML='';m.className='msg bad';m.textContent='ValueError: range() arg 3 must not be zero — 증감 값은 0이 될 수 없어요.';return}
+  const out=[];if(step>0){for(let i=start;i<stop&&out.length<200;i+=step)out.push(i)}else{for(let i=start;i>stop&&out.length<200;i+=step)out.push(i)}
+  c.innerHTML=out.length>30?`<span class="small">${out.length}개 : ${out.slice(0,8).join(', ')} … ${out[out.length-1]}</span>`:out.map((v,i)=>`<div class="cell">${v}<small>${i+1}번째</small></div>`).join('')||'<span class="small">(비어 있음 — 반복이 한 번도 실행되지 않아요)</span>';
+  m.className='msg';m.innerHTML=`range(${start}, ${stop}, ${step}) → <b>${out.length}번</b> 반복. 시작 ${start}, 마지막 ${out.length?out[out.length-1]:'-'} (종료 값 ${stop} 은 포함 안 됨)`;
+ }
+ ['r1','r2','r3'].forEach(i=>$('#'+i).oninput=rg);
+ $$('[data-r]').forEach(b=>b.onclick=()=>{const p=b.dataset.r.split(',').map(Number);if(p.length===1)p.unshift(0);if(p.length===2)p.push(1);$('#r1').value=p[0];$('#r2').value=p[1];$('#r3').value=p[2];rg()});
+ rg();
+ function ac(){
+  const m=$('#am').value,k=$('#ak').value,N=Math.max(1,Math.min(70,Math.floor(+$('#an').value)||1));
+  let code;
+  if(m==='sum')code=k==='for'?['s = 0','for i in range(1, N+1):','    s = s + i','print(s)']:['s = 0','i = 1','while i <= N:','    s = s + i','    i = i + 1','print(s)'];
+  else code=k==='for'?['cnt = 0','for i in range(1, N+1):','    if i % 7 == 0:','        cnt = cnt + 1','print(cnt)']:['cnt = 0','i = 1','while i <= N:','    if i % 7 == 0:','        cnt = cnt + 1','    i = i + 1','print(cnt)'];
+  $('#acode').innerHTML=codeBlock(code.map(l=>l.replace('N',N)));
+  let s=0,rows=[];for(let i=1;i<=N;i++){if(m==='sum'){s+=i;rows.push([i,s,''])}else{const hit=i%7===0;if(hit)s++;rows.push([i,s,hit?'7의 배수 ✔':''])}}
+  $('#atab').innerHTML=`<tr><th>i</th><th>${m==='sum'?'s':'cnt'}</th><th></th></tr>`+rows.map(r=>`<tr ${r[2]?'style="background:#fff3bf"':''}><td>${r[0]}</td><td>${r[1]}</td><td class="l">${r[2]}</td></tr>`).join('');
+  const am=$('#amsg');am.className='msg ok';am.textContent=`결과: ${s}${m==='sum'&&N===100?'':''}  ${m==='sum'?`(공식 N(N+1)/2 = ${N*(N+1)/2})`:''}`;
+ }
+ ['am','ak'].forEach(i=>$('#'+i).onchange=ac);$('#an').oninput=ac;ac();
+})();
+
+/* ---------- 3. 중첩 반복 ---------- */
+(function(){
+ let ev=[],k=0,timer=null;
+ const CODE={num:['for i in range(1, n+1):','    for j in range(1, i+1):','        print(j, end=" ")','    print("")'],
+  sq:['for i in range(n):','    for j in range(n):','        print("*", end="")','    print("")'],
+  tri:['for i in range(1, n+1):','    for j in range(i):','        print("*", end="")','    print("")']};
+ function build(){
+  const t=$('#pk').value,n=Math.max(1,Math.min(6,Math.floor(+$('#pn').value)||1));ev=[];
+  const I=t==='sq'?[...Array(n).keys()]:[...Array(n).keys()].map(x=>x+1);
+  I.forEach(i=>{let J;if(t==='num')J=[...Array(i).keys()].map(x=>x+1);else if(t==='sq')J=[...Array(n).keys()];else J=[...Array(i).keys()];
+   ev.push({line:0,i,j:null,txt:''});
+   J.forEach(j=>{ev.push({line:1,i,j,txt:''});ev.push({line:2,i,j,txt:t==='num'?j+' ':'*'})});
+   ev.push({line:3,i,j:J[J.length-1],txt:'\n'});});
+  k=0;draw();
+ }
+ function draw(){
+  const t=$('#pk').value;$('#pcode').innerHTML=codeBlock(CODE[t]);
+  const cur=k>0?ev[k-1]:null;hlLine($('#pcode'),cur?cur.line:-1);
+  let o='';for(let x=0;x<k;x++)o+=ev[x].txt;$('#pout').textContent=o;
+  $('#pvars').innerHTML=['i','j'].map(v=>`<div class="var"><div class="nm">${v}</div><div class="vl">${cur&&cur[v]!==null&&cur[v]!==undefined?cur[v]:'-'}</div></div>`).join('');
+  const inner=ev.slice(0,k).filter(e=>e.line===2).length;
+  $('#pcnt').textContent=`안쪽 print 실행 횟수: ${inner} / ${ev.filter(e=>e.line===2).length}   (단계 ${k}/${ev.length})`;
+  $('#pstep').disabled=k>=ev.length;
+ }
+ function stop(){if(timer){clearInterval(timer);timer=null;$('#pauto').textContent='⏩ 자동'}}
+ $('#pstep').onclick=()=>{if(k<ev.length){k++;draw()}else stop()};
+ $('#pauto').onclick=()=>{if(timer){stop();return}if(k>=ev.length){k=0;draw()}$('#pauto').textContent='⏸';timer=setInterval(()=>{if(k<ev.length){k++;draw()}else stop()},380)};
+ $('#preset').onclick=()=>{stop();k=0;draw()};
+ ['pk','pn'].forEach(i=>$('#'+i).onchange=()=>{stop();build()});build();
+})();
+
+/* ---------- 4. 2차원 리스트 ---------- */
+(function(){
+ const S=[['김OO','남','1학년',85,90],['이OO','여','2학년',75,100],['박OO','여','1학년',90,70],['정OO','여','1학년',65,80],['한OO','남','2학년',95,75]];
+ let sel=[3,4];
+ function draw(){
+  const g=$('#lgrid');g.style.gridTemplateColumns='repeat(6,64px)';
+  let h='<div class="g hd" style="width:64px"></div>'+[0,1,2,3,4].map(j=>`<div class="g hd" style="width:64px">[${j}]</div>`).join('');
+  S.forEach((r,i)=>{h+=`<div class="g hd" style="width:64px">s[${i}]</div>`+r.map((v,j)=>`<div class="g ${sel&&sel[0]===i&&sel[1]===j?'p':''}" style="width:64px" data-i="${i}" data-j="${j}">${v}</div>`).join('')});
+  g.innerHTML=h;$$('#lgrid .g[data-i]').forEach(e=>e.onclick=()=>{$('#li').value=e.dataset.i;$('#lj').value=e.dataset.j;read()});
+ }
+ function read(){
+  const i=Math.floor(+$('#li').value),j=Math.floor(+$('#lj').value),o=$('#lout');
+  if(i<0||i>4||j<0||j>4||isNaN(i)||isNaN(j)){sel=null;draw();o.className='out err';o.textContent=`>>> print(s[${i}][${j}])\nIndexError: list index out of range\n(행은 0~4, 열은 0~4 까지만 있어요)`;return}
+  sel=[i,j];draw();o.className='out';o.textContent=`>>> print(s[${i}][${j}])\n${S[i][j]}\n\n# s[${i}] = ${JSON.stringify(S[i]).replace(/"/g,"'")}`;
+ }
+ $('#lgo').onclick=read;draw();read();
+})();
+
+/* ---------- 5. 급식 ---------- */
+(function(){
+ const D=[['제육볶음',42],['생선구이',23],['스파게티',77],['돈가스',58]];
+ $('#mv').innerHTML=D.map((d,i)=>`<label class="f">${d[0]} <input type="number" data-i="${i}" value="${d[1]}" min="0" style="width:80px"></label>`).join('');
+ function draw(){
+  $$('#mv input').forEach(x=>D[+x.dataset.i][1]=Math.max(0,Math.floor(+x.value)||0));
+  const t=+$('#mt').value;$('#mtv').textContent=t;
+  const sum=D.reduce((a,d)=>a+d[1],0),hit=D.filter(d=>d[1]>=t);
+  $('#mcode').innerHTML=codeBlock(['menu = [["제육볶음", '+D[0][1]+'], ["생선구이", '+D[1][1]+'],','        ["스파게티", '+D[2][1]+'], ["돈가스", '+D[3][1]+']]','sum = 0','for i in range(4):','    sum = sum + menu[i][1]','print(sum)','for i in range(4):','    if menu[i][1] >= '+t+':','        print(menu[i][0])']);
+  const mx=Math.max(...D.map(d=>d[1]),t,1);
+  $('#mbars').innerHTML=D.map(d=>`<div class="bar ${d[1]>=t?'done':'dim'}" style="height:${Math.max(8,100*d[1]/mx)}%;flex-direction:column;align-items:center;justify-content:flex-start;font-size:12px">${d[1]}<span style="margin-top:auto;padding:4px 0;font-size:11px">${d[0]}</span></div>`).join('');
+  $('#mmsg').className='msg';$('#mmsg').innerHTML=`참가 학생 수 합계 <b>${sum}</b>명 · ${t}표 이상: <b>${hit.map(d=>d[0]).join(', ')||'없음'}</b>`;
+ }
+ $$('#mv input').forEach(x=>x.oninput=draw);$('#mt').oninput=draw;draw();
+})();
+
+/* ---------- 6. 파이썬 ---------- */
+PyRunner.mount($('#py1'),{title:'합격 · 재시험 · 불합격 (실습 3)',page:'113',code:`n = int(input('입력: '))
+if n >= 80:
+  print('합격')
+elif(n < 80 and n >= 60):
+  print('재시험')
+else:
+  print('불합격')`});
+PyRunner.mount($('#py2'),{title:'2차원 리스트 출력 (실습 13)',page:'121',code:`s = [['김OO', '남', '1학년', 85, 90],
+     ['이OO', '여', '2학년', 75, 100],
+     ['박OO', '여', '1학년', 90, 70],
+     ['정OO', '여', '1학년', 65, 80],
+     ['한OO', '남', '2학년', 95, 75]]
+for i in range(0, 5):
+  for j in range(0, 5):
+    print(s[i][j], end=' ')
+  print(' ')
+print(s[3][4])`});
+PyRunner.mount($('#py3'),{title:'급식 메뉴 설문 처리 (해 보기 4) — 빈칸을 채워 완성해 보세요',page:'122',code:`menu = [['제육볶음', 42], ['생선구이', 23], ['스파게티', 77], ['돈가스', 58]]
+
+total = 0
+for i in range(4):
+    total = total + menu[i][1]
+print('참가 학생 수:', total)
+
+for i in range(4):
+    if menu[i][1] >= 50:
+        print(menu[i][0])`});
+</script></body></html>

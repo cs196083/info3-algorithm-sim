@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>정보 3단원 알고리즘과 프로그래밍 – 시뮬레이션 학습·복습</title>
+<meta name="description" content="고등학교 정보(삼양) 3단원 알고리즘과 프로그래밍을 시뮬레이션으로 학습하고 복습하는 사이트">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-home="1">
+<div class="wrap">
+  <div class="hero" style="--uc:#3b5bdb">
+    <span class="badge">고등학교 정보 · Ⅲ 알고리즘과 프로그래밍</span>
+    <h1>💻 눈으로 보고, 손으로 해 보는 정보 3단원</h1>
+    <p>교과서 8개 소단원을 <b>① 교과서 정리 → ② 시뮬레이션 → ③ 복습 퀴즈 → ④ 성취기준 점검</b> 순서로 학습해요.</p>
+    <p class="small" style="color:#dbe4ff">2022 개정 교육과정 정보과 성취기준 12정03-01 ~ 12정03-10 기반 · 교과서 쪽수 표시 · 파이썬 코드 실행 지원</p>
+  </div>
+
+  <div class="card">
+    <h2>🗺️ 이렇게 공부해요</h2>
+    <div class="grid3">
+      <div><b>① 처음 배울 때</b><br><span class="small">교과서 정리로 핵심을 훑고, 시뮬레이션의 조작 버튼을 눌러 보며 원리를 확인해요.</span></div>
+      <div><b>② 복습할 때</b><br><span class="small">복습 퀴즈로 이해도를 점검하고, 틀린 문제는 해설과 교과서 쪽수를 다시 확인해요.</span></div>
+      <div><b>③ 마무리</b><br><span class="small">성취기준 점검표에 체크하며 내가 설명·구현할 수 있는지 스스로 평가해요.</span></div>
+    </div>
+  </div>
+
+  <div class="card" id="overall" style="display:none"></div>
+
+  <div class="ucards" id="cards"></div>
+
+  <div class="card" style="margin-top:22px">
+    <h2>📌 성취기준 ↔ 소단원 연결표</h2>
+    <table id="map"><tr><th>성취기준</th><th class="l">내용</th><th>관련 소단원</th></tr></table>
+  </div>
+  <p class="small" style="text-align:center;margin-top:24px">※ 이 사이트의 설명은 교과서(삼양) 3단원과 성취수준 자료를 바탕으로 학습 편의를 위해 재구성한 것입니다. 정확한 내용은 교과서 쪽수를 함께 확인하세요.<br>※ 학습 기록은 이 브라우저(localStorage)에만 저장됩니다.</p>
+</div>
+<script src="js/common.js"></script>
+<script>
+initHome();
+const cards=$('#cards');
+let sum=0;
+UNITS.forEach(u=>{
+  const p=Progress.pct(u.id);sum+=p;
+  cards.insertAdjacentHTML('beforeend',`<a class="ucard" href="units/u${u.id}.html" style="--uc:${u.c}">
+    <div class="no">${u.id}단원 · 교과서 ${u.pg}쪽</div><h3>${u.ic} ${u.t}</h3><p>${u.d}</p>
+    <div class="stds">${u.std.join(' · ')}</div>
+    <div class="progressbar"><i style="width:${p}%"></i></div><div class="small">학습 진행 ${p}%</div></a>`);
+});
+if(sum>0){const o=$('#overall');o.style.display='block';const avg=Math.round(sum/UNITS.length);
+  o.innerHTML=`<h2>📈 나의 전체 학습 현황</h2><div class="progressbar"><i style="width:${avg}%"></i></div><div class="small">전체 ${avg}% 완료 <button class="btn sm ghost" id="rst" style="margin-left:10px">기록 지우기</button></div>`;
+  $('#rst').onclick=()=>{if(confirm('이 브라우저의 학습 기록을 모두 지울까요?')){localStorage.removeItem('info3-samyang-progress-v1');location.reload()}};}
+const map=$('#map');
+Object.keys(STD).forEach(k=>{
+  const us=UNITS.filter(u=>u.std.includes(k));
+  map.insertAdjacentHTML('beforeend',`<tr><td class="mono"><b>${k}</b></td><td class="l">${STD[k]}</td><td>${us.map(u=>`<a href="units/u${u.id}.html">${u.id}</a>`).join(', ')}</td></tr>`);
+});
+</script>
+</body>
+</html>

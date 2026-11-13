@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3. 자료형과 변수 – 정보 3단원</title><link rel="stylesheet" href="../css/style.css"></head>
+<body data-unit="3"><div id="app">
+
+<section id="learn" data-tab="📖 교과서 정리">
+ <div class="card"><h2>학습 목표</h2>
+  <ul><li>자료형의 종류와 특성을 알고, 적합한 자료형을 선택하여 프로그램을 작성할 수 있다.</li><li>변수의 개념을 알고 이를 활용한 프로그램을 작성할 수 있다.</li></ul>
+  <p class="small">학습 요소: 자료형, 수치형, 문자열, 불 자료형, 변수</p></div>
+
+ <div class="card"><h2>1. 파이썬의 자료형 <span class="pg">91~94쪽</span></h2>
+  <p>자료형에 따라 데이터를 처리·저장하는 방식이 달라져요. <code>type()</code> 함수로 자료형을 확인할 수 있어요.</p>
+  <table><tr><th>자료형</th><th>이름</th><th class="l">설명</th><th>예시</th></tr>
+   <tr><td><b>수치형</b></td><td class="mono">int</td><td class="l">소수점이 없는 정수</td><td class="mono">1, 0, -1, 123</td></tr>
+   <tr><td></td><td class="mono">float</td><td class="l">소수점이 있는 실수</td><td class="mono">3.14, -1.23, 5.0</td></tr>
+   <tr><td><b>문자열</b></td><td class="mono">str</td><td class="l">작은/큰따옴표 1개 또는 3개로 감싼 문자 집합</td><td class="mono">'Hello', "홍길동", '''123'''</td></tr>
+   <tr><td><b>불</b></td><td class="mono">bool</td><td class="l">참/거짓. 예약어 <b>True, False</b> (첫 글자 대문자!)</td><td class="mono">True, False</td></tr></table>
+  <ul><li><code>print('2+3')</code> → 문자열이라 <b>2+3</b> 출력 / <code>print(2+3)</code> → 정수 연산 결과 <b>5</b></li>
+  <li>문자열 연산: <code>+</code> 는 <b>문자열끼리</b> 연결, <code>*</code> 는 <b>문자열 × 정수</b>로 반복. ('안녕'+'하세요', '파이썬'*3)</li>
+  <li><b>False로 취급</b>되는 값: 숫자 <code>0</code>, 빈 문자열 <code>''</code> / 그 외 숫자·문자열은 모두 True → <code>bool()</code> 로 확인</li></ul></div>
+
+ <div class="card"><h2>2. 변수 <span class="pg">95쪽</span></h2>
+  <div class="def"><b>변수</b> = 값을 저장하는 기억 장소 + 이름(변수명). 값은 바뀔 수 있고, <b>저장한 값에 따라 자료형이 자동 결정</b>돼요. 대입 연산자는 <code>=</code></div>
+  <div class="note"><b>변수명 규칙</b> ① 영문·한글·숫자·_ 사용 가능 ② 대소문자 구분 ③ <b>숫자로 시작 불가</b> ④ 예약어(if, for, while, and, or…) 불가 ⑤ 특수문자·공백 불가 ⑥ 여러 단어는 _ 로 연결(student_name)</div>
+  <p>여러 변수 한 번에: <code>name, grade = '한국이', 1</code></p></div>
+
+ <div class="card"><h2>3. 연산자 <span class="pg">95~97쪽</span></h2>
+  <table><tr><th>산술</th><td class="mono">+</td><td class="mono">-</td><td class="mono">*</td><td class="mono">/</td><td class="mono">//</td><td class="mono">%</td><td class="mono">**</td></tr>
+  <tr><th>기능</th><td>덧셈</td><td>뺄셈</td><td>곱셈</td><td>나눗셈</td><td>몫</td><td>나머지</td><td>거듭제곱</td></tr></table>
+  <table><tr><th>비교</th><td class="mono">&gt;</td><td class="mono">&gt;=</td><td class="mono">&lt;</td><td class="mono">&lt;=</td><td class="mono">==</td><td class="mono">!=</td></tr></table>
+  <p class="small">비교 연산의 결과는 <b>불 자료형</b>(True/False)!</p>
+  <table><tr><th>논리</th><th>기능</th></tr><tr><td class="mono">and</td><td class="l">모두 True일 때 True</td></tr><tr><td class="mono">or</td><td class="l">둘 중 하나만 True여도 True</td></tr><tr><td class="mono">not</td><td class="l">True면 False, False면 True</td></tr></table>
+  <div class="tip">• <code>10/2</code> 의 결과는 <code>5.0</code> (나눗셈은 항상 float) • 배수 판별: <code>28 % 4 == 0</code> • 4와 7의 공배수: <code>28 % 4 == 0 and 28 % 7 == 0</code></div>
+  <h3>핵심 정리</h3><ol><li>데이터를 올바르게 처리하려면 값의 종류에 맞는 자료형을 선택한다. (수치형·문자열·불)</li><li>변수 = 값을 저장하는 기억 공간. 값이 변할 수 있다.</li><li>산술·비교·논리 연산자로 문제를 해결한다.</li></ol></div>
+</section>
+
+<section id="sim" data-tab="🧪 시뮬레이션">
+ <div class="card"><div class="sim-title"><span class="n">1</span><h2 style="margin:0">자료형 판별기 – type() 과 bool() <span class="pg">91~94쪽</span></h2></div>
+  <p class="goal">🎯 값을 입력하면 파이썬이 어떤 자료형으로 보는지, 참/거짓은 무엇인지 확인해요. (문자열은 따옴표 필수!)</p>
+  <div class="row"><label class="f">값 <input type="text" id="tv" value="3.14" style="width:200px"></label>
+   <span id="tchips" class="row" style="margin:0"></span></div>
+  <div class="grid2"><div class="out" id="tout"></div><div id="tbool"></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">2</span><h2 style="margin:0">변수 상자 – 대입하면 값과 자료형이 바뀌어요 <span class="pg">95쪽</span></h2></div>
+  <p class="goal">🎯 <code>var = 값</code> 을 실행해 보세요. 변수는 한 번에 하나의 값만 담고, 새 값을 넣으면 <b>자료형도 바뀌어요</b>.</p>
+  <div class="row"><code>var =</code><input type="text" id="vv" value="10" style="width:160px"><button class="btn sm" id="vgo">대입 실행</button>
+   <button class="btn ghost sm" data-v="10">10</button><button class="btn ghost sm" data-v="'정보'">'정보'</button><button class="btn ghost sm" data-v="3.5">3.5</button><button class="btn ghost sm" data-v="True">True</button></div>
+  <div class="vars" id="vbox"></div><div class="msg" id="vmsg"></div>
+  <div class="row"><b>변수명 검사</b><input type="text" id="nm" value="student_name" style="width:180px"><span id="nmr"></span></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">3</span><h2 style="margin:0">연산자 실험실 <span class="pg">96~97쪽</span></h2></div>
+  <p class="goal">🎯 두 값을 바꿔 가며 산술·비교·논리 연산 결과를 확인해요.</p>
+  <div class="row"><label class="f">num1 <input type="number" id="n1" value="10"></label><label class="f">num2 <input type="number" id="n2" value="3"></label></div>
+  <div class="grid2"><table id="arith"></table><table id="cmpt"></table></div>
+  <div class="row"><b>논리 연산</b>
+   <label class="f">a <select id="la"><option>True</option><option>False</option></select></label>
+   <label class="f">b <select id="lb"><option>True</option><option>False</option></select></label></div>
+  <table id="logt"></table>
+  <h3>공배수 판별하기 (교과서 98쪽)</h3>
+  <div class="row"><label class="f">수 <input type="number" id="mn" value="28"></label><label class="f">x <input type="number" id="mx" value="4"></label><label class="f">y <input type="number" id="my" value="7"></label></div>
+  <div id="mres" class="msg"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">4</span><h2 style="margin:0">자료형 선택 – 원의 넓이 <span class="pg">96쪽</span></h2></div>
+  <p class="goal">🎯 변수의 역할에 맞는 자료형을 고르고 결과를 확인해요. (넓이 = r² × 3.14)</p>
+  <table><tr><th>변수</th><th class="l">역할</th><th>내가 고른 자료형</th></tr>
+   <tr><td class="mono">r</td><td class="l">반지름의 길이 (3)</td><td><select id="cr"><option value="">선택</option><option>int</option><option>float</option><option>str</option><option>bool</option></select></td></tr>
+   <tr><td class="mono">pi</td><td class="l">원주율 (3.14)</td><td><select id="cp"><option value="">선택</option><option>int</option><option>float</option><option>str</option><option>bool</option></select></td></tr>
+   <tr><td class="mono">area</td><td class="l">원의 넓이 (28.26)</td><td><select id="ca"><option value="">선택</option><option>int</option><option>float</option><option>str</option><option>bool</option></select></td></tr></table>
+  <div class="row"><button class="btn sm" id="cchk">확인</button><span class="msg" id="cmsg"></span></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">5</span><h2 style="margin:0">직접 실행해 보기 <span class="pg">91~98쪽</span></h2></div>
+  <p class="goal">🎯 교과서 코드를 실행하고 값을 바꿔 보세요. (처음 실행할 때 파이썬 환경을 내려받아 몇 초 걸려요.)</p>
+  <div id="py1"></div><div id="py2" style="margin-top:14px"></div></div>
+</section>
+</div>
+<script src="../js/common.js"></script>
+<script>
+window.GOAL='수치·문자열·불 자료형과 변수, 연산자를 시뮬레이션으로 확인하고 문제에 맞는 자료형을 선택해 봅니다.';
+window.CHECKS=['변수의 개념을 알고 설명할 수 있다. [지식·이해]','자료형(수치형·문자열·불)의 종류와 특성을 설명할 수 있다. [지식·이해]','type() 으로 자료형을 확인하고 bool() 의 참/거짓 규칙을 설명할 수 있다.','산술·비교·논리 연산자를 구분하고 사용할 수 있다.','문제 해결에 적합한 자료형을 선택하여 프로그램을 작성할 수 있다. [과정·기능]'];
+window.LEVELS=['자료형의 종류와 특성을 정확하게 설명하고, 문제 해결에 적합한 자료형을 선택하여 오류 없이 프로그램을 작성한다.','자료형의 종류와 특성을 정확히 설명하고 적합한 자료형을 선택해 프로그램을 작성한다.','자료형의 종류와 특성을 설명하고 적합한 자료형을 선택해 프로그램을 작성한다.','자료형의 종류와 특성을 인지하고 프로그램을 부분적으로 작성한다.','자료형의 종류와 특성을 인지한다.'];
+window.QUIZ=[
+ {q:'type(3.14) 의 결과로 알맞은 것은?',c:["<class 'int'>","<class 'float'>","<class 'str'>","<class 'bool'>"],a:1,e:'소수점이 있는 수는 실수형이고, float 라고 불러요.',pg:'91'},
+ {q:"print('2+3') 과 print(2+3) 의 출력 결과를 순서대로 나열한 것은?",c:['5, 5','2+3, 5','2+3, 2+3','5, 2+3'],a:1,e:'따옴표로 감싼 것은 문자열이라 그대로 출력되고, 따옴표 없는 2+3은 정수 연산이라 5가 나와요.',pg:'93'},
+ {q:'다음 중 결과가 False인 것은?',c:["bool('Hello')","bool(3)","bool('')","bool('0')"],a:2,e:"빈 문자열 ''와 숫자 0만 False예요. '0'은 비어 있지 않은 문자열이라 True!",pg:'93'},
+ {q:'다음 중 올바른 변수명은?',c:['2nd_score','my score','student_name','if'],a:2,e:'숫자로 시작할 수 없고, 공백이나 예약어(if)도 쓸 수 없어요. 단어는 _ 로 연결해요.',pg:'95'},
+ {q:'num1, num2 = 10, 3 일 때 num1 // num2 와 num1 % num2 의 값은?',c:['3.33, 1','3, 1','3, 3','1, 3'],a:1,e:'// 는 몫(3), % 는 나머지(1)예요. / 는 3.3333...',pg:'96'},
+ {q:'28이 4와 7의 공배수이면 True를 출력하는 식으로 알맞은 것은?',c:['28 % 4 == 0 or 28 % 7 == 0','28 % 4 == 0 and 28 % 7 == 0','28 // 4 == 0 and 28 // 7 == 0','28 / 4 == 0 and 28 / 7 == 0'],a:1,e:'공배수 = 4의 배수이면서(and) 7의 배수. 배수는 나머지가 0이에요.',pg:'98'},
+ {q:'var = 10 을 실행한 뒤 var = \'정보\' 를 실행하면 var의 자료형은 무엇인가? (파이썬 자료형 이름, 영문 소문자)',type:'fill',a:['str'],e:'변수는 저장된 값에 따라 자료형이 자동으로 바뀌어요. 마지막 값이 문자열이므로 str.',pg:'95'},
+ {q:'True and False 의 결과와, not False 의 결과를 순서대로 쓴 것은?',c:['True, True','False, True','False, False','True, False'],a:1,e:'and는 모두 True일 때만 True → False. not False → True.',pg:'97'}
+];
+
+/* ---------- 1. 자료형 판별 ---------- */
+(function(){
+ function parse(s){
+  s=s.trim();
+  if(s==='')return{err:'값을 입력하세요'};
+  if(/^[+-]?\d+$/.test(s))return{t:'int',v:parseInt(s,10),zero:parseInt(s,10)===0,disp:s};
+  if(/^[+-]?(\d+\.\d*|\.\d+)$/.test(s)){const f=parseFloat(s);return{t:'float',v:f,zero:f===0,disp:s}}
+  if(s==='True'||s==='False')return{t:'bool',v:s==='True',zero:s==='False',disp:s};
+  if(/^(true|false)$/i.test(s))return{err:"NameError: name '"+s+"' is not defined  (True, False 는 첫 글자만 대문자예요)"};
+  const m=s.match(/^('''|"""|'|")([\s\S]*)\1$/);
+  if(m)return{t:'str',v:m[2],zero:m[2]==='',disp:s};
+  return{err:"NameError: name '"+s+"' is not defined  (따옴표 없는 글자는 변수 이름으로 해석돼요. 문자열이면 따옴표로 감싸세요)"};
+ }
+ function draw(){
+  const r=parse($('#tv').value),o=$('#tout');
+  if(r.err){o.className='out err';o.textContent=r.err;$('#tbool').innerHTML='';return}
+  o.className='out';o.textContent=`>>> type(${r.disp})\n<class '${r.t}'>\n>>> bool(${r.disp})\n${r.zero?'False':'True'}`;
+  const why=r.t==='str'?(r.zero?"빈 문자열 ''는 False":"비어 있지 않은 문자열은 True"):r.t==='bool'?'불 값 그대로':(r.zero?'0은 False':'0이 아닌 수는 True');
+  $('#tbool').innerHTML=`<div class="vars"><div class="var"><div class="nm">자료형</div><div class="vl">${r.t}</div></div><div class="var"><div class="nm">bool()</div><div class="vl" style="color:${r.zero?'#c92a2a':'#2b8a3e'}">${r.zero?'False':'True'}</div></div></div><div class="small" style="margin-top:6px">${why}</div>`;
+ }
+ const ex=['123','-10','0','0.0','3.14',"'안녕하세요!'","'123'","''","'0'",'True','False'];
+ $('#tchips').innerHTML=ex.map(e=>`<button class="btn ghost sm" data-e="${esc(e)}">${esc(e)}</button>`).join('');
+ $$('#tchips button').forEach(b=>b.onclick=()=>{$('#tv').value=b.dataset.e;draw()});
+ $('#tv').oninput=draw;draw();
+})();
+
+/* ---------- 2. 변수 상자 ---------- */
+(function(){
+ let cur=null;
+ const pr=window.__p;
+ function parse(s){s=s.trim();if(/^[+-]?\d+$/.test(s))return['int',s];if(/^[+-]?(\d+\.\d*|\.\d+)$/.test(s))return['float',s];if(s==='True'||s==='False')return['bool',s];const m=s.match(/^('|")([\s\S]*)\1$/);if(m)return['str',s];return null}
+ function draw(){$('#vbox').innerHTML=`<div class="var" id="vb"><div class="nm">var</div><div class="vl">${cur?esc(cur[1]):'?'}</div><div class="ty">${cur?cur[0]:'아직 값 없음'}</div></div>`}
+ function go(){const r=parse($('#vv').value);const m=$('#vmsg');
+  if(!r){m.className='msg bad';m.textContent="NameError: 문자열은 따옴표로 감싸야 해요. 예) '정보'";return}
+  const old=cur;cur=r;draw();$('#vb').classList.add('flash');m.className='msg ok';m.textContent=old?`var 에 ${r[1]} 저장 — 이전 값(${old[1]}, ${old[0]})은 사라지고 자료형이 ${old[0]} → ${r[0]} 로 바뀌었어요.`:`var 에 ${r[1]} 저장 → 자료형 ${r[0]}`}
+ $('#vgo').onclick=go;$$('[data-v]').forEach(b=>b.onclick=()=>{$('#vv').value=b.dataset.v;go()});
+ const KW=['False','None','True','and','as','assert','break','class','continue','def','del','elif','else','except','finally','for','from','global','if','import','in','is','lambda','nonlocal','not','or','pass','raise','return','try','while','with','yield'];
+ function nm(){const s=$('#nm').value,r=$('#nmr');let bad=null;
+  if(!s)bad='이름이 비어 있어요';else if(/^\d/.test(s))bad='숫자로 시작할 수 없어요';else if(/\s/.test(s))bad='공백을 쓸 수 없어요';else if(!/^[A-Za-z0-9_가-힣]+$/.test(s))bad='특수 문자를 쓸 수 없어요 (+, -, * 등)';else if(KW.includes(s))bad='예약어(키워드)는 쓸 수 없어요';
+  r.innerHTML=bad?`<span class="pill bad">사용 불가</span> ${bad}`:`<span class="pill ok">사용 가능</span>`}
+ $('#nm').oninput=nm;nm();draw();
+})();
+
+/* ---------- 3. 연산자 ---------- */
+(function(){
+ const fl=(a,b)=>Math.floor(a/b);
+ function fmt(x){if(Number.isInteger(x)&&!fmt.f)return String(x);return String(x)}
+ function draw(){
+  const a=+$('#n1').value,b=+$('#n2').value;const ints=Number.isInteger(a)&&Number.isInteger(b);
+  const rows=[['+',a+b],['-',a-b],['*',a*b],['/',b===0?'ZeroDivisionError':(ints&&(a/b)%1===0?(a/b).toFixed(1):a/b)],['//',b===0?'ZeroDivisionError':fl(a,b)],['%',b===0?'ZeroDivisionError':a-b*fl(a,b)],['**',Math.pow(a,b)]];
+  $('#arith').innerHTML='<tr><th>산술</th><th class="l">num1 연산자 num2</th><th>결과</th></tr>'+rows.map(r=>`<tr><td class="mono">${r[0]}</td><td class="l mono">${a} ${r[0]} ${b}</td><td class="mono"><b>${r[1]}</b></td></tr>`).join('');
+  const cr=[['>',a>b],['>=',a>=b],['<',a<b],['<=',a<=b],['==',a===b],['!=',a!==b]];
+  $('#cmpt').innerHTML='<tr><th>비교</th><th class="l">식</th><th>결과(bool)</th></tr>'+cr.map(r=>`<tr><td class="mono">${r[0]}</td><td class="l mono">${a} ${r[0]} ${b}</td><td class="mono" style="color:${r[1]?'#2b8a3e':'#c92a2a'}"><b>${r[1]?'True':'False'}</b></td></tr>`).join('');
+  const x=$('#la').value==='True',y=$('#lb').value==='True',P=v=>v?'True':'False';
+  $('#logt').innerHTML=`<tr><th>a</th><th>b</th><th>a and b</th><th>a or b</th><th>not a</th></tr><tr><td>${P(x)}</td><td>${P(y)}</td><td><b>${P(x&&y)}</b></td><td><b>${P(x||y)}</b></td><td><b>${P(!x)}</b></td></tr>`;
+  const n=+$('#mn').value,p=+$('#mx').value,q=+$('#my').value;const m=$('#mres');
+  if(!p||!q){m.className='msg bad';m.textContent='x, y 는 0이 아니어야 해요.';return}
+  const A=n%p===0,B=n%q===0;m.className='msg';m.innerHTML=`${n} % ${p} == 0 → <b>${P(A)}</b> &nbsp; ${n} % ${q} == 0 → <b>${P(B)}</b> &nbsp; 두 식을 <b>and</b>로 연결 → <b style="color:${A&&B?'#2b8a3e':'#c92a2a'}">${P(A&&B)}</b> ${A&&B?` (${p}와 ${q}의 공배수)`:''}`;
+ }
+ ['n1','n2','mn','mx','my'].forEach(i=>$('#'+i).oninput=draw);['la','lb'].forEach(i=>$('#'+i).onchange=draw);draw();
+})();
+
+/* ---------- 4. 자료형 선택 ---------- */
+$('#cchk').onclick=()=>{const ans={cr:'int',cp:'float',ca:'float'};let ok=0,miss=0;for(const k in ans){const v=$('#'+k).value;if(!v)miss++;else if(v===ans[k])ok++}
+ const m=$('#cmsg');if(miss){m.className='msg';m.textContent='모두 선택해 주세요.';return}
+ m.className='msg '+(ok===3?'ok':'bad');m.textContent=ok===3?'🎉 정답! r=3 은 int, pi=3.14 는 float, area = r*r*pi 는 정수×실수라 float(28.26)예요.':`${ok}/3 정답. 소수점이 있는 값과, 실수와 정수를 섞어 계산한 결과는 float 예요.`};
+
+/* ---------- 5. 파이썬 ---------- */
+PyRunner.mount($('#py1'),{title:'자료형과 연산자',page:'91~97',code:`print(type(123))
+print(type(3.14))
+print(type('안녕하세요!'))
+print(type(True))
+print(bool(''), bool(3), bool('Hello'))
+print('안녕' + '하세요')
+print('파이썬' * 3)
+num1, num2 = 10, 3
+print(num1 + num2, num1 / num2, num1 // num2, num1 % num2, num1 ** num2)
+print(type(10/2))`});
+PyRunner.mount($('#py2'),{title:'원의 넓이 구하기 (해 보기 3)',page:'96',code:`pi = 3.14
+r = 3
+area = r * r * pi
+print('원의 넓이:', area)
+print(type(area))`});
+</script></body></html>

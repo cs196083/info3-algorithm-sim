@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2. 문제 분해와 모델링 – 정보 3단원</title><link rel="stylesheet" href="../css/style.css"></head>
+<body data-unit="2"><div id="app">
+
+<section id="learn" data-tab="📖 교과서 정리">
+ <div class="card"><h2>학습 목표</h2>
+  <ul><li>복잡한 문제를 해결 가능한 작은 단위의 문제로 분해할 수 있다.</li><li>문제를 분석하고 분해한 결과를 바탕으로 모델링할 수 있다.</li></ul>
+  <p class="small">학습 요소: 문제 분해, 모델링</p></div>
+
+ <div class="card"><h2>1. 문제 분해 <span class="pg">83쪽</span></h2>
+  <div class="def"><b>문제 분해</b> = 한 번에 해결하기 어려운 복잡한 문제를 <b>작은 단위의 단순한 문제</b>로 나누는 것<br>예) 가족 여행 계획 → 여행지 결정 + 교통수단 확인 + 숙소 예약 + 식당 검색</div>
+  <table><tr><th>분해 방법</th><th class="l">설명</th><th class="l">퍼즐 예</th></tr>
+   <tr><td>방법 ❶ 기능·자료 기준</td><td class="l">유사한 기능이나 자료를 기준으로 나눈 뒤 <b>기능별로 순차 처리</b></td><td class="l">하늘·나무·꽃 등 요소별로 맞추기</td></tr>
+   <tr><td>방법 ❷ 동일 구조</td><td class="l"><b>동일한 형태의 작은 문제</b>로 나누어 반복적으로 해결</td><td class="l">그림을 A, B 두 영역으로 나눠 맞추기</td></tr></table>
+  <div class="note">분해할 때 주의: ① 작은 문제 사이의 <b>순서·포함 관계</b>에 유의 ② 작은 문제를 모두 수행했을 때 <b>전체 문제가 오류 없이 해결</b>되었는지 확인</div></div>
+
+ <div class="card"><h2>2. 약속 장소 문제의 분해 <span class="pg">84쪽</span></h2>
+  <p>세 학생의 이동 거리 총합이 최소가 되는 약속 장소 찾기 →</p>
+  <div class="grid2"><div><b>분해 방법 ➊ 학생별</b><ul><li>한국이의 모든 좌표 이동 거리</li><li>친구1의 모든 좌표 이동 거리</li><li>친구2의 모든 좌표 이동 거리</li><li>세 학생 거리의 총합</li></ul></div>
+  <div><b>분해 방법 ➋ 구조가 같은 문제</b><ul><li>가로 방향에서 이동 거리 합이 최소인 지점</li><li>세로 방향에서 이동 거리 합이 최소인 지점</li><li>두 지점이 만나는 위치 구하기</li></ul></div></div>
+  <div class="tip"><b>맨해튼 거리</b> : 두 점 A(x1,y1), B(x2,y2) 사이 거리 = |x2−x1| + |y2−y1| (바둑판 모양 도로에서 실제로 이동해야 하는 거리)</div></div>
+
+ <div class="card"><h2>3. 모델링 <span class="pg">85~87쪽</span></h2>
+  <div class="def"><b>모델링</b> = 글, 그림, 그래프, 표 등으로 작은 문제 사이의 관계를 <b>구조화</b>하여 복잡한 문제를 이해하기 쉬운 형태로 나타내는 것</div>
+  <ul><li>모델은 복잡한 문제가 <b>어떤 작은 문제로 구성</b>되어 있는지, <b>어떤 관계</b>가 있는지를 보여 줘요.</li><li>정보의 구조화(분류·체계적 표현)도 모델링의 한 방법이에요.</li><li>약속 장소 문제 : <b>표 기반 모델링</b>(가로·세로 방향 거리와 총합 표) / <b>이미지 기반 모델링</b>(그림으로 거리 표현) → 답: <b>(ㄴ, D)</b></li></ul>
+  <h3>핵심 정리</h3><ol><li>문제 분해 = 복잡한 문제를 작은 단위의 단순한 문제로 나누기</li><li>유사 기능·자료 기준 순차 처리, 또는 동일 형태로 분해해 반복 해결</li><li>모델링 = 글·그림·그래프·표로 관계를 구조화</li></ol></div>
+
+ <div class="card"><h2>4. 쾨니히스베르크의 다리 건너기 <span class="pg">89쪽</span></h2>
+  <p>오일러(1735)는 복잡한 지형·길·다리를 <b>점과 선</b>으로 단순화(모델링)해서 문제를 풀었고, 이것이 <b>그래프 구조</b>의 원형이 되었어요.</p>
+  <ul><li><b>정점</b>: 섬과 도시(A~D) / <b>간선</b>: 다리(a~g)</li><li>펜을 떼지 않고 모든 간선을 한 번씩만 지나 <b>처음 정점으로 돌아오려면</b> 각 정점에 연결된 간선의 수가 <b>모두 짝수</b>여야 해요 → 쾨니히스베르크는 불가능!</li></ul></div>
+</section>
+
+<section id="sim" data-tab="🧪 시뮬레이션">
+ <div class="card"><div class="sim-title"><span class="n">1</span><h2 style="margin:0">버스 배차 문제 – 작은 문제로 나누어 풀기 <span class="pg">84·87쪽</span></h2></div>
+  <p class="goal">🎯 A, B, C 버스가 동시에 출발한 뒤 <b>처음으로 다시 동시에 출발</b>하는 시각은? 버스별 출발 시각을 따로 구한 뒤(분해) 겹치는 시각을 찾아요.</p>
+  <div class="row"><label class="f">A <input type="number" id="ba" value="8" min="2" max="15"> 분</label><label class="f">B <input type="number" id="bb" value="9" min="2" max="15"> 분</label><label class="f">C <input type="number" id="bc" value="12" min="2" max="15"> 분</label>
+   <button class="btn ghost sm" id="bjump">처음 동시 출발 시각으로 이동</button></div>
+  <div class="row"><label class="f" style="flex:1">시간 t = <b id="bt">0</b>분 <input type="range" id="bs" min="0" max="72" value="0" style="flex:1;min-width:200px"></label></div>
+  <svg id="bsvg" viewBox="0 0 900 170" style="width:100%;background:#fafbff;border:1px solid var(--line);border-radius:10px"></svg>
+  <div class="msg" id="bmsg"></div>
+  <table id="btab"></table></div>
+
+ <div class="card"><div class="sim-title"><span class="n">2</span><h2 style="margin:0">약속 장소 정하기 – 표·그림 모델링 <span class="pg">84~87쪽</span></h2></div>
+  <p class="goal">🎯 칸을 눌러 약속 장소를 정하고 이동 거리(맨해튼 거리)의 합을 확인해요. <b>가로·세로를 따로 분해</b>하면 최소 지점이 쉽게 보여요.</p>
+  <div class="row" id="gsel"></div>
+  <div class="grid2"><div><div id="gmap" class="grid"></div>
+   <div class="row"><label class="f"><input type="checkbox" id="gheat"> 칸마다 총 이동 거리 보기(히트맵)</label></div>
+   <div class="legend"><span>● 한국이</span><span>■ 친구1</span><span>▲ 친구2</span><span><i style="background:#fff;border:2px solid #2f9e44"></i>총합 최소 지점</span></div></div>
+   <div><div id="ginfo"></div>
+   <button class="btn ghost sm" id="gdec">분해 방법 ➋ 표 보기</button><div id="gdect"></div></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">3</span><h2 style="margin:0">쾨니히스베르크의 다리 – 그래프로 모델링 <span class="pg">85·89쪽</span></h2></div>
+  <p class="goal">🎯 <b>다리(간선)를 눌러</b> 없애거나 다시 놓아 보세요. 모든 정점의 연결 수가 짝수가 되면 한붓그리기로 처음 위치에 돌아올 수 있어요.</p>
+  <div class="grid2"><svg id="ksvg" viewBox="0 0 600 310" style="width:100%;background:#fafbff;border:1px solid var(--line);border-radius:10px"></svg>
+   <div><table id="ktab"></table><div class="msg" id="kmsg"></div><button class="btn ghost sm" id="kreset">↺ 다리 7개 모두 놓기</button></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">4</span><h2 style="margin:0">계단 오르는 방법의 수 – 분해와 모델링 <span class="pg">88쪽</span></h2></div>
+  <p class="goal">🎯 한 번에 1계단 또는 2계단씩 오를 때 n개의 계단을 오르는 방법은 몇 가지일까요? <b>마지막 걸음</b>으로 문제를 분해해 보세요.</p>
+  <div class="row"><label class="f" style="flex:1">계단 수 n = <b id="stn">5</b> <input type="range" id="sts" min="1" max="10" value="5" style="min-width:200px"></label></div>
+  <div class="grid2"><div id="stp"></div><div id="stl"></div></div></div>
+</section>
+</div>
+<script src="../js/common.js"></script>
+<script>
+window.GOAL='복잡한 문제를 작은 문제로 분해하고, 표·그림·그래프로 모델링하는 방법을 시뮬레이션으로 익힙니다.';
+window.CHECKS=['문제 분해와 모델링을 적용하는 방법을 설명할 수 있다. [지식·이해]','복잡한 문제를 해결 가능한 작은 단위의 문제로 분해할 수 있다. [과정·기능]','분해한 결과를 글·그림·그래프·표로 구조화해 모델링할 수 있다.','작은 문제를 모두 수행했을 때 원래 문제가 올바르게 해결되는지 확인할 수 있다.','문제 해결 모델을 구성하고 적극적으로 표현하려는 자세를 가진다. [가치·태도]'];
+window.LEVELS=['문제 분해·모델링 방법을 설명하고, 문제를 효율적으로 분해하며 컴퓨팅 시스템에서 처리 가능한 구조화된 형태로 적합하게 모델링한다.','분해·모델링 방법을 설명하고 작은 문제로 분해하여 구조화된 형태로 모델링한다.','분해·모델링의 원리를 설명하고 작은 문제로 분해하여 모델링한다.','원리를 설명하고 문제를 일부 분해하거나 부분적으로 모델링한다.','분해와 모델링의 개념을 인지하고 일부를 해 볼 수 있다.'];
+window.QUIZ=[
+ {q:'복잡한 문제를 해결 가능한 작은 단위의 문제로 나누는 것은?',c:['추상화','문제 분해','자동화','디버깅'],a:1,e:'문제 분해: 한 번에 해결하기 어려운 문제를 작고 단순한 문제로 나누는 것이에요.',pg:'83'},
+ {q:'모델링에 대한 설명으로 옳지 않은 것은?',c:['글, 그림, 그래프, 표를 사용할 수 있다','작은 문제 사이의 관계를 구조화한다','복잡한 문제를 이해하기 쉬운 형태로 나타낸다','반드시 프로그래밍 언어로만 표현해야 한다'],a:3,e:'모델링은 글·그림·그래프·표 등으로 표현해요. 프로그래밍 언어로만 해야 하는 것은 아니에요.',pg:'85'},
+ {q:'퍼즐을 “하늘, 나무, 꽃” 같은 요소별로 나누어 차례로 맞추는 것은 어떤 분해인가?',c:['유사한 기능·자료를 기준으로 분해해 순차 처리','동일한 형태의 작은 문제로 분해해 반복 해결','분해하지 않고 한 번에 해결','무작위로 해결'],a:0,e:'요소별(유사 기능·자료) 분해는 방법 ❶, A·B 영역처럼 같은 형태로 나누는 것은 방법 ❷예요.',pg:'83'},
+ {q:'배차 간격이 8분, 9분, 12분인 세 버스가 동시에 출발한 뒤, 처음으로 다시 동시에 출발하는 것은 몇 분 후일까? (숫자만)',type:'fill',a:['72'],e:'8, 9, 12의 최소공배수는 72예요. 각 버스의 출발 시각을 따로 구한 뒤(분해) 처음 겹치는 시각을 찾으면 돼요.',pg:'84'},
+ {q:'맨해튼 거리로 두 점 A(1, 2), B(4, 6) 사이의 거리는?',c:['5','7','12','3'],a:1,e:'|4−1| + |6−2| = 3 + 4 = 7 이에요. 대각선이 아니라 가로+세로 합이에요.',pg:'84'},
+ {q:'오일러의 증명에서, 한 정점에서 출발해 모든 간선을 한 번씩만 지나 출발점으로 돌아오려면 필요한 조건은?',c:['모든 정점에 연결된 간선 수가 짝수','모든 정점에 연결된 간선 수가 홀수','정점이 4개 이하','간선이 7개 이하'],a:0,e:'쾨니히스베르크는 A=5, B=C=D=3으로 모두 홀수 → 불가능해요.',pg:'89'},
+ {q:'한 번에 1계단 또는 2계단씩 오를 수 있을 때, 5개의 계단을 오르는 방법은 모두 몇 가지일까? (숫자만)',type:'fill',a:['8'],e:'f(n) = f(n−1) + f(n−2): 1,2,3,5,8 → f(5)=8. 마지막 걸음이 1계단인 경우와 2계단인 경우로 분해한 거예요.',pg:'88'}
+];
+
+/* ---------- 1. 버스 ---------- */
+(function(){
+ const gcd=(a,b)=>b?gcd(b,a%b):a,lcm=(a,b)=>a/gcd(a,b)*b;
+ const cols=['#4c6ef5','#e8590c','#2f9e44'],nm=['A','B','C'];
+ function iv(){return ['ba','bb','bc'].map(i=>Math.max(2,Math.min(15,Math.floor(+$('#'+i).value)||2)))}
+ function draw(){
+  const v=iv(),L=lcm(lcm(v[0],v[1]),v[2]),sl=$('#bs');
+  sl.max=L;if(+sl.value>L)sl.value=L;
+  const t=+sl.value;$('#bt').textContent=t;
+  const W=860,x=m=>20+W*m/L;
+  let s='';
+  v.forEach((d,k)=>{const y=34+k*44;s+=`<text x="4" y="${y-10}" font-size="14" font-weight="800" fill="${cols[k]}">${nm[k]} (${d}분 간격)</text><line x1="20" y1="${y+8}" x2="880" y2="${y+8}" stroke="#ccd" />`;
+   for(let m=0;m<=L;m+=d){const common=m%v[0]===0&&m%v[1]===0&&m%v[2]===0;s+=`<circle cx="${x(m)}" cy="${y+8}" r="${common?7:4}" fill="${common?'#d6336c':cols[k]}"/>`}});
+  s+=`<line x1="${x(t)}" y1="12" x2="${x(t)}" y2="158" stroke="#222" stroke-width="2" stroke-dasharray="4 3"/><text x="${Math.min(x(t)+4,820)}" y="162" font-size="12" font-weight="700">t=${t}</text>`;
+  $('#bsvg').innerHTML=s;
+  const dep=v.map(d=>t%d===0);
+  const msg=$('#bmsg');
+  if(t>0&&dep.every(Boolean)){msg.className='msg ok';msg.textContent=`🚌 t=${t}분: A·B·C 세 대가 동시에 출발! (처음으로 다시 만나는 시각 = 최소공배수 ${L})`}
+  else{msg.className='msg';msg.textContent=`t=${t}분에 출발하는 버스: ${dep.map((x,i)=>x?nm[i]:null).filter(Boolean).join(', ')||'없음'}`}
+  const list=d=>{const a=[];for(let m=d;m<=L;m+=d){a.push(m)}return a.length>14?a.slice(0,13).join(', ')+' … '+a[a.length-1]:a.join(', ')};
+  $('#btab').innerHTML=`<tr><th>작은 문제</th><th class="l">결과</th></tr>`+v.map((d,k)=>`<tr><td>${nm[k]}의 출발 시각</td><td class="l">${list(d)}</td></tr>`).join('')+`<tr><td><b>세 목록의 공통 시각</b></td><td class="l"><b>${L}분</b> (모델: ${v.join('·')}의 최소공배수)</td></tr>`;
+  draw.L=L;
+ }
+ ['ba','bb','bc'].forEach(i=>$('#'+i).onchange=()=>{$('#bs').value=0;draw()});
+ $('#bs').oninput=draw;$('#bjump').onclick=()=>{$('#bs').value=draw.L;draw()};draw();
+})();
+
+/* ---------- 2. 약속 장소 ---------- */
+(function(){
+ const C=['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ'],R=['A','B','C','D','E','F','G'];
+ const ag=[{n:'한국이',s:'●',c:0,r:0},{n:'친구1',s:'■',c:1,r:6},{n:'친구2',s:'▲',c:5,r:3}];
+ let sel=null;
+ $('#gsel').innerHTML=ag.map((a,i)=>`<span class="pill info">${a.s} ${a.n}</span><select data-i="${i}" data-k="c">${C.map((c,j)=>`<option value="${j}" ${j===a.c?'selected':''}>${c}</option>`).join('')}</select><select data-i="${i}" data-k="r">${R.map((c,j)=>`<option value="${j}" ${j===a.r?'selected':''}>${c}</option>`).join('')}</select>`).join('');
+ $$('#gsel select').forEach(s=>s.onchange=()=>{ag[+s.dataset.i][s.dataset.k]=+s.value;draw()});
+ const tot=(c,r)=>ag.reduce((t,a)=>t+Math.abs(a.c-c)+Math.abs(a.r-r),0);
+ function draw(){
+  const heat=$('#gheat').checked;
+  const H=C.map((_,c)=>ag.reduce((t,a)=>t+Math.abs(a.c-c),0)),V=R.map((_,r)=>ag.reduce((t,a)=>t+Math.abs(a.r-r),0));
+  const mH=Math.min(...H),mV=Math.min(...V);
+  const g=$('#gmap');g.style.gridTemplateColumns=`repeat(8,40px)`;
+  let h='<div class="g hd"></div>'+C.map(c=>`<div class="g hd">${c}</div>`).join('');
+  R.forEach((rn,r)=>{h+=`<div class="g hd">${rn}</div>`;C.forEach((cn,c)=>{
+    const here=ag.filter(a=>a.c===c&&a.r===r).map(a=>a.s).join('');const best=H[c]===mH&&V[r]===mV;
+    const isSel=sel&&sel[0]===c&&sel[1]===r;
+    let st='';if(heat){const t=tot(c,r),mx=(C.length-1)*3+(R.length-1)*3;const k=Math.min(1,t/ (mH+mV+8));st=`background:hsl(${120-110*k},70%,${88-18*k}%)`}
+    h+=`<div class="g ${here?'p':''} ${isSel?'sel':''} ${best?'best':''}" style="${here?'':st}" data-c="${c}" data-r="${r}">${here||(heat?tot(c,r):'')}</div>`})});
+  g.innerHTML=h;
+  $$('#gmap .g[data-c]').forEach(e=>e.onclick=()=>{sel=[+e.dataset.c,+e.dataset.r];draw()});
+  let info='<div class="note" style="margin-top:0">칸을 눌러 약속 장소를 정해 보세요.</div>';
+  if(sel){const rows=ag.map(a=>{const dc=Math.abs(a.c-sel[0]),dr=Math.abs(a.r-sel[1]);return `<tr><td>${a.s} ${a.n}</td><td>${dc}</td><td>${dr}</td><td><b>${dc+dr}</b></td></tr>`}).join('');
+   const t=tot(sel[0],sel[1]);info=`<b>약속 장소 (${C[sel[0]]}, ${R[sel[1]]})</b><table><tr><th></th><th>가로</th><th>세로</th><th>거리</th></tr>${rows}<tr><td colspan="3"><b>총 이동 거리</b></td><td><b>${t}</b></td></tr></table><div class="msg ${t===mH+mV?'ok':''}">${t===mH+mV?'🎉 총합이 최소인 장소예요!':`최소는 ${mH+mV}예요. 더 줄일 수 있는 칸을 찾아보세요.`}</div>`}
+  $('#ginfo').innerHTML=info;
+  if($('#gdect').dataset.on){$('#gdect').innerHTML=`<b>가로 방향</b>(열별 이동 거리 총합)<table><tr><th></th>${C.map(c=>`<th>${c}</th>`).join('')}</tr><tr><td>총합</td>${H.map(v=>`<td ${v===mH?'style="background:#d3f9d8;font-weight:800"':''}>${v}</td>`).join('')}</tr></table><b>세로 방향</b>(행별 이동 거리 총합)<table><tr><th></th>${R.map(c=>`<th>${c}</th>`).join('')}</tr><tr><td>총합</td>${V.map(v=>`<td ${v===mV?'style="background:#d3f9d8;font-weight:800"':''}>${v}</td>`).join('')}</tr></table><div class="tip">가로 최소 ${mH} + 세로 최소 ${mV} = <b>${mH+mV}</b> → 두 최소 지점이 만나는 칸이 약속 장소! (초록 테두리)</div>`}
+ }
+ $('#gheat').onchange=draw;$('#gdec').onclick=()=>{$('#gdect').dataset.on=$('#gdect').dataset.on?'':'1';if(!$('#gdect').dataset.on)$('#gdect').innerHTML='';draw()};
+ draw();
+})();
+
+/* ---------- 3. 쾨니히스베르크 ---------- */
+(function(){
+ const P={A:[300,45],B:[90,165],C:[510,165],D:[300,275]};
+ const E=[['a','A','B',-1],['b','A','B',1],['c','A','C',1],['d','A','C',-1],['e','A','D',0],['f','B','D',0],['g','C','D',0]];
+ let on=Object.fromEntries(E.map(e=>[e[0],true]));
+ function path(e){const [,u,v,c]=e,[x1,y1]=P[u],[x2,y2]=P[v];if(!c)return `M${x1},${y1} L${x2},${y2}`;const mx=(x1+x2)/2,my=(y1+y2)/2,dx=x2-x1,dy=y2-y1,l=Math.hypot(dx,dy),nx=-dy/l,ny=dx/l;return `M${x1},${y1} Q${mx+nx*40*c},${my+ny*40*c} ${x2},${y2}`}
+ function draw(){
+  let s='';
+  E.forEach(e=>{const p=path(e);s+=`<path d="${p}" fill="none" stroke="${on[e[0]]?'#5c7cfa':'#ced4da'}" stroke-width="${on[e[0]]?5:3}" ${on[e[0]]?'':'stroke-dasharray="6 6"'} style="cursor:pointer" data-e="${e[0]}"/><path d="${p}" fill="none" stroke="transparent" stroke-width="22" style="cursor:pointer" data-e="${e[0]}"/>`;
+   const pts=p.match(/-?[\d.]+/g).map(Number);let lx,ly;if(e[3]){lx=pts[2]*.5+(pts[0]+pts[4])*.25;ly=pts[3]*.5+(pts[1]+pts[5])*.25}else{lx=(pts[0]+pts[2])/2;ly=(pts[1]+pts[3])/2}
+   s+=`<text x="${lx}" y="${ly-6}" font-size="15" font-weight="800" fill="#862e9c" text-anchor="middle">${e[0]}</text>`});
+  const deg={A:0,B:0,C:0,D:0};E.forEach(e=>{if(on[e[0]]){deg[e[1]]++;deg[e[2]]++}});
+  Object.keys(P).forEach(k=>{const ev=deg[k]%2===0;s+=`<circle cx="${P[k][0]}" cy="${P[k][1]}" r="22" fill="${ev?'#d3f9d8':'#ffe3e3'}" stroke="${ev?'#2f9e44':'#c92a2a'}" stroke-width="3"/><text x="${P[k][0]}" y="${P[k][1]+6}" text-anchor="middle" font-size="18" font-weight="800">${k}</text>`});
+  $('#ksvg').innerHTML=s;
+  $$('#ksvg [data-e]').forEach(p=>p.onclick=()=>{on[p.dataset.e]=!on[p.dataset.e];draw()});
+  const ks=Object.keys(P);
+  $('#ktab').innerHTML=`<tr><th>지점</th>${ks.map(k=>`<th>${k}</th>`).join('')}</tr>`+ks.map(a=>`<tr><th>${a}</th>${ks.map(b=>{let n=0;E.forEach(e=>{if(on[e[0]]&&((e[1]===a&&e[2]===b)||(e[1]===b&&e[2]===a)))n++});return `<td>${a===b?0:n}</td>`}).join('')}</tr>`).join('')+`<tr><th>연결 수</th>${ks.map(k=>`<td style="font-weight:800;color:${deg[k]%2?'#c92a2a':'#2f9e44'}">${deg[k]}</td>`).join('')}</tr>`;
+  const odd=ks.filter(k=>deg[k]%2),act=ks.filter(k=>deg[k]>0);
+  let conn=true;if(act.length){const seen=new Set([act[0]]),q=[act[0]];while(q.length){const u=q.pop();E.forEach(e=>{if(!on[e[0]])return;const w=e[1]===u?e[2]:e[2]===u?e[1]:null;if(w&&!seen.has(w)){seen.add(w);q.push(w)}})}conn=act.every(k=>seen.has(k))}
+  const m=$('#kmsg');
+  if(!act.length){m.className='msg';m.textContent='다리가 하나도 없어요.'}
+  else if(!odd.length&&conn){m.className='msg ok';m.textContent='✅ 모든 정점의 연결 수가 짝수 → 모든 다리를 한 번씩만 건너 처음 위치로 돌아올 수 있어요!'}
+  else{m.className='msg bad';m.textContent=odd.length?`❌ 연결 수가 홀수인 지점: ${odd.join(', ')} → 한 번씩만 건너 처음으로 돌아올 수 없어요.`:'❌ 다리로 이어지지 않은 부분이 있어요.'}
+ }
+ $('#kreset').onclick=()=>{E.forEach(e=>on[e[0]]=true);draw()};draw();
+})();
+
+/* ---------- 4. 계단 ---------- */
+(function(){
+ function ways(n){if(n===0)return[[]];if(n<0)return[];return [...ways(n-1).map(w=>[1,...w]),...ways(n-2).map(w=>[2,...w])]}
+ const f=[1,1];for(let i=2;i<=12;i++)f[i]=f[i-1]+f[i-2];
+ function draw(){
+  const n=+$('#sts').value;$('#stn').textContent=n;
+  $('#stp').innerHTML=`<table><tr><th>계단 수 k</th>${Array.from({length:n},(_,i)=>`<th>${i+1}</th>`).join('')}</tr><tr><td>방법의 수 f(k)</td>${Array.from({length:n},(_,i)=>`<td ${i+1===n?'style="background:#d3f9d8;font-weight:800"':''}>${f[i+1]}</td>`).join('')}</tr></table>
+  <div class="tip"><b>분해</b>: n계단을 오르는 마지막 걸음은<br>① 1계단 → 그 전까지 (n−1)계단을 오르는 방법 f(${n-1>=0?n-1:0})<br>② 2계단 → 그 전까지 (n−2)계단을 오르는 방법 f(${n-2>=0?n-2:0})<br><b>모델</b>: f(n) = f(n−1) + f(n−2) ${n>=3?`→ f(${n}) = ${f[n-1]} + ${f[n-2]} = <b>${f[n]}</b>`:`(f(1)=1, f(2)=2)`}</div>`;
+  const all=ways(n);
+  $('#stl').innerHTML=`<b>${all.length}가지</b> 방법 (1=한 계단, 2=두 계단)<div style="max-height:190px;overflow:auto;font-family:Consolas,monospace;font-size:14px;margin-top:6px">${all.map((w,i)=>`<div>${String(i+1).padStart(2,' ')}. ${w.join(' + ')}</div>`).join('')}</div>`;
+ }
+ f[2]=2;for(let i=3;i<=12;i++)f[i]=f[i-1]+f[i-2];
+ $('#sts').oninput=draw;draw();
+})();
+</script></body></html>

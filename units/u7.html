@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>7. 정렬과 탐색 알고리즘 – 정보 3단원</title><link rel="stylesheet" href="../css/style.css"></head>
+<body data-unit="7"><div id="app">
+
+<section id="learn" data-tab="📖 교과서 정리">
+ <div class="card"><h2>학습 목표</h2>
+  <ul><li>정렬과 탐색의 개념을 이해하고, 실생활의 문제를 해결할 수 있다.</li><li>다양한 정렬과 탐색 알고리즘의 특징과 효율을 비교·분석할 수 있다.</li></ul>
+  <p class="small">학습 요소: 정렬 알고리즘, 탐색 알고리즘</p></div>
+
+ <div class="card"><h2>1. 정렬 알고리즘 <span class="pg">133~137쪽</span></h2>
+  <div class="def"><b>정렬</b> = 여러 데이터를 일정한 기준에 따라 순서대로 나열하는 것 (오름차순 / 내림차순). 데이터가 정렬되어 있으면 원하는 자료를 쉽고 빠르게 찾을 수 있어요.</div>
+  <div class="grid2">
+   <div><h3>선택 정렬</h3><ol><li>정렬되지 않은 데이터 중 <b>첫 번째</b> 위치의 데이터를 기준으로 정한다.</li><li><b>가장 작은</b> 데이터를 찾아 기준 데이터와 <b>위치를 바꾼다</b>.</li><li>자리가 정해진 데이터를 뺀 나머지에 ①~③ 반복.</li></ol>
+    <p class="small">6개 공 : 5+4+3+2+1 = <b>15회</b> 비교. 10개면 45회, 1,000개면 499,500회 → <b>작은 규모</b>에 적합</p></div>
+   <div><h3>퀵 정렬</h3><ol><li><b>첫 번째</b> 데이터를 기준으로 정한다.</li><li>기준보다 작은 데이터는 <b>왼쪽 그룹</b>, 큰 데이터는 <b>오른쪽 그룹</b>으로 나눈다.</li><li>각 그룹의 데이터가 한 개가 될 때까지 ①~③ 반복.</li></ol>
+    <p class="small">6개 공 : 5+1+2 = <b>8회</b> 비교. 가장 빠른 알고리즘 중 하나이나 <b>기준 값 선택</b>에 따라 효율이 달라져요.</p></div></div>
+  <div class="tip">퀵 정렬의 기준이 가장 작은/큰 값이면 그룹이 한쪽으로 치우쳐 비교가 많아지고, <b>중앙값</b>이면 비교가 크게 줄어요. [7,1,2,6,3,5,4] → 첫 번째 기준 21회, 중앙 기준 12회. (내림차순은 가장 큰 값을 선택하는 식으로 바꿔요.)</div>
+  <p class="small">그 밖의 정렬: 버블 정렬, 삽입 정렬, 합병 정렬 등</p></div>
+
+ <div class="card"><h2>2. 탐색 알고리즘 <span class="pg">138~141쪽</span></h2>
+  <div class="def"><b>탐색</b> = 여러 데이터 중에서 원하는 것을 찾아내는 작업</div>
+  <div class="grid2">
+   <div><h3>순차 탐색</h3><ol><li>탐색하려는 데이터와 <b>첫 번째</b> 데이터를 비교</li><li>같으면 종료, 다르면 <b>다음 데이터</b>와 비교</li><li>마지막까지 비교해도 없으면 <b>없다</b>고 판단</li></ol>
+    <p class="small">정렬되지 않은 데이터에도 사용 가능. 데이터가 많으면 비교 횟수가 크게 늘어 <b>데이터가 적을 때</b> 효과적</p></div>
+   <div><h3>이진 탐색</h3><ol><li>탐색 범위의 <b>중간</b> 데이터를 기준으로 정함</li><li>같으면 종료. 찾는 값이 더 작으면 <b>왼쪽</b>, 더 크면 <b>오른쪽</b> 범위로 좁힘</li><li>범위가 없어질 때까지 반복</li></ol>
+    <p class="small"><b>반드시 정렬된 데이터</b>에서만 가능. 범위가 절반씩 줄어 데이터가 많을 때 훨씬 효율적 (1,000개 → 최악 10번)</p></div></div>
+  <div class="note">중간 위치는 (처음 위치 + 마지막 위치) // 2 로 구해요. 정렬되어 있지 않다면 먼저 정렬한 뒤 이진 탐색!</div>
+  <h3>핵심 정리</h3><ol><li>정렬: 선택 정렬, 퀵 정렬 — 규모와 기준 값에 따라 효율이 달라진다.</li><li>탐색: 순차 탐색(적은 데이터), 이진 탐색(많은 데이터, 정렬 필수).</li></ol></div>
+</section>
+
+<section id="sim" data-tab="🧪 시뮬레이션">
+ <div class="card"><div class="sim-title"><span class="n">1</span><h2 style="margin:0">정렬 알고리즘 시각화 – 비교 횟수 세기 <span class="pg">133~137쪽</span></h2></div>
+  <p class="goal">🎯 양팔 저울로 공을 비교하듯, <b>비교할 때마다 카운터가 올라가요</b>. 교과서의 6개 공 예제([3,5,6,2,1,4])에서 선택 정렬 15회, 퀵 정렬 8회가 나오는지 확인해 보세요.</p>
+  <div class="row"><label class="f">데이터(쉼표 구분, 최대 17개) <input type="text" id="sd" value="3,5,6,2,1,4" style="width:260px"></label>
+   <button class="btn ghost sm" id="srand">🎲 무작위 8개</button><button class="btn ghost sm" id="s17">p.137 예제(17개)</button></div>
+  <div class="row"><label class="f">알고리즘 <select id="sa"><option value="sel">선택 정렬</option><option value="quick">퀵 정렬</option></select></label>
+   <label class="f" id="spw">퀵 정렬 기준 <select id="sp"><option value="first">첫 번째 데이터</option><option value="mid">가운데 데이터</option><option value="last">마지막 데이터</option></select></label>
+   <button class="btn" id="sgo">▶ 한 단계</button><button class="btn ghost" id="sauto">⏩ 자동</button><button class="btn ghost" id="send">⏭ 끝까지</button><button class="btn ghost" id="srst">↺</button></div>
+  <div class="bars" id="sbars"></div>
+  <div class="legend" id="sleg"></div>
+  <div class="row"><div class="var"><div class="nm">비교 횟수</div><div class="vl" id="scnt">0</div></div><div class="msg" id="smsg" style="flex:1"></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">2</span><h2 style="margin:0">데이터 특징에 따른 정렬 효율 비교 <span class="pg">136~137쪽</span></h2></div>
+  <p class="goal">🎯 같은 개수라도 데이터가 어떻게 놓여 있느냐에 따라 <b>퀵 정렬의 비교 횟수</b>가 달라져요. 선택 정렬은 어떨까요?</p>
+  <div class="row"><label class="f">데이터 개수 <select id="en"><option>10</option><option>50</option><option>100</option><option selected>500</option><option>1000</option></select></label>
+   <label class="f">데이터 특징 <select id="ek"><option value="rand">랜덤한 데이터</option><option value="few">특정한 몇 개의 값만 존재</option><option value="rev">역순으로 정렬된 데이터</option><option value="near">거의 정렬이 완료된 데이터</option><option value="sorted">이미 정렬된 데이터</option></select></label><button class="btn ghost sm" id="ere">🎲 다시 생성</button></div>
+  <div id="etab"></div><div class="tip" id="enote"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">3</span><h2 style="margin:0">탐색 알고리즘 시각화 – 순차 탐색 vs 이진 탐색 <span class="pg">138~140쪽</span></h2></div>
+  <p class="goal">🎯 교과서 공책 예제(찾는 값 2)와 마트료시카 예제(A~H에서 E)를 해 보세요. 정렬되지 않은 데이터에 이진 탐색을 하면 어떻게 될까요?</p>
+  <div class="row"><label class="f">데이터 <input type="text" id="td" value="4,5,3,2,1" style="width:240px"></label><label class="f">찾을 값 <input type="text" id="tt" value="2" style="width:70px"></label>
+   <button class="btn ghost sm" id="tsort">정렬하기</button><button class="btn ghost sm" id="tm1">공책 예제</button><button class="btn ghost sm" id="tm2">마트료시카 A~H</button></div>
+  <div class="row"><label class="f">알고리즘 <select id="ta"><option value="seq">순차 탐색</option><option value="bin">이진 탐색</option></select></label>
+   <button class="btn" id="tgo">▶ 한 단계</button><button class="btn ghost" id="tauto">⏩ 자동</button><button class="btn ghost" id="trst">↺</button></div>
+  <div class="cells" id="tcells" style="margin:6px 0 24px"></div>
+  <div class="row"><div class="var"><div class="nm">비교 횟수</div><div class="vl" id="tcnt">0</div></div><div class="msg" id="tmsg" style="flex:1"></div></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">4</span><h2 style="margin:0">탐색 효율 – 최악의 경우 비교 횟수 <span class="pg">141쪽</span></h2></div>
+  <p class="goal">🎯 데이터 개수 N 이 커질수록 순차 탐색과 이진 탐색의 차이가 얼마나 벌어지는지 확인해요.</p>
+  <div class="row"><label class="f" style="flex:1">N = <b id="xn">1,000</b> 개 <input type="range" id="xs" min="1" max="9" value="3" style="flex:1;min-width:200px"></label></div>
+  <div id="xtab"></div><div class="tip" id="xhalf"></div></div>
+
+ <div class="card"><div class="sim-title"><span class="n">5</span><h2 style="margin:0">직접 실행해 보기 <span class="pg">137·142쪽</span></h2></div>
+  <div id="py1"></div><div id="py2" style="margin-top:14px"></div></div>
+</section>
+</div>
+<script src="../js/common.js"></script>
+<script>
+window.GOAL='정렬(선택·퀵)과 탐색(순차·이진) 알고리즘의 수행 과정을 눈으로 보고, 비교 횟수로 특징과 효율을 분석합니다.';
+window.CHECKS=['선택 정렬과 퀵 정렬의 원리와 수행 과정을 설명할 수 있다. [지식·이해]','순차 탐색과 이진 탐색의 원리와 수행 과정을 설명할 수 있다. [지식·이해]','정렬 알고리즘의 특징(데이터 규모, 퀵 정렬 기준 값)에 따른 효율을 비교·분석할 수 있다. [과정·기능]','탐색 알고리즘의 특징(정렬 필요 여부, 데이터 양)에 따른 효율을 비교·분석할 수 있다. [과정·기능]','알고리즘 효율의 가치와 영향력을 인식하고 적극적으로 탐구하려는 태도를 가진다. [가치·태도]'];
+window.LEVELS=['정렬·탐색 알고리즘의 원리와 수행 과정을 설명하고, 특징과 효율성을 정확하게 비교·분석하며 알고리즘 효율의 가치를 적극적으로 탐구한다.','원리와 수행 과정을 설명하고 특징과 효율성을 비교·분석하여 효율의 가치를 탐구하는 태도를 인식한다.','수행 과정을 설명하고 특징과 효율성을 비교·분석한다.','수행 과정을 설명하고 특징과 효율성을 부분적으로 비교·분석한다.','수행 과정을 인지하고 특징과 효율성을 부분적으로 비교·분석한다.'];
+window.QUIZ=[
+ {q:'여러 개의 데이터를 일정한 기준에 따라 순서대로 나열하는 것은?',c:['탐색','정렬','추상화','모델링'],a:1,e:'정렬: 기준에 따라 순서대로 나열 (작은 것부터 = 오름차순, 큰 것부터 = 내림차순).',pg:'133'},
+ {q:'선택 정렬(오름차순)의 설명으로 알맞은 것은?',c:['기준 값보다 작은 것은 왼쪽, 큰 것은 오른쪽 그룹으로 나눈다','정렬되지 않은 데이터 중 가장 작은 것을 골라 알맞은 위치로 옮기는 일을 반복한다','데이터를 절반으로 나누어 가운데 값과 비교한다','처음부터 끝까지 하나씩 같은지 비교한다'],a:1,e:'①은 퀵 정렬, ③은 이진 탐색, ④는 순차 탐색 설명이에요.',pg:'133'},
+ {q:'6개의 공을 선택 정렬할 때 양팔 저울(비교)을 모두 몇 번 사용할까? (숫자만)',type:'fill',a:['15'],e:'5 + 4 + 3 + 2 + 1 = 15회. n개이면 n(n−1)/2 회예요.',pg:'134'},
+ {q:'10개의 데이터를 선택 정렬하려면 총 몇 번 비교해야 할까? (숫자만)',type:'fill',a:['45'],e:'9+8+…+1 = 45회 (1,000개면 499,500회).',pg:'136'},
+ {q:'퀵 정렬에서 비교 횟수가 가장 적어 효율이 높아지는 기준 값은?',c:['데이터의 가장 작은 값','데이터의 가장 큰 값','데이터의 중앙값','항상 첫 번째 값'],a:2,e:'중앙값을 기준으로 하면 그룹이 균형 있게 나뉘어 비교가 크게 줄어요.',pg:'136'},
+ {q:'이진 탐색을 사용하기 위한 반드시 필요한 조건은?',c:['데이터가 정렬되어 있어야 한다','데이터가 모두 숫자여야 한다','데이터 개수가 짝수여야 한다','데이터가 10개 이하여야 한다'],a:0,e:'이진 탐색은 정렬된 데이터에서만 수행할 수 있어요. 정렬되지 않았다면 먼저 정렬!',pg:'139'},
+ {q:'정렬된 1,000개의 데이터를 이진 탐색할 때 최악의 경우 비교 횟수는? (숫자만)',type:'fill',a:['10'],e:'1000 → 500 → 250 → 125 → … 범위가 절반씩 줄어 최악에도 10번이에요. (순차 탐색은 최대 1,000번)',pg:'141'},
+ {q:'정렬되지 않은 데이터에서 원하는 값을 찾을 때 그대로 사용할 수 있는 탐색 방법은?',c:['순차 탐색','이진 탐색','둘 다 불가능','이진 탐색만 가능'],a:0,e:'순차 탐색은 정렬 여부와 상관없이 쓸 수 있고, 데이터가 적을 때 효과적이에요.',pg:'141'},
+ {q:'[7, 1, 2, 6, 3, 5, 4] 를 퀵 정렬할 때 비교 횟수를 비교한 것으로 옳은 것은?',c:['첫 번째 기준 12회, 가운데 기준 21회','첫 번째 기준 21회, 가운데 기준 12회','둘 다 21회','둘 다 12회'],a:1,e:'첫 번째 기준 6+5+4+3+2+1 = 21회, 중앙 기준 6+4+1+1 = 12회. 기준 값에 따라 효율이 달라져요.',pg:'136'}
+];
+
+/* ================= 1. 정렬 시각화 ================= */
+(function(){
+ let F=[],k=0,timer=null;
+ function parseData(){
+  const v=$('#sd').value.split(',').map(s=>s.trim()).filter(Boolean).map(Number);
+  if(v.some(isNaN)||v.length<2)return null;return v.slice(0,17);
+ }
+ function buildSel(a){
+  const n=a.length,done=new Set();let cnt=0;
+  const fr=(arr,cls,msg)=>F.push({arr:arr.slice(),cls,cnt,msg});
+  const base=(role)=>{const c=Array(n).fill('');done.forEach(i=>c[i]='done');return c};
+  fr(a,base(),`정렬 전 데이터 ${a.join(', ')}`);
+  for(let i=0;i<n-1;i++){
+    let m=i;let c=base();c[i]='pivot';fr(a,c,`${i+1}번째 회전: 정렬 안 된 데이터의 첫 번째(${a[i]})를 기준으로 정해요.`);
+    for(let j=i+1;j<n;j++){cnt++;c=base();c[i]='pivot';c[m]='min';c[j]='cmp';fr(a,c,`비교 ${cnt}번: ${a[j]} 와 현재 가장 작은 값 ${a[m]} 비교 → ${a[j]<a[m]?a[j]+'이(가) 더 작아요. 최솟값 갱신!':a[m]+'이(가) 계속 가장 작아요.'}`);if(a[j]<a[m])m=j}
+    const x=a[i],y=a[m];[a[i],a[m]]=[a[m],a[i]];done.add(i);c=base();fr(a,c,i===m?`가장 작은 값 ${y}은(는) 이미 제자리예요.`:`기준 ${x} 와 가장 작은 값 ${y} 의 위치를 교환했어요. (${y} 자리 확정)`);
+  }
+  done.add(n-1);fr(a,base(),`✅ 정렬 완료! 총 비교 횟수 ${cnt}회  (n(n−1)/2 = ${n*(n-1)/2})`);
+ }
+ function buildQuick(a,mode){
+  const n=a.length,done=new Set();let cnt=0;const arr=a.slice();
+  const fr=(cls,msg)=>F.push({arr:arr.slice(),cls,cnt,msg});
+  const base=(lo,hi)=>{const c=Array(n).fill('dim');for(let i=lo;i<=hi;i++)c[i]='range';done.forEach(i=>c[i]='done');return c};
+  fr(Array(n).fill('range'),`정렬 전 데이터 ${a.join(', ')}`);
+  function qs(lo,hi){
+    if(lo>hi)return;if(lo===hi){done.add(lo);return}
+    const len=hi-lo+1,pi=mode==='first'?lo:mode==='last'?hi:lo+Math.floor(len/2);
+    const p=arr[pi];let c=base(lo,hi);c[pi]='pivot';fr(c,`범위 [${arr.slice(lo,hi+1).join(', ')}] 에서 기준 ${p} 선택 (${mode==='first'?'첫 번째':mode==='last'?'마지막':'가운데'} 데이터)`);
+    const L=[],R=[];
+    for(let i=lo;i<=hi;i++){if(i===pi)continue;cnt++;const x=arr[i];c=base(lo,hi);c[pi]='pivot';c[i]='cmp';(x<p?L:R).push(x);fr(c,`비교 ${cnt}번: ${x} 와 기준 ${p} → ${x<p?'기준보다 가벼워요 → 왼쪽 그룹':'기준보다 무거워요 → 오른쪽 그룹'}`)}
+    for(let i=0;i<L.length;i++)arr[lo+i]=L[i];arr[lo+L.length]=p;for(let i=0;i<R.length;i++)arr[lo+L.length+1+i]=R[i];
+    done.add(lo+L.length);c=base(lo,hi);fr(c,`기준 ${p} 의 자리가 확정됐어요. 왼쪽 그룹 [${L.join(', ')||'없음'}] / 오른쪽 그룹 [${R.join(', ')||'없음'}]`);
+    qs(lo,lo+L.length-1);qs(lo+L.length+1,hi);
+  }
+  qs(0,n-1);const c=Array(n).fill('done');fr(c,`✅ 정렬 완료! 총 비교 횟수 ${cnt}회`);
+ }
+ function build(){
+  stop();const a=parseData();
+  if(!a){F=[];$('#sbars').innerHTML='';$('#smsg').className='msg bad';$('#smsg').textContent='쉼표로 구분한 숫자를 2개 이상 입력하세요.';return}
+  F=[];$('#spw').style.display=$('#sa').value==='quick'?'':'none';
+  if($('#sa').value==='sel')buildSel(a);else buildQuick(a,$('#sp').value);
+  k=0;draw();
+ }
+ function draw(){
+  const f=F[k],mx=Math.max(...f.arr,1);
+  $('#sbars').innerHTML=f.arr.map((v,i)=>`<div class="bar ${f.cls[i]||''}" style="height:${Math.max(14,100*v/mx)}%">${v}</div>`).join('');
+  const sel=$('#sa').value==='sel';
+  $('#sleg').innerHTML=sel?'<span><i style="background:#e8590c"></i>기준</span><span><i style="background:#d6336c"></i>현재 최솟값</span><span><i style="background:#f59f00"></i>비교 중</span><span><i style="background:#2f9e44"></i>정렬 완료</span>':'<span><i style="background:#e8590c"></i>기준(피벗)</span><span><i style="background:#f59f00"></i>비교 중</span><span><i style="background:#4c6ef5"></i>현재 그룹</span><span><i style="background:#dee2e6"></i>다른 그룹</span><span><i style="background:#2f9e44"></i>자리 확정</span>';
+  $('#scnt').textContent=f.cnt;$('#smsg').className='msg';$('#smsg').textContent=f.msg;
+  $('#sgo').disabled=k>=F.length-1;
+ }
+ function stop(){if(timer){clearInterval(timer);timer=null;$('#sauto').textContent='⏩ 자동'}}
+ $('#sgo').onclick=()=>{if(k<F.length-1){k++;draw()}};
+ $('#sauto').onclick=()=>{if(!F.length)return;if(timer){stop();return}if(k>=F.length-1){k=0;draw()}$('#sauto').textContent='⏸ 멈춤';timer=setInterval(()=>{if(k<F.length-1){k++;draw()}else stop()},450)};
+ $('#send').onclick=()=>{if(!F.length)return;stop();k=F.length-1;draw()};
+ $('#srst').onclick=()=>{stop();k=0;if(F.length)draw()};
+ $('#srand').onclick=()=>{const a=[];while(a.length<8){const v=1+Math.floor(Math.random()*20);if(!a.includes(v))a.push(v)}$('#sd').value=a.join(',');build()};
+ $('#s17').onclick=()=>{$('#sd').value='7,1,10,9,5,6,15,90,95,62,47,32,58,49,11,70,19';$('#sa').value='sel';build()};
+ ['sd','sa','sp'].forEach(i=>$('#'+i).onchange=build);build();
+})();
+
+/* ================= 2. 효율 비교 ================= */
+(function(){
+ function quickCount(a,mode){
+  let cnt=0;const st=[a];
+  while(st.length){const s=st.pop();if(s.length<2)continue;
+   const pi=mode==='first'?0:mode==='last'?s.length-1:Math.floor(s.length/2),p=s[pi];cnt+=s.length-1;
+   const L=[],R=[];for(let i=0;i<s.length;i++){if(i===pi)continue;(s[i]<p?L:R).push(s[i])}st.push(L,R)}
+  return cnt;
+ }
+ let cache=null;
+ function gen(n,kind){
+  const a=[];
+  if(kind==='rand'){for(let i=1;i<=n;i++)a.push(i);for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}}
+  else if(kind==='few'){for(let i=0;i<n;i++)a.push(1+Math.floor(Math.random()*3))}
+  else if(kind==='rev'){for(let i=n;i>=1;i--)a.push(i)}
+  else if(kind==='sorted'){for(let i=1;i<=n;i++)a.push(i)}
+  else{for(let i=1;i<=n;i++)a.push(i);for(let t=0;t<Math.max(1,Math.floor(n/50));t++){const i=Math.floor(Math.random()*(n-1));[a[i],a[i+1]]=[a[i+1],a[i]]}}
+  return a;
+ }
+ function draw(regen){
+  const n=+$('#en').value,kind=$('#ek').value;
+  if(regen||!cache||cache.n!==n||cache.kind!==kind)cache={n,kind,a:gen(n,kind)};
+  const a=cache.a;
+  const rows=[['선택 정렬',n*(n-1)/2],['퀵 정렬 (첫 번째 기준)',quickCount(a,'first')],['퀵 정렬 (가운데 기준)',quickCount(a,'mid')],['퀵 정렬 (마지막 기준)',quickCount(a,'last')]];
+  const mx=Math.max(...rows.map(r=>r[1]));
+  $('#etab').innerHTML='<table><tr><th style="width:190px">알고리즘</th><th>비교 횟수</th><th class="l">그래프</th></tr>'+rows.map((r,i)=>`<tr><td>${r[0]}</td><td><b>${r[1].toLocaleString()}</b></td><td class="l"><div style="background:${i?'#4c6ef5':'#c92a2a'};height:16px;border-radius:4px;width:${Math.max(1,100*r[1]/mx)}%"></div></td></tr>`).join('')+'</table>';
+  const q=rows.slice(1);const best=q.reduce((x,y)=>y[1]<x[1]?y:x);
+  $('#enote').innerHTML=`💡 선택 정렬은 데이터가 어떻게 섞여 있든 항상 n(n−1)/2 = <b>${rows[0][1].toLocaleString()}</b>회. 퀵 정렬은 이 데이터에서 <b>${best[0]}</b>이(가) 가장 적어요. ${(kind==='rev'||kind==='sorted'||kind==='few')?'정렬된/역순/값이 몇 개뿐인 데이터에서 첫·마지막 기준은 그룹이 한쪽으로 치우쳐 비교가 크게 늘어요.':'랜덤 데이터에서는 어느 기준이든 선택 정렬보다 훨씬 적어요.'} (교과서 137쪽의 “시간 측정” 대신 비교 횟수로 비교했어요.)`;
+ }
+ ['en','ek'].forEach(i=>$('#'+i).onchange=()=>draw());$('#ere').onclick=()=>draw(true);draw(true);
+})();
+
+/* ================= 3. 탐색 시각화 ================= */
+(function(){
+ let data=[],F=[],k=0,timer=null;
+ const num=a=>a.every(x=>x!==''&&!isNaN(+x));
+ const cmp=(a,b,isnum)=>isnum?(+a)-(+b):(a<b?-1:a>b?1:0);
+ function parse(){return $('#td').value.split(',').map(s=>s.trim()).filter(Boolean).slice(0,16)}
+ function build(){
+  stop();data=parse();const t=$('#tt').value.trim(),isn=num(data)&&!isNaN(+t)&&t!=='';F=[];
+  if(data.length<1||t===''){$('#tcells').innerHTML='';$('#tmsg').textContent='데이터와 찾을 값을 입력하세요.';return}
+  const algo=$('#ta').value;let cnt=0;
+  const cells=(o)=>data.map((v,i)=>({v,c:o[i]||''}));
+  F.push({cells:cells({}),cnt:0,msg:`'${t}' 을(를) ${algo==='seq'?'순차':'이진'} 탐색합니다.${algo==='bin'?(isSortedArr(data,isn)?' (정렬된 데이터 ✔)':' ⚠ 이 데이터는 정렬되어 있지 않아요! 정렬하기 버튼으로 정렬해 보세요.'):''}`,mid:-1});
+  if(algo==='seq'){
+   let found=-1;
+   for(let i=0;i<data.length;i++){cnt++;const hit=data[i]===t||(isn&&+data[i]===+t);const o={};for(let j=0;j<i;j++)o[j]='dim';o[i]=hit?'found':'cur';
+    F.push({cells:cells(o),cnt,msg:`${cnt}번째 비교: ${i+1}번째 데이터 ${data[i]} 와(과) ${t} 비교 → ${hit?'같아요! 탐색 종료':'달라요. 다음 데이터로'}`,mid:i});if(hit){found=i;break}}
+   F.push({cells:cells(found>=0?{[found]:'found'}:Object.fromEntries(data.map((_,i)=>[i,'dim']))),cnt,msg:found>=0?`✅ ${found+1}번째 위치에서 찾았어요. 비교 ${cnt}회`:`❌ 마지막까지 비교해도 없어요. 비교 ${cnt}회 → 데이터에 없다고 판단`,mid:found});
+  }else{
+   let s=0,e=data.length-1,found=-1;
+   while(s<=e){const m=Math.floor((s+e)/2);cnt++;const o={};data.forEach((_,i)=>{if(i<s||i>e)o[i]='dim'});o[m]='mid';
+    const d=cmp(data[m],t,isn);const hit=d===0;
+    F.push({cells:cells(o),cnt,msg:`${cnt}번째 비교: 탐색 범위 ${s+1}~${e+1}번째, 가운데(${m+1}번째) 값 ${data[m]} 와(과) ${t} 비교 → ${hit?'같아요! 탐색 종료':d>0?t+'이(가) 더 작으니 왼쪽 범위로':t+'이(가) 더 크니 오른쪽 범위로'}`,mid:m});
+    if(hit){found=m;break}if(d>0)e=m-1;else s=m+1}
+   const sorted=isSortedArr(data,isn);
+   F.push({cells:cells(found>=0?{[found]:'found'}:Object.fromEntries(data.map((_,i)=>[i,'dim']))),cnt,msg:found>=0?`✅ ${found+1}번째 위치에서 찾았어요. 비교 ${cnt}회`:`❌ 더 이상 좁힐 범위가 없어요. 비교 ${cnt}회 → 없다고 판단${sorted?'':' (⚠ 정렬되지 않은 데이터라 실제로는 있는데도 못 찾았을 수 있어요!)'}`,mid:found});
+  }
+  k=0;draw();
+ }
+ function isSortedArr(a,isn){for(let i=1;i<a.length;i++)if(cmp(a[i-1],a[i],isn)>0)return false;return true}
+ function draw(){
+  const f=F[k];
+  $('#tcells').innerHTML=f.cells.map((c,i)=>`<div class="cell ${c.c}">${esc(c.v)}<small>${i+1}번</small></div>`).join('');
+  $('#tcnt').textContent=f.cnt;$('#tmsg').className='msg'+(f.msg.startsWith('✅')?' ok':f.msg.startsWith('❌')?' bad':'');$('#tmsg').textContent=f.msg;
+  $('#tgo').disabled=k>=F.length-1;
+ }
+ function stop(){if(timer){clearInterval(timer);timer=null;$('#tauto').textContent='⏩ 자동'}}
+ $('#tgo').onclick=()=>{if(k<F.length-1){k++;draw()}};
+ $('#tauto').onclick=()=>{if(!F.length)return;if(timer){stop();return}if(k>=F.length-1){k=0;draw()}$('#tauto').textContent='⏸ 멈춤';timer=setInterval(()=>{if(k<F.length-1){k++;draw()}else stop()},650)};
+ $('#trst').onclick=()=>{stop();k=0;if(F.length)draw()};
+ $('#tsort').onclick=()=>{const a=parse(),t=$('#tt').value.trim();const isn=num(a);a.sort((x,y)=>cmp(x,y,isn));$('#td').value=a.join(',');build()};
+ $('#tm1').onclick=()=>{$('#td').value='4,5,3,2,1';$('#tt').value='2';build()};
+ $('#tm2').onclick=()=>{$('#td').value='D,B,H,A,G,C,F,E';$('#tt').value='E';build();$('#tmsg').textContent+='  (섞인 상태입니다 — “정렬하기”를 누른 뒤 순차/이진 탐색을 비교해 보세요. 교과서 답: 순차 5회, 이진 3회)'};
+ ['td','tt','ta'].forEach(i=>$('#'+i).onchange=build);build();
+})();
+
+/* ================= 4. 탐색 효율 ================= */
+(function(){
+ const NS=[10,100,1000,10000,100000,1000000,10000000,100000000,1000000000];
+ function draw(){
+  const N=NS[+$('#xs').value-1];$('#xn').textContent=N.toLocaleString();
+  let bin=0,t=N;while(t>0){t=Math.floor(t/2);bin++}
+  const rows=[['순차 탐색 (최악)',N,'#c92a2a'],['이진 탐색 (최악)',bin,'#2f9e44']];
+  $('#xtab').innerHTML='<table><tr><th style="width:170px">알고리즘</th><th>최대 비교 횟수</th><th class="l">그래프(로그 눈금이 아님)</th></tr>'+rows.map(r=>`<tr><td>${r[0]}</td><td><b>${r[1].toLocaleString()}</b></td><td class="l"><div style="background:${r[2]};height:16px;border-radius:4px;min-width:3px;width:${Math.max(0.3,100*r[1]/N)}%"></div></td></tr>`).join('')+'</table>';
+  const h=[];let r=N;while(r>=1){h.push(r);r=Math.ceil(r/2);if(r===1){h.push(1);break}}
+  $('#xhalf').innerHTML=`💡 이진 탐색은 범위를 절반씩 줄여요: <span class="mono">${h.join(' → ')}</span><br>순차 탐색은 ${N.toLocaleString()}번이지만 이진 탐색은 <b>${bin}번</b>이면 충분해요. 단, 이진 탐색을 하려면 데이터가 <b>정렬</b>되어 있어야 해요.`;
+ }
+ $('#xs').oninput=draw;draw();
+})();
+
+/* ================= 5. 파이썬 ================= */
+PyRunner.mount($('#py1'),{title:'선택 정렬 구현과 비교 횟수 (실습)',page:'137',code:`data = [3, 5, 6, 2, 1, 4]
+
+def selection_sort(data):
+  print('정렬 전 데이터', data)
+  count = 0
+  for i in range(len(data) - 1):
+    min_idx = i
+    for j in range(i + 1, len(data)):
+      count = count + 1
+      if data[j] < data[min_idx]:
+        min_idx = j
+    data[i], data[min_idx] = data[min_idx], data[i]
+  print('정렬 후 데이터', data)
+  print('전체 비교 횟수:', count)
+
+selection_sort(data)
+# data 를 아래 값으로 바꿔 실행해 보세요 (비교 횟수는 몇 번일까요?)
+# data = [7, 1, 10, 9, 5, 6, 15, 90, 95, 62, 47, 32, 58, 49, 11, 70, 19]`});
+PyRunner.mount($('#py2'),{title:'순차 탐색과 이진 탐색 프로그램 (탐색 프로그램 작성하기) — 실행하면 입력창이 떠요',page:'142',code:`import random
+data = []
+for i in range(1000):
+  num = random.randint(1, 1000)
+  data.append(num)
+count1, count2 = 0, 0
+search = int(input('검색할 데이터를 입력하세요: '))
+
+def search1(a, x):
+  global count1
+  n = len(a)
+  for i in range(0, n):
+    count1 = count1 + 1
+    if x == a[i]:
+      return '순차 탐색할 경우 비교 횟수는 ' + str(count1) + '회입니다.'
+  return '존재하지 않습니다.'
+
+def search2(a, x):
+  a = sorted(a)           # 이 줄을 지우면 어떻게 될까요?
+  global count2
+  start = 0
+  end = len(a) - 1
+  while start <= end:
+    mid = (start + end) // 2
+    count2 = count2 + 1
+    if x == a[mid]:
+      return '이진 탐색할 경우 비교 횟수는 ' + str(count2) + '회입니다.'
+    elif x > a[mid]:
+      start = mid + 1
+    else:
+      end = mid - 1
+  return '존재하지 않습니다.'
+
+print(search1(data, search))
+print(search2(data, search))`});
+</script></body></html>
