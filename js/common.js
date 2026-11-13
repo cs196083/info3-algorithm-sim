@@ -170,7 +170,7 @@ function renderStd(host,u,info){
 /* ---------- 셸(헤더·탭·페이저) ---------- */
 function topbar(base,cur){
   const tb=document.createElement('div');tb.className='topbar';
-  tb.innerHTML=`<a class="logo" href="${base}index.html">💻 정보 <span>3단원</span> 시뮬레이션</a><nav>${UNITS.map(x=>`<a href="${base}units/u${x.id}.html" class="${x.id===cur?'cur':''}" title="${x.t}">${x.id}</a>`).join('')}</nav>`;
+  tb.innerHTML=`<a class="logo" href="${base}index.html">💻 정보 <span>3단원</span> 시뮬레이션</a><nav>${UNITS.map(x=>`<a href="${base}units/u${x.id}.html" class="${x.id===cur?'cur':''}" title="${x.t}">${x.id}</a>`).join('')}<a href="${base}submit.html" title="학습 기록 제출">📤 제출</a></nav>`;
   document.body.prepend(tb);
 }
 window.initHome=function(){topbar('./',0)};

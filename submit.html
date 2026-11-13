@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>학습 기록 제출 – 정보 3단원</title><link rel="stylesheet" href="css/style.css"></head>
+<body style="--uc:#3b5bdb">
+<div class="wrap">
+ <div class="hero"><span class="badge">학생용</span><h1>📤 학습 기록 제출하기</h1><p>내 학습 기록을 파일(또는 코드)로 만들어 선생님께 제출해요.</p></div>
+ <div class="card"><h2>1. 내 정보</h2>
+  <div class="row"><label class="f">학번 <input type="text" id="sid" placeholder="예) 10315"></label><label class="f">이름 <input type="text" id="sname" placeholder="홍길동"></label></div>
+  <label class="check"><input type="checkbox" id="increp"><span>8단원 <b>프로젝트 보고서</b> 내용도 함께 제출</span></label></div>
+ <div class="card"><h2>2. 내 학습 현황</h2><div id="sum"></div></div>
+ <div class="card"><h2>3. 제출하기</h2>
+  <p class="small">아래 두 방법 중 선생님이 안내한 방법으로 제출하세요.</p>
+  <div class="row"><button class="btn" id="dl">⬇ 제출 파일(.json) 저장</button><button class="btn ghost" id="cp">📋 제출 코드 복사</button></div>
+  <div class="msg" id="msg"></div>
+  <textarea id="code" rows="4" readonly placeholder="‘제출 코드 복사’를 누르면 코드가 여기에 표시돼요."></textarea>
+  <div class="note"><b>방법 ①</b> 저장된 <code>학번_이름.json</code> 파일을 학급 게시판·LMS·메일로 제출 &nbsp; <b>방법 ②</b> 복사한 코드를 채팅·댓글·메일 본문에 붙여넣어 제출<br>학습 기록은 이 컴퓨터의 브라우저에 저장돼 있어요. 다른 컴퓨터에서 공부했다면 그 컴퓨터에서 제출해야 해요.</div></div>
+ <p class="small" style="text-align:center"><a href="index.html">← 학습 홈으로</a> · <a href="teacher.html">교사용 모아보기</a></p>
+</div>
+<script src="js/common.js"></script>
+<script>
+initHome();
+const RK='info3-u8-report-v1';
+function build(){
+  const rec={v:1,id:$('#sid').value.trim(),name:$('#sname').value.trim(),at:new Date().toISOString(),units:{}};
+  UNITS.forEach(u=>{const s=Progress.get(u.id);const n=s.checks?Object.values(s.checks).filter(Boolean).length:0;
+    rec.units[u.id]={quiz:s.quiz||null,checks:n,checkTotal:s.checkTotal||5,sim:!!s.simVisited,pct:Progress.pct(u.id)}});
+  if($('#increp').checked){try{rec.report=JSON.parse(localStorage.getItem(RK))||null}catch(e){}}
+  return rec;
+}
+function draw(){
+  $('#sum').innerHTML='<table><tr><th>단원</th><th>퀴즈 최고점</th><th>자가 점검</th><th>시뮬레이션</th><th>진행률</th></tr>'+UNITS.map(u=>{const s=Progress.get(u.id);const n=s.checks?Object.values(s.checks).filter(Boolean).length:0;
+   return `<tr><td class="l">${u.id}. ${u.t}</td><td>${s.quiz?s.quiz[0]+' / '+s.quiz[1]:'-'}</td><td>${n} / ${s.checkTotal||5}</td><td>${s.simVisited?'✔':'-'}</td><td><b>${Progress.pct(u.id)}%</b></td></tr>`}).join('')+'</table>';
+}
+function check(){const r=build();if(!r.id||!r.name){$('#msg').className='msg bad';$('#msg').textContent='학번과 이름을 입력해 주세요.';return null}return r}
+$('#dl').onclick=()=>{const r=check();if(!r)return;const b=new Blob([JSON.stringify(r,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`${r.id}_${r.name}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);$('#msg').className='msg ok';$('#msg').textContent='저장했어요! 파일을 선생님께 제출하세요.'};
+$('#cp').onclick=async()=>{const r=check();if(!r)return;const t='INFO3:'+btoa(unescape(encodeURIComponent(JSON.stringify(r))));$('#code').value=t;$('#code').select();
+  try{await navigator.clipboard.writeText(t);$('#msg').className='msg ok';$('#msg').textContent='복사했어요! 붙여넣어 제출하세요.'}catch(e){$('#msg').className='msg ok';$('#msg').textContent='아래 코드를 직접 복사(Ctrl+C)해서 제출하세요.'}};
+['sid','sname'].forEach(i=>{$('#'+i).value=localStorage.getItem('info3-'+i)||'';$('#'+i).oninput=e=>localStorage.setItem('info3-'+i,e.target.value)});
+draw();
+</script></body></html>

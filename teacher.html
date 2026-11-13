@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>교사용 학습 기록 모아보기 – 정보 3단원</title><link rel="stylesheet" href="css/style.css"></head>
+<body style="--uc:#495057">
+<div class="wrap">
+ <div class="hero"><span class="badge">교사용</span><h1>🧑‍🏫 학습 기록 모아보기</h1><p>학생이 제출한 파일(.json) 또는 제출 코드를 불러오면 한 표로 정리해요. 데이터는 이 브라우저 안에서만 처리되고 어디에도 전송되지 않아요.</p></div>
+ <div class="card"><h2>1. 불러오기</h2>
+  <div class="row"><input type="file" id="fl" accept=".json,application/json" multiple><span class="small">여러 파일을 한꺼번에 선택할 수 있어요.</span></div>
+  <textarea id="paste" rows="4" placeholder="제출 코드(INFO3:…)를 한 줄에 하나씩 붙여넣으세요."></textarea>
+  <div class="row"><button class="btn" id="add">붙여넣은 코드 추가</button><button class="btn ghost" id="clr">목록 비우기</button><span class="msg" id="msg"></span></div></div>
+ <div class="card"><h2>2. 제출 현황 <span class="small" id="cnt"></span></h2>
+  <div class="row"><button class="btn ghost sm" id="csv">⬇ 엑셀용 CSV 저장</button></div>
+  <div style="overflow:auto"><table id="tb"></table></div>
+  <p class="small">셀 값 = 퀴즈 최고점/문항 · 자가점검 달성 수 · 진행률. 학생이 스스로 제출한 자료이므로 참고용으로 활용하세요.</p></div>
+ <div class="card" id="repc" style="display:none"><h2>3. 제출된 프로젝트 보고서</h2><div id="reps"></div></div>
+ <p class="small" style="text-align:center"><a href="index.html">← 학습 홈으로</a></p>
+</div>
+<script src="js/common.js"></script>
+<script>
+initHome();
+let R={};
+const lab={team:'모둠명',members:'모둠원/역할',topic:'주제',problem:'문제 정의',init:'초기 상태',goal:'목표 상태',split:'문제 분해',model:'모델링',algo:'알고리즘',prog:'프로그램 작성',perf:'성능 평가',fb:'받은 피드백',imp:'개선한 점'};
+function put(r){if(!r||!r.id||!r.units){return false}R[r.id+'|'+r.name]=r;return true}
+function decode(t){t=t.trim();if(!t.startsWith('INFO3:'))return null;try{return JSON.parse(decodeURIComponent(escape(atob(t.slice(6)))))}catch(e){return null}}
+function draw(){
+  const rows=Object.values(R).sort((a,b)=>String(a.id).localeCompare(String(b.id),'ko',{numeric:true}));
+  $('#cnt').textContent=`(${rows.length}명)`;
+  $('#tb').innerHTML='<tr><th>학번</th><th>이름</th>'+UNITS.map(u=>`<th title="${u.t}">${u.id}단원</th>`).join('')+'<th>평균 진행률</th><th>제출 시각</th></tr>'+
+   rows.map(r=>{let sum=0;const cells=UNITS.map(u=>{const x=r.units[u.id]||{};sum+=x.pct||0;return `<td style="font-size:13px">${x.quiz?x.quiz[0]+'/'+x.quiz[1]:'-'} · ${x.checks||0}/${x.checkTotal||5}<br><b>${x.pct||0}%</b></td>`}).join('');
+    return `<tr><td>${esc(r.id)}</td><td>${esc(r.name)}</td>${cells}<td><b>${Math.round(sum/UNITS.length)}%</b></td><td class="small">${esc((r.at||'').replace('T',' ').slice(0,16))}</td></tr>`}).join('')||'<tr><td colspan="12" class="small">아직 불러온 제출물이 없어요.</td></tr>';
+  const withRep=rows.filter(r=>r.report);$('#repc').style.display=withRep.length?'block':'none';
+  $('#reps').innerHTML=withRep.map(r=>`<details style="margin:6px 0"><summary><b>${esc(r.id)} ${esc(r.name)}</b></summary>${Object.keys(lab).map(k=>`<div style="margin:6px 0"><b>${lab[k]}</b><div style="white-space:pre-wrap">${esc(r.report[k]||'(미작성)')}</div></div>`).join('')}</details>`).join('');
+}
+function msg(t,ok){$('#msg').className='msg '+(ok?'ok':'bad');$('#msg').textContent=t}
+$('#fl').onchange=async e=>{let ok=0,bad=0;for(const f of e.target.files){try{put(JSON.parse(await f.text()))?ok++:bad++}catch(x){bad++}}msg(`${ok}개 불러옴${bad?`, ${bad}개는 형식이 올바르지 않아 건너뜀`:''}`,!bad);draw();e.target.value=''};
+$('#add').onclick=()=>{let ok=0,bad=0;$('#paste').value.split(/\s+/).filter(Boolean).forEach(t=>{put(decode(t))?ok++:bad++});msg(`${ok}개 추가${bad?`, ${bad}개는 코드가 올바르지 않아 건너뜀`:''}`,!bad);if(ok)$('#paste').value='';draw()};
+$('#clr').onclick=()=>{R={};draw();msg('',true)};
+$('#csv').onclick=()=>{const rows=Object.values(R);if(!rows.length)return;const q=s=>'"'+String(s??'').replace(/"/g,'""')+'"';
+  let t='학번,이름,'+UNITS.map(u=>`${u.id}단원 퀴즈,${u.id}단원 자가점검,${u.id}단원 진행률`).join(',')+',평균 진행률,제출 시각\n';
+  rows.forEach(r=>{let s=0;t+=[q(r.id),q(r.name),...UNITS.map(u=>{const x=r.units[u.id]||{};s+=x.pct||0;return [q(x.quiz?x.quiz[0]+'/'+x.quiz[1]:''),q(x.checks||0),q(x.pct||0)].join(',')}),Math.round(s/UNITS.length),q(r.at)].join(',')+'\n'});
+  const b=new Blob(['﻿'+t],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='정보3단원_학습현황.csv';a.click()};
+draw();
+</script></body></html>
